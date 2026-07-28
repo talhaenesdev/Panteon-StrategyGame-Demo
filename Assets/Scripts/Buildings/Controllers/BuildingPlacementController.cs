@@ -12,6 +12,7 @@ namespace PanteonStrategyGame.Buildings.Controllers
     {
         [Inject] private GridManager _gridManager;
         [Inject] private IBuildingFactory _buildingFactory;
+        [Inject] private IBuildingPlacementService _validator;
 
         private BuildingData _selectedBuilding;
         private GhostBuilding _ghostBuilding;
@@ -57,7 +58,7 @@ namespace PanteonStrategyGame.Buildings.Controllers
             _ghostBuilding.transform.position = worldPosition;
 
             bool canPlace =
-                _gridManager.CanPlaceBuilding(_selectedBuilding, gridPosition);
+                _validator.CanPlace(_selectedBuilding, gridPosition);
 
             _ghostBuilding.SetValid(canPlace);
         }
@@ -72,7 +73,7 @@ namespace PanteonStrategyGame.Buildings.Controllers
             Vector2Int gridPosition =
                 _gridManager.GetGridPosition(mouseWorld);
 
-            if (!_gridManager.CanPlaceBuilding(_selectedBuilding, gridPosition))
+            if (!_validator.CanPlace(_selectedBuilding, gridPosition))
                 return;
 
             Building building =

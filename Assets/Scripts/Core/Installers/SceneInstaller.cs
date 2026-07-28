@@ -1,4 +1,5 @@
-﻿using PanteonStrategyGame.Core.Factories;
+﻿using PanteonStrategyGame.Buildings.Controllers;
+using PanteonStrategyGame.Core.Factories;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
@@ -17,6 +18,9 @@ namespace PanteonStrategyGame.Core.Installers
                 .AsSingle();
             Container.Bind<GridManager>()
                 .FromComponentInHierarchy()
+                .AsSingle();
+            Container.Bind<IBuildingPlacementService>()
+                .To<BuildingPlacementService>()
                 .AsSingle();
         }
     }
