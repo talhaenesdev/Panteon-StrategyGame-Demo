@@ -4,9 +4,9 @@ using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Core.Interfaces;
 
-namespace PanteonStrategyGame.Core.Factories
+namespace PanteonStrategyGame.Buildings.Factories
 {
-    public class BuildingFactory: IBuildingFactory
+    public class BuildingFactory : IBuildingFactory
     {
         private readonly DiContainer _container;
 
@@ -18,7 +18,7 @@ namespace PanteonStrategyGame.Core.Factories
         public Building Create(BuildingData data, Vector3 position)
         {
             return _container.InstantiatePrefabForComponent<Building>(
-                data.Prefab,
+                data.BuildingPrefab,
                 position,
                 Quaternion.identity,
                 null);

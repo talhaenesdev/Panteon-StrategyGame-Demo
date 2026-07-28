@@ -19,12 +19,31 @@ namespace PanteonStrategyGame.Buildings.Controllers
 
         private bool _isPlacing;
 
+
+        #region Test
+
+        [SerializeField]
+        private BuildingData testBuilding;
+
+
+        private void Start()
+        {
+            StartPlacement(testBuilding);
+            _selectedBuilding = testBuilding;
+        }
+
+        #endregion
+
+
         public void StartPlacement(BuildingData buildingData)
         {
             _selectedBuilding = buildingData;
 
-            _ghostBuilding = Instantiate(buildingData.Prefab)
-                .GetComponent<GhostBuilding>();
+            _ghostBuilding = Instantiate(
+                   buildingData.GhostPrefab,
+                   Vector3.zero,
+                   Quaternion.identity)
+               .GetComponent<GhostBuilding>();
 
             _isPlacing = true;
         }

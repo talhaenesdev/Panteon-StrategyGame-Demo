@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
   m_Name: BarracksData
   m_EditorClassIdentifier: 
+  Type: 0
   BuildingName: Barracks
   Icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  Prefab: {fileID: 0}
-  Size: {x: 2, y: 2}
+  BuildingPrefab: {fileID: 6206094125042187273, guid: d95a4f56875943d43b982e12a6783dcd, type: 3}
+  GhostPrefab: {fileID: 6206094125042187273, guid: 985e0627062a5644183c142cb269010e, type: 3}
   MaxHealth: 100
+  Size: {x: 2, y: 2}

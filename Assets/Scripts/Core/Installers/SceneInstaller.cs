@@ -1,8 +1,9 @@
 ﻿using PanteonStrategyGame.Buildings.Controllers;
-using PanteonStrategyGame.Core.Factories;
+using PanteonStrategyGame.Buildings.Factories;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Pathfinding;
 using Zenject;
 
 namespace PanteonStrategyGame.Core.Installers
@@ -21,6 +22,9 @@ namespace PanteonStrategyGame.Core.Installers
                 .AsSingle();
             Container.Bind<IBuildingPlacementService>()
                 .To<BuildingPlacementService>()
+                .AsSingle();
+            Container.Bind<IPathfindingService>()
+                .To<AStarPathfinder>()
                 .AsSingle();
         }
     }
