@@ -2,10 +2,11 @@ using UnityEngine;
 using Zenject;
 using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
+using PanteonStrategyGame.Core.Interfaces;
 
 namespace PanteonStrategyGame.Core.Factories
 {
-    public class BuildingFactory
+    public class BuildingFactory: IBuildingFactory
     {
         private readonly DiContainer _container;
 
