@@ -1,5 +1,6 @@
 ﻿using PanteonStrategyGame.Buildings.Controllers;
 using PanteonStrategyGame.Buildings.Factories;
+using PanteonStrategyGame.Buildings.Services;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
@@ -25,6 +26,9 @@ namespace PanteonStrategyGame.Core.Installers
                 .AsSingle();
             Container.Bind<IPathfindingService>()
                 .To<AStarPathfinder>()
+                .AsSingle();
+            Container.Bind<IBuildingService>()
+                .To<BuildingService>()
                 .AsSingle();
         }
     }
