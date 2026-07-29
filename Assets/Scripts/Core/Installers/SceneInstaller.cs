@@ -5,6 +5,8 @@ using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
 using PanteonStrategyGame.Pathfinding;
+using PanteonStrategyGame.Units.Factories;
+using PanteonStrategyGame.Units.Services;
 using Zenject;
 
 namespace PanteonStrategyGame.Core.Installers
@@ -29,6 +31,12 @@ namespace PanteonStrategyGame.Core.Installers
                 .AsSingle();
             Container.Bind<IBuildingService>()
                 .To<BuildingService>()
+                .AsSingle();
+            Container.Bind<IUnitService>()
+                .To<UnitService>()
+                .AsSingle();
+            Container.Bind<IUnitFactory>()
+                .To<UnitFactory>()
                 .AsSingle();
         }
     }
