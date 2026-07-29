@@ -25,13 +25,6 @@ namespace PanteonStrategyGame.Buildings.Controllers
         [SerializeField]
         private BuildingData testBuilding;
 
-
-        private void Start()
-        {
-            StartPlacement(testBuilding);
-            _selectedBuilding = testBuilding;
-        }
-
         #endregion
 
 
@@ -50,6 +43,10 @@ namespace PanteonStrategyGame.Buildings.Controllers
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                StartPlacement(testBuilding);
+            }
             if (!_isPlacing)
                 return;
 
@@ -63,21 +60,19 @@ namespace PanteonStrategyGame.Buildings.Controllers
 
         private void UpdateGhost()
         {
-            Vector3 mouseWorld =
-                Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (_ghostBuilding == null || _selectedBuilding == null)
+                return;
 
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0;
 
-            Vector2Int gridPosition =
-                _gridManager.GetGridPosition(mouseWorld);
+            Vector2Int gridPosition = _gridManager.GetGridPosition(mouseWorld);
 
-            Vector3 worldPosition =
-                _gridManager.GetWorldPosition(gridPosition);
+            Vector3 worldPosition = _gridManager.GetWorldPosition(gridPosition);
 
             _ghostBuilding.transform.position = worldPosition;
 
-            bool canPlace =
-                _validator.CanPlace(_selectedBuilding, gridPosition);
+            bool canPlace = _validator.CanPlace(_selectedBuilding, gridPosition);
 
             _ghostBuilding.SetValid(canPlace);
         }

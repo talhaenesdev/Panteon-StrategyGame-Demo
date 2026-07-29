@@ -1,5 +1,6 @@
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Units.Components;
 using PanteonStrategyGame.Units.Data;
 using UnityEngine;
 
@@ -15,6 +16,10 @@ namespace PanteonStrategyGame.Units.Models
 
         [SerializeField]
         private GameObject selectionCircle;
+
+        [SerializeField]
+        private UnitMovement _movement;
+        public UnitMovement Movement => _movement;
 
         public virtual void Initialize(UnitData data)
         {

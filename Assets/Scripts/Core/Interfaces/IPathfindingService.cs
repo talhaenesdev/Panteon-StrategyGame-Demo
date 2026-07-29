@@ -5,8 +5,8 @@ namespace PanteonStrategyGame.Core.Interfaces
 {
     public interface IPathfindingService
     {
-        List<Vector2Int> FindPath(
-            Vector2Int start,
-            Vector2Int end);
+        List<Vector3> FindPath(
+            Vector3 start,
+            Vector3 target);
     }
 }

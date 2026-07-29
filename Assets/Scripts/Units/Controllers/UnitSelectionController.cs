@@ -1,12 +1,15 @@
 using UnityEngine;
+using Zenject;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Units.Models;
 
 namespace PanteonStrategyGame.Units.Controllers
 {
     public class UnitSelectionController : MonoBehaviour
     {
+        [Inject] private ISelectionService _selectionService;
+
         private Camera _camera;
-        private ISelectable _selected;
 
         private void Awake()
         {
@@ -26,28 +29,31 @@ namespace PanteonStrategyGame.Units.Controllers
             Vector2 worldPoint = _camera.ScreenToWorldPoint(Input.mousePosition);
 
             Collider2D hit = Physics2D.OverlapPoint(worldPoint);
+            Debug.Log($"Click Position : {worldPoint}");
 
-            if (hit == null)
+            if (hit != null)
+            {
+                Debug.Log($"Hit Object : {hit.name}");
+            }
+            else
             {
                 Debug.Log("Nothing hit");
-                return;
             }
-
-            Debug.Log($"Hit : {hit.name}");
-
-            var selectable = hit.GetComponent<ISelectable>();
-
-            if (selectable == null)
+            if (hit == null)
             {
-                Debug.Log("Object is not selectable.");
+                _selectionService.ClearSelection();
                 return;
             }
 
-            _selected?.Deselect();
+            Unit unit = hit.GetComponent<Unit>();
 
-            _selected = selectable;
+            if (unit == null)
+            {
+                _selectionService.ClearSelection();
+                return;
+            }
 
-            _selected.Select();
+            _selectionService.Select(unit);
         }
     }
 }

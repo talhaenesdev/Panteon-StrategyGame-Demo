@@ -38,6 +38,9 @@ namespace PanteonStrategyGame.Core.Installers
             Container.Bind<IUnitFactory>()
                 .To<UnitFactory>()
                 .AsSingle();
+            Container.Bind<ISelectionService>()
+                .To<SelectionService>()
+                .AsSingle();
         }
     }
 }
