@@ -1,9 +1,11 @@
 using PanteonStrategyGame.Common.Entities;
+using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Units.Data;
+using UnityEngine;
 
 namespace PanteonStrategyGame.Units.Models
 {
-    public abstract class Unit : Entity
+    public abstract class Unit : Entity, ISelectable
     {
         protected UnitData Data;
 
@@ -11,10 +13,22 @@ namespace PanteonStrategyGame.Units.Models
 
         public float MoveSpeed => Data.MoveSpeed;
 
+        [SerializeField]
+        private GameObject selectionCircle;
+
         public virtual void Initialize(UnitData data)
         {
             Data = data;
             CurrentHealth = data.MaxHealth;
+        }
+        public virtual void Select()
+        {
+            selectionCircle.SetActive(true);
+        }
+
+        public virtual void Deselect()
+        {
+            selectionCircle.SetActive(false);
         }
     }
 }
