@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e55040d161f649468cd8b8440f142b3, type: 3}
-  m_Name: UnitData
+  m_Name: Soldier2
   m_EditorClassIdentifier: 
-  Type: 0
-  UnitName: Soldiier
-  Icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  Prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
-  MaxHealth: 100
-  Damage: 10
-  MoveSpeed: 1
+  Type: 1
+  UnitName: Soldier2
+  Icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  Prefab: {fileID: 6206094125042187273, guid: fbfab09004e595145ab5c43f1a272f91, type: 3}
+  MaxHealth: 50
+  Damage: 5
+  MoveSpeed: 2
+  productionTime: 3

@@ -1,26 +1,19 @@
 ﻿using UnityEngine;
-using Zenject;
-using PanteonStrategyGame.Core.Interfaces;
-using PanteonStrategyGame.Units.Components;
 using PanteonStrategyGame.Units.Data;
 
 namespace PanteonStrategyGame.Buildings.Models
 {
     public class Barracks : Building
     {
-        [SerializeField] private SpawnPoint spawnPoint;
-        [SerializeField] private UnitData testUnit;
+        [SerializeField]
+        private UnitData[] producibleUnits;
 
-        [Inject] private IUnitFactory _unitFactory;
-
-        private void Update()
+        public UnitData GetUnit(int index)
         {
-            if (!Input.GetKeyDown(KeyCode.Space))
-                return;
+            if (index < 0 || index >= producibleUnits.Length)
+                return null;
 
-            _unitFactory.Create(
-                testUnit,
-                spawnPoint.transform.position);
+            return producibleUnits[index];
         }
     }
 }

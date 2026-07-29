@@ -22,5 +22,10 @@ namespace PanteonStrategyGame.Units.Data
         public int Damage;
 
         public float MoveSpeed;
+
+        [SerializeField]
+        private float productionTime = 3f;
+
+        public float ProductionTime => productionTime;
     }
 }

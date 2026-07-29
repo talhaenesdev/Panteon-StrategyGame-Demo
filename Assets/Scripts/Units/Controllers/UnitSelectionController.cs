@@ -29,16 +29,8 @@ namespace PanteonStrategyGame.Units.Controllers
             Vector2 worldPoint = _camera.ScreenToWorldPoint(Input.mousePosition);
 
             Collider2D hit = Physics2D.OverlapPoint(worldPoint);
-            Debug.Log($"Click Position : {worldPoint}");
 
-            if (hit != null)
-            {
-                Debug.Log($"Hit Object : {hit.name}");
-            }
-            else
-            {
-                Debug.Log("Nothing hit");
-            }
+
             if (hit == null)
             {
                 _selectionService.ClearSelection();

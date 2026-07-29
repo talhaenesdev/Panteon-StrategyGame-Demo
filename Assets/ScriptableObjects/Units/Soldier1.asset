@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e55040d161f649468cd8b8440f142b3, type: 3}
+  m_Name: Soldier1
+  m_EditorClassIdentifier: 
+  Type: 0
+  UnitName: Soldier1
+  Icon: {fileID: 7482667652216324306, guid: 1db8122ef4669344b80877a2b1fab5a6, type: 3}
+  Prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
+  MaxHealth: 10
+  Damage: 2
+  MoveSpeed: 1
+  productionTime: 1
