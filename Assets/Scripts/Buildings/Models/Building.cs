@@ -5,38 +5,24 @@ using UnityEngine;
 
 namespace PanteonStrategyGame.Buildings.Models
 {
-    public abstract class Building : Entity, ISelectable, IDamageable
+    public abstract class Building : Entity, IDamageable
     {
-        [SerializeField] protected BuildingData buildingData;
-
-        public int CurrentHealth { get; protected set; }
+        [SerializeField]
+        protected BuildingData buildingData;
 
         protected virtual void Awake()
         {
             CurrentHealth = buildingData.MaxHealth;
         }
 
-        public virtual void Select()
-        {
-        }
-
-        public virtual void Deselect()
-        {
-        }
-
-        public virtual void TakeDamage(int damage)
+        public override void TakeDamage(int damage)
         {
             CurrentHealth -= damage;
 
             if (CurrentHealth <= 0)
             {
-                DestroyBuilding();
+                DestroyEntity();
             }
-        }
-
-        protected virtual void DestroyBuilding()
-        {
-            Destroy(gameObject);
         }
     }
 }

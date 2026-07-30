@@ -1,4 +1,5 @@
 ﻿using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Units.Models;
 using UnityEngine;
 using Zenject;
 
@@ -26,10 +27,7 @@ namespace PanteonStrategyGame.Units.Controllers
 
         private void MoveSelectedUnit()
         {
-
-            Debug.Log($"Current Unit : {_selectionService.SelectedUnit}");
-
-            if (_selectionService.SelectedUnit == null)
+            if (_selectionService.SelectedEntity is not Unit unit)
                 return;
 
 
@@ -37,10 +35,11 @@ namespace PanteonStrategyGame.Units.Controllers
             target.z = 0;
 
             var path = _pathfindingService.FindPath(
-                _selectionService.SelectedUnit.transform.position,
+                unit.transform.position,
                 target);
-            Debug.Log($"Path Count : {path.Count}");
-            _selectionService.SelectedUnit.Movement.SetPath(path);
+
+            unit.Movement.SetPath(path);
+
         }
     }
 }

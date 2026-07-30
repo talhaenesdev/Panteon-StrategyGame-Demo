@@ -1,12 +1,12 @@
-﻿using PanteonStrategyGame.Units.Models;
+﻿using PanteonStrategyGame.Common.Entities;
 
 namespace PanteonStrategyGame.Core.Interfaces
 {
     public interface ISelectionService
     {
-        Unit SelectedUnit { get; }
+        Entity SelectedEntity { get; }
 
-        void Select(Unit unit);
+        void Select(Entity entity);
 
         void ClearSelection();
     }

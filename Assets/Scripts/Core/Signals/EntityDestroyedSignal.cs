@@ -1,12 +1,12 @@
-using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Common.Entities;
 
 namespace PanteonStrategyGame.Core.Signals
 {
     public class EntityDestroyedSignal
     {
-        public IDamageable DestroyedEntity { get; }
+        public Entity DestroyedEntity { get; }
 
-        public EntityDestroyedSignal(IDamageable destroyedEntity)
+        public EntityDestroyedSignal(Entity destroyedEntity)
         {
             DestroyedEntity = destroyedEntity;
         }

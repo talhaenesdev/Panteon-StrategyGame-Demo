@@ -1,12 +1,12 @@
-using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Common.Entities;
 
 namespace PanteonStrategyGame.Core.Signals
 {
     public class EntitySelectedSignal
     {
-        public ISelectable SelectedEntity { get; }
+        public Entity SelectedEntity { get; }
 
-        public EntitySelectedSignal(ISelectable selectedEntity)
+        public EntitySelectedSignal(Entity selectedEntity)
         {
             SelectedEntity = selectedEntity;
         }

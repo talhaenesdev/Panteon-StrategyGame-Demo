@@ -1,31 +1,42 @@
-﻿using PanteonStrategyGame.Core.Interfaces;
-using PanteonStrategyGame.Units.Models;
-using UnityEngine;
+﻿using PanteonStrategyGame.Common.Entities;
+using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Signals;
+using Zenject;
 
 namespace PanteonStrategyGame.Units.Services
 {
     public class SelectionService : ISelectionService
     {
-        public Unit SelectedUnit { get; private set; }
+        private readonly SignalBus _signalBus;
 
-        public void Select(Unit unit)
+        public Entity SelectedEntity { get; private set; }
+
+        public SelectionService(SignalBus signalBus)
         {
-            Debug.Log($"Selected : {unit.name}");
+            _signalBus = signalBus;
+        }
 
-            if (SelectedUnit == unit)
+        public void Select(Entity entity)
+        {
+            if (SelectedEntity == entity)
                 return;
 
-            SelectedUnit?.Deselect();
+            SelectedEntity?.Deselect();
 
-            SelectedUnit = unit;
+            SelectedEntity = entity;
 
-            SelectedUnit.Select();
+            SelectedEntity?.Select();
+
+            _signalBus.Fire(new EntitySelectedSignal(entity));
         }
 
         public void ClearSelection()
         {
-            SelectedUnit?.Deselect();
-            SelectedUnit = null;
+            SelectedEntity?.Deselect();
+
+            SelectedEntity = null;
+
+            _signalBus.Fire(new EntitySelectedSignal(null));
         }
     }
 }

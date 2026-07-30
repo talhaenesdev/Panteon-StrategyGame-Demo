@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PanteonStrategyGame.Units.Models
 {
-    public abstract class Unit : Entity, ISelectable
+    public abstract class Unit : Entity
     {
         protected UnitData Data;
 
@@ -26,14 +26,23 @@ namespace PanteonStrategyGame.Units.Models
             Data = data;
             CurrentHealth = data.MaxHealth;
         }
-        public virtual void Select()
+        public override void Select()
         {
             selectionCircle.SetActive(true);
         }
 
-        public virtual void Deselect()
+        public override void Deselect()
         {
             selectionCircle.SetActive(false);
+        }
+        public override void TakeDamage(int damage)
+        {
+            CurrentHealth -= damage;
+
+            if (CurrentHealth <= 0)
+            {
+                DestroyEntity();
+            }
         }
     }
 }
