@@ -1,7 +1,7 @@
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Core.Interfaces;
-using PanteonStrategyGame.Units.Models;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace PanteonStrategyGame.Units.Controllers
@@ -19,6 +19,9 @@ namespace PanteonStrategyGame.Units.Controllers
 
         private void Update()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             if (Input.GetMouseButtonDown(0))
             {
                 SelectUnit();

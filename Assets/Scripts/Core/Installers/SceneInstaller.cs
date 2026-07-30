@@ -22,6 +22,7 @@ namespace PanteonStrategyGame.Core.Installers
 
             Container.DeclareSignal<EntitySelectedSignal>();
             Container.DeclareSignal<EntityDestroyedSignal>();
+            Container.DeclareSignal<ProductionQueueChangedSignal>();
 
             Container.BindInterfacesTo<SignalLogger>().AsSingle();
 
@@ -58,6 +59,20 @@ namespace PanteonStrategyGame.Core.Installers
                 .AsSingle();
 
             Container.BindInterfacesTo<EntityInfoPanelController>()
+                .AsSingle();
+            
+            Container.Bind<ProductionPanelView>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container.BindInterfacesTo<ProductionPanelController>()
+                .AsSingle();
+
+            Container.Bind<ProductionQueueView>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container.BindInterfacesTo<ProductionQueueController>()
                 .AsSingle();
 
         }

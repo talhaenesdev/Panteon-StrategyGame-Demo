@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e55040d161f649468cd8b8440f142b3, type: 3}
   m_Name: Soldier1
   m_EditorClassIdentifier: 
+  <DisplayName>k__BackingField: Soldier
   Type: 0
   UnitName: Soldier1
   Icon: {fileID: 7482667652216324306, guid: 1db8122ef4669344b80877a2b1fab5a6, type: 3}

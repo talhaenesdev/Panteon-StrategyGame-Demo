@@ -182,6 +182,7 @@ MonoBehaviour:
   team: 0
   buildingData: {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
   selectionCircle: {fileID: 8832797371506606914}
+  productionComponent: {fileID: 8052753599330218786}
   producibleUnits:
   - {fileID: 11400000, guid: 11ce291a15e1b6e49bd57a524cb4e982, type: 2}
   - {fileID: 11400000, guid: 968d2d72e48e9654c9f39491a92e2aa2, type: 2}
@@ -212,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 8761063850943751472}
+  _barracks: {fileID: 7402150865975974605}
 --- !u!61 &8421960049297451702
 BoxCollider2D:
   m_ObjectHideFlags: 0
