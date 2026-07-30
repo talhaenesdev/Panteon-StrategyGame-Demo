@@ -7,6 +7,7 @@ namespace PanteonStrategyGame.Buildings.Models
 {
     public abstract class Building : Entity, IDamageable
     {
+        public override string EntityType => "Building";
         [SerializeField]
         protected BuildingData buildingData;
         [SerializeField]

@@ -8,6 +8,7 @@ namespace PanteonStrategyGame.Units.Models
 {
     public abstract class Unit : Entity
     {
+        public override string EntityType => "Unit";
         protected UnitData Data;
 
         public int Damage => Data.Damage;

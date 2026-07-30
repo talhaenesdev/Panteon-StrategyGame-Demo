@@ -6,6 +6,8 @@ using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
 using PanteonStrategyGame.Pathfinding;
+using PanteonStrategyGame.UI.Controllers;
+using PanteonStrategyGame.UI.Views;
 using PanteonStrategyGame.Units.Factories;
 using PanteonStrategyGame.Units.Services;
 using Zenject;
@@ -49,6 +51,13 @@ namespace PanteonStrategyGame.Core.Installers
                 .AsSingle();
             Container.Bind<IProductionService>()
                 .To<ProductionService>()
+                .AsSingle();
+
+            Container.Bind<EntityInfoPanelView>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container.BindInterfacesTo<EntityInfoPanelController>()
                 .AsSingle();
         }
     }
