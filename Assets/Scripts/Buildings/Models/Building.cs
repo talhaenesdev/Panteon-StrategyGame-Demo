@@ -1,5 +1,6 @@
 using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Common.Entities;
+using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace PanteonStrategyGame.Buildings.Models
 {
     public abstract class Building : Entity, IDamageable
     {
-        public override string EntityType => "Building";
+        public override EntityType EntityType => EntityType.Building;
         [SerializeField]
         protected BuildingData buildingData;
         [SerializeField]

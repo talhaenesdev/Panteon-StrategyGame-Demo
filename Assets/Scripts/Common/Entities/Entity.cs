@@ -6,9 +6,9 @@ namespace PanteonStrategyGame.Common.Entities
 {
     public abstract class Entity : MonoBehaviour, IEntity, ISelectable
     {
-        public virtual string DisplayName => name;
+        public abstract EntityType EntityType { get; }
 
-        public virtual string EntityType => "Entity";
+        public abstract string DisplayName { get; }
         [SerializeField]
         private string id;
 

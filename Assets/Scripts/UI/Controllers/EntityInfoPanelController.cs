@@ -1,6 +1,6 @@
+using System;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.UI.Views;
-using System;
 using Zenject;
 
 namespace PanteonStrategyGame.UI.Controllers
@@ -40,9 +40,10 @@ namespace PanteonStrategyGame.UI.Controllers
 
             _view.Show();
 
-            _view.SetName(signal.SelectedEntity.DisplayName);
-            _view.SetType(signal.SelectedEntity.EntityType);
-            _view.SetHealth(signal.SelectedEntity.CurrentHealth);
+            _view.Refresh(
+                signal.SelectedEntity.DisplayName,
+                signal.SelectedEntity.EntityType.ToString(),
+                signal.SelectedEntity.CurrentHealth);
         }
     }
 }

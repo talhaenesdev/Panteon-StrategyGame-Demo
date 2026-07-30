@@ -9,6 +9,11 @@ namespace PanteonStrategyGame.UI.Views
         [SerializeField] private TMP_Text typeText;
         [SerializeField] private TMP_Text healthText;
 
+        private void Awake()
+        {
+            Hide();
+        }
+
         public void Show()
         {
             gameObject.SetActive(true);
@@ -19,18 +24,10 @@ namespace PanteonStrategyGame.UI.Views
             gameObject.SetActive(false);
         }
 
-        public void SetName(string value)
+        public void Refresh(string entityName, string entityType, int health)
         {
-            nameText.text = value;
-        }
-
-        public void SetType(string value)
-        {
-            typeText.text = value;
-        }
-
-        public void SetHealth(int health)
-        {
+            nameText.text = entityName;
+            typeText.text = entityType;
             healthText.text = $"HP : {health}";
         }
     }

@@ -5,6 +5,7 @@ namespace PanteonStrategyGame.Units.Models
 {
     public class Soldier : Unit
     {
+        public override string DisplayName => Data.DisplayName;
         private UnitMovement _movement;
 
         private void Awake()

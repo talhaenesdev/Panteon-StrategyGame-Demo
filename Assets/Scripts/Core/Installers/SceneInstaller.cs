@@ -59,6 +59,7 @@ namespace PanteonStrategyGame.Core.Installers
 
             Container.BindInterfacesTo<EntityInfoPanelController>()
                 .AsSingle();
+
         }
     }
 }

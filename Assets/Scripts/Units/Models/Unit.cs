@@ -1,4 +1,5 @@
 using PanteonStrategyGame.Common.Entities;
+using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Units.Components;
 using PanteonStrategyGame.Units.Data;
@@ -8,7 +9,7 @@ namespace PanteonStrategyGame.Units.Models
 {
     public abstract class Unit : Entity
     {
-        public override string EntityType => "Unit";
+        public override EntityType EntityType => EntityType.Unit;
         protected UnitData Data;
 
         public int Damage => Data.Damage;

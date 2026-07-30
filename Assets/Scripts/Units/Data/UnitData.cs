@@ -7,6 +7,8 @@ namespace PanteonStrategyGame.Units.Data
         menuName = "Panteon Strategy Game/Units/Unit Data")]
     public class UnitData : ScriptableObject
     {
+        [field: SerializeField]
+        public string DisplayName { get; private set; }
         public UnitType Type;
 
         [Header("General")]
