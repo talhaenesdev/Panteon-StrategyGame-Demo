@@ -1,7 +1,8 @@
-using UnityEngine;
-using Zenject;
+using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Units.Models;
+using UnityEngine;
+using Zenject;
 
 namespace PanteonStrategyGame.Units.Controllers
 {
@@ -37,15 +38,15 @@ namespace PanteonStrategyGame.Units.Controllers
                 return;
             }
 
-            Unit unit = hit.GetComponent<Unit>();
+            Entity entity = hit.GetComponent<Entity>();
 
-            if (unit == null)
+            if (entity == null)
             {
-                _selectionService.ClearSelection();
+                Debug.Log("Hit object is not an Entity.");
                 return;
             }
 
-            _selectionService.Select(unit);
+            _selectionService.Select(entity);
         }
     }
 }

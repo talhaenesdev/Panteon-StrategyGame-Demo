@@ -9,6 +9,8 @@ namespace PanteonStrategyGame.Buildings.Models
     {
         [SerializeField]
         protected BuildingData buildingData;
+        [SerializeField]
+        private GameObject selectionCircle;
 
         protected virtual void Awake()
         {
@@ -23,6 +25,18 @@ namespace PanteonStrategyGame.Buildings.Models
             {
                 DestroyEntity();
             }
+        }
+
+        public override void Select()
+        {
+            Debug.Log("Barracks Selected");
+
+            selectionCircle.SetActive(true);
+        }
+
+        public override void Deselect()
+        {
+            selectionCircle.SetActive(false);
         }
     }
 }
