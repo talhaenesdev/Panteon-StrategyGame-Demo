@@ -9,6 +9,7 @@ namespace PanteonStrategyGame.Common.Entities
         public abstract EntityType EntityType { get; }
 
         public abstract string DisplayName { get; }
+        public abstract Sprite Icon { get; }
         [SerializeField]
         private string id;
 

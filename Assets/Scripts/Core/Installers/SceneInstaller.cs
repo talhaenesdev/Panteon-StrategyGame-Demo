@@ -23,6 +23,7 @@ namespace PanteonStrategyGame.Core.Installers
             Container.DeclareSignal<EntitySelectedSignal>();
             Container.DeclareSignal<EntityDestroyedSignal>();
             Container.DeclareSignal<ProductionQueueChangedSignal>();
+            Container.DeclareSignal<BuildingPlacementRequestedSignal>();
 
             Container.BindInterfacesTo<SignalLogger>().AsSingle();
 
@@ -73,6 +74,10 @@ namespace PanteonStrategyGame.Core.Installers
                 .AsSingle();
 
             Container.BindInterfacesTo<ProductionQueueController>()
+                .AsSingle();
+
+            Container.Bind<BuildPanelView>()
+                .FromComponentInHierarchy()
                 .AsSingle();
 
         }

@@ -11,9 +11,12 @@ namespace PanteonStrategyGame.Buildings.Models
 
         public ProductionComponent ProductionComponent => productionComponent;
         public override string DisplayName => buildingData.DisplayName;
+        public override Sprite Icon => buildingData.Icon;
+
         [SerializeField]
         private UnitData[] producibleUnits;
         public UnitData[] ProducibleUnits => producibleUnits;
+
         public UnitData GetUnit(int index)
         {
             if (index < 0 || index >= producibleUnits.Length)

@@ -54,13 +54,6 @@ namespace PanteonStrategyGame.UI.Controllers
 
         private void BuildButtons(Barracks barracks)
         {
-            UnityEngine.Debug.Log($"Barracks Null : {barracks == null}");
-            UnityEngine.Debug.Log($"ProductionComponent Null : {barracks.ProductionComponent == null}");
-
-            foreach (var unit in barracks.ProducibleUnits)
-            {
-                UnityEngine.Debug.Log($"Unit : {unit}");
-            }
             _view.ClearButtons();
 
             foreach (var unit in barracks.ProducibleUnits)
@@ -69,6 +62,7 @@ namespace PanteonStrategyGame.UI.Controllers
 
                 button.Initialize(
                     unit.DisplayName,
+                    unit.Icon,
                     () => barracks.ProductionComponent.Produce(unit));
             }
         }

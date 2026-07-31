@@ -1,6 +1,7 @@
 using System;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.UI.Views;
+using UnityEngine;
 using Zenject;
 
 namespace PanteonStrategyGame.UI.Controllers
@@ -43,7 +44,11 @@ namespace PanteonStrategyGame.UI.Controllers
             _view.Refresh(
                 signal.SelectedEntity.DisplayName,
                 signal.SelectedEntity.EntityType.ToString(),
-                signal.SelectedEntity.CurrentHealth);
+                signal.SelectedEntity.CurrentHealth,
+                signal.SelectedEntity.Icon
+                );
+
+            Debug.Log("icon name" + signal.SelectedEntity.Icon.name);
         }
     }
 }

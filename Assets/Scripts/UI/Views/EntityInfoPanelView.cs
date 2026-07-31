@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PanteonStrategyGame.UI.Views
 {
@@ -8,6 +9,7 @@ namespace PanteonStrategyGame.UI.Views
         [SerializeField] private TMP_Text nameText;
         [SerializeField] private TMP_Text typeText;
         [SerializeField] private TMP_Text healthText;
+        [SerializeField] private Image entityIcon;
 
         private void Awake()
         {
@@ -24,11 +26,12 @@ namespace PanteonStrategyGame.UI.Views
             gameObject.SetActive(false);
         }
 
-        public void Refresh(string entityName, string entityType, int health)
+        public void Refresh(string entityName, string entityType, int health, Sprite icon)
         {
             nameText.text = entityName;
             typeText.text = entityType;
             healthText.text = $"HP : {health}";
+            entityIcon.sprite = icon;
         }
     }
 }

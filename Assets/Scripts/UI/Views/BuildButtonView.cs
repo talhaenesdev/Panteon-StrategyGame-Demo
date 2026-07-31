@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 namespace PanteonStrategyGame.UI.Views
 {
-    public class ProductionButtonView : MonoBehaviour
+    public class BuildButtonView : MonoBehaviour
     {
         [SerializeField] private Button button;
         [SerializeField] private TMP_Text title;
         [SerializeField] private Image buttonIcon;
 
-        public void Initialize(string titleText,Sprite icon, Action onClick)
+        public void Initialize(string text, Sprite icon, Action onClick)
         {
-            title.text = titleText;
+            title.text = text;
             buttonIcon.sprite = icon;
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => onClick?.Invoke());
