@@ -3,6 +3,7 @@ using PanteonStrategyGame.Buildings.Factories;
 using PanteonStrategyGame.Buildings.Services;
 using PanteonStrategyGame.Core.Debug;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
 using PanteonStrategyGame.Pathfinding;
@@ -10,14 +11,20 @@ using PanteonStrategyGame.UI.Controllers;
 using PanteonStrategyGame.UI.Views;
 using PanteonStrategyGame.Units.Factories;
 using PanteonStrategyGame.Units.Services;
+using UnityEngine;
 using Zenject;
 
 namespace PanteonStrategyGame.Core.Installers
 {
     public class SceneInstaller : MonoInstaller
     {
+
+        [SerializeField]
+        private PoolDatabase poolDatabase;
+
         public override void InstallBindings()
         {
+
             SignalBusInstaller.Install(Container);
 
             Container.DeclareSignal<EntitySelectedSignal>();
@@ -78,6 +85,12 @@ namespace PanteonStrategyGame.Core.Installers
 
             Container.Bind<BuildPanelView>()
                 .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container.BindInstance(poolDatabase)
+                .AsSingle();
+
+            Container.Bind<PoolManager>()
                 .AsSingle();
 
         }

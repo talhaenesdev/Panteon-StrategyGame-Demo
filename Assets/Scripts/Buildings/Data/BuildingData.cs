@@ -13,9 +13,12 @@ namespace PanteonStrategyGame.Buildings.Data
         public string BuildingName;
         public Sprite Icon;
 
-        [Header("Prefabs")]
-        public GameObject BuildingPrefab;
-        public GameObject GhostPrefab;
+        [Header("Pooling")]
+        [SerializeField] private string _poolKey;
+        public string PoolKey => _poolKey;
+
+        [SerializeField] private string _ghostPoolKey;
+        public string GhostPoolKey => _ghostPoolKey;
 
         [Header("Stats")]
         public int MaxHealth;

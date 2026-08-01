@@ -9,14 +9,20 @@ namespace PanteonStrategyGame.Buildings.Models
     public abstract class Building : Entity, IDamageable
     {
         public override EntityType EntityType => EntityType.Building;
+
         [SerializeField]
         protected BuildingData buildingData;
+
         [SerializeField]
         private GameObject selectionCircle;
 
-        protected virtual void Awake()
+        public virtual void Initialize(BuildingData data)
         {
-            CurrentHealth = buildingData.MaxHealth;
+            buildingData = data;
+
+            CurrentHealth = data.MaxHealth;
+
+            gameObject.SetActive(true);
         }
 
         public override void TakeDamage(int damage)
@@ -31,8 +37,6 @@ namespace PanteonStrategyGame.Buildings.Models
 
         public override void Select()
         {
-            Debug.Log("Barracks Selected");
-
             selectionCircle.SetActive(true);
         }
 

@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2625975605339762570}
   - component: {fileID: -5485653909246598537}
   m_Layer: 0
-  m_Name: GhostBarracksPrefab
+  m_Name: BarrackGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,32 +1,34 @@
-using UnityEngine;
-using Zenject;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Units.Data;
 using PanteonStrategyGame.Units.Models;
 using PanteonStrategyGame.Units.Services;
+using UnityEngine;
 
 namespace PanteonStrategyGame.Units.Factories
 {
     public class UnitFactory : IUnitFactory
     {
-        private readonly DiContainer _container;
+        private readonly PoolManager _poolManager;
         private readonly IUnitService _unitService;
 
         public UnitFactory(
-            DiContainer container,
+            PoolManager poolManager,
             IUnitService unitService)
         {
-            _container = container;
+            _poolManager = poolManager;
             _unitService = unitService;
         }
 
         public Unit Create(UnitData data, Vector3 position)
         {
-            Unit unit = _container.InstantiatePrefabForComponent<Unit>(
-                data.Prefab,
+            GameObject obj = _poolManager.Get(data.PoolKey);
+
+            obj.transform.SetPositionAndRotation(
                 position,
-                Quaternion.identity,
-                null);
+                Quaternion.identity);
+
+            Unit unit = obj.GetComponent<Unit>();
 
             unit.Initialize(data);
 

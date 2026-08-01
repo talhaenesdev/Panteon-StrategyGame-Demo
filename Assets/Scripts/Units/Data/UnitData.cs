@@ -9,6 +9,7 @@ namespace PanteonStrategyGame.Units.Data
     {
         [field: SerializeField]
         public string DisplayName { get; private set; }
+
         public UnitType Type;
 
         [Header("General")]
@@ -16,7 +17,10 @@ namespace PanteonStrategyGame.Units.Data
 
         public Sprite Icon;
 
-        public GameObject Prefab;
+        [Header("Pooling")]
+        [SerializeField]
+        private string poolKey;
+        public string PoolKey => poolKey;
 
         [Header("Stats")]
         public int MaxHealth;
@@ -25,9 +29,9 @@ namespace PanteonStrategyGame.Units.Data
 
         public float MoveSpeed;
 
+        [Header("Production")]
         [SerializeField]
         private float productionTime = 3f;
-
         public float ProductionTime => productionTime;
     }
 }

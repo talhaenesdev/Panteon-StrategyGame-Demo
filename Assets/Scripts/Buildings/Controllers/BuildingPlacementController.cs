@@ -2,6 +2,7 @@ using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Buildings.Views;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace PanteonStrategyGame.Buildings.Controllers
         [Inject] private IBuildingFactory _buildingFactory;
         [Inject] private IBuildingPlacementService _validator;
         [Inject] private SignalBus _signalBus;
+        [Inject] private PoolManager _poolManager;
 
         private BuildingData _selectedBuilding;
         private GhostBuilding _ghostBuilding;
@@ -39,15 +41,21 @@ namespace PanteonStrategyGame.Buildings.Controllers
         public void StartPlacement(BuildingData buildingData)
         {
             if (_ghostBuilding != null)
-                Destroy(_ghostBuilding.gameObject);
+            {
+                _poolManager.Release(_ghostBuilding.gameObject);
+                _ghostBuilding = null;
+            }
 
             _selectedBuilding = buildingData;
 
-            _ghostBuilding = Instantiate(
-                buildingData.GhostPrefab,
+            GameObject ghost =
+                _poolManager.Get(buildingData.GhostPoolKey);
+
+            ghost.transform.SetPositionAndRotation(
                 Vector3.zero,
-                Quaternion.identity)
-                .GetComponent<GhostBuilding>();
+                Quaternion.identity);
+
+            _ghostBuilding = ghost.GetComponent<GhostBuilding>();
 
             _isPlacing = true;
         }
@@ -68,37 +76,50 @@ namespace PanteonStrategyGame.Buildings.Controllers
 
         private void UpdateGhost()
         {
-            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (_ghostBuilding == null)
+                return;
+
+            Vector3 mouseWorld =
+                Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
             mouseWorld.z = 0;
 
-            Vector2Int gridPos = _gridManager.GetGridPosition(mouseWorld);
+            Vector2Int gridPosition =
+                _gridManager.GetGridPosition(mouseWorld);
 
-            _ghostBuilding.transform.position =
-                _gridManager.GetWorldPosition(gridPos);
+            Vector3 worldPosition =
+                _gridManager.GetWorldPosition(gridPosition);
 
-            _ghostBuilding.SetValid(
-                _validator.CanPlace(_selectedBuilding, gridPos));
+            _ghostBuilding.transform.position = worldPosition;
+
+            bool canPlace =
+                _validator.CanPlace(_selectedBuilding, gridPosition);
+
+            _ghostBuilding.SetValid(canPlace);
         }
 
         private void PlaceBuilding()
         {
-            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mouseWorld =
+                Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
             mouseWorld.z = 0;
 
-            Vector2Int gridPos =
+            Vector2Int gridPosition =
                 _gridManager.GetGridPosition(mouseWorld);
 
-            if (!_validator.CanPlace(_selectedBuilding, gridPos))
+            if (!_validator.CanPlace(_selectedBuilding, gridPosition))
                 return;
 
-            Building building = _buildingFactory.Create(
-                _selectedBuilding,
-                _gridManager.GetWorldPosition(gridPos));
+            Building building =
+                _buildingFactory.Create(
+                    _selectedBuilding,
+                    _gridManager.GetWorldPosition(gridPosition));
 
             _gridManager.PlaceBuilding(
                 building,
                 _selectedBuilding,
-                gridPos);
+                gridPosition);
 
             CancelPlacement();
         }
@@ -106,9 +127,11 @@ namespace PanteonStrategyGame.Buildings.Controllers
         private void CancelPlacement()
         {
             if (_ghostBuilding != null)
-                Destroy(_ghostBuilding.gameObject);
+            {
+                _poolManager.Release(_ghostBuilding.gameObject);
+                _ghostBuilding = null;
+            }
 
-            _ghostBuilding = null;
             _selectedBuilding = null;
             _isPlacing = false;
         }
