@@ -27,6 +27,7 @@ namespace PanteonStrategyGame.Units.Models
         {
             Data = data;
             CurrentHealth = data.MaxHealth;
+            _movement.Initialize(MoveSpeed);
         }
         public override void Select()
         {

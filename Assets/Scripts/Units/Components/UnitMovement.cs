@@ -5,9 +5,15 @@ namespace PanteonStrategyGame.Units.Components
 {
     public class UnitMovement : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 3f;
+        private float _moveSpeed;
 
         private readonly Queue<Vector3> _path = new();
+
+        public void Initialize(float moveSpeed)
+        {
+            UnityEngine.Debug.Log("UnityMoveSpeed " + moveSpeed);
+            _moveSpeed = moveSpeed;
+        }
 
         private void Update()
         {
@@ -19,17 +25,13 @@ namespace PanteonStrategyGame.Units.Components
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 target,
-                moveSpeed * Time.deltaTime);
-
+                _moveSpeed * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, target) < 0.05f)
             {
-                Debug.Log($"Reached : {target}");
-
                 _path.Dequeue();
             }
         }
-
 
         public void SetPath(List<Vector3> path)
         {
@@ -39,8 +41,6 @@ namespace PanteonStrategyGame.Units.Components
             {
                 _path.Enqueue(point);
             }
-
-            Debug.Log($"New Path Count : {_path.Count}");
         }
     }
 }

@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a62c4b5a28a0e3499b5c77e32dff264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
+  team: 0
   selectionCircle: {fileID: 8220261632371384898}
   _movement: {fileID: 6959653015881676824}
 --- !u!114 &6959653015881676824
@@ -200,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6435b43ccd95aa74d85196983281f2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 0
 --- !u!61 &701362464026841315
 BoxCollider2D:
   m_ObjectHideFlags: 0
