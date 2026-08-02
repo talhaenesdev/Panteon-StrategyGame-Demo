@@ -11,7 +11,6 @@ namespace PanteonStrategyGame.Units.Components
 
         public void Initialize(float moveSpeed)
         {
-            UnityEngine.Debug.Log("UnityMoveSpeed " + moveSpeed);
             _moveSpeed = moveSpeed;
         }
 
