@@ -6,11 +6,11 @@ namespace PanteonStrategyGame.Core.Pooling
 {
     public class Pool
     {
-        private readonly GameObject _prefab;
-        private readonly Transform _parent;
-        private readonly Queue<GameObject> _objects = new();
-
         private readonly DiContainer _container;
+        private readonly GameObject _prefab;
+        private readonly Transform _poolParent;
+
+        private readonly Queue<GameObject> _objects = new();
 
         public Pool(
             DiContainer container,
@@ -20,14 +20,11 @@ namespace PanteonStrategyGame.Core.Pooling
         {
             _container = container;
             _prefab = prefab;
-            _parent = parent;
+            _poolParent = parent;
 
             for (int i = 0; i < initialSize; i++)
             {
-                GameObject obj =
-                    _container.InstantiatePrefab(
-                        _prefab,
-                        _parent);
+                GameObject obj = CreateObject();
 
                 obj.SetActive(false);
 
@@ -35,24 +32,48 @@ namespace PanteonStrategyGame.Core.Pooling
             }
         }
 
-        public GameObject Get()
+        private GameObject CreateObject()
         {
+            GameObject obj =
+                _container.InstantiatePrefab(
+                    _prefab,
+                    _poolParent);
+
+            obj.SetActive(false);
+
+            return obj;
+        }
+
+        public GameObject Get(Transform parent = null)
+        {
+            GameObject obj;
+
             if (_objects.Count > 0)
             {
-                GameObject obj = _objects.Dequeue();
-
-                obj.SetActive(true);
-
-                return obj;
+                obj = _objects.Dequeue();
+            }
+            else
+            {
+                obj = CreateObject();
             }
 
-            return _container.InstantiatePrefab(
-                _prefab,
-                _parent);
+            obj.transform.SetParent(
+                parent == null
+                    ? null
+                    : parent,
+                false);
+
+            obj.SetActive(true);
+
+            return obj;
         }
 
         public void Release(GameObject obj)
         {
+            obj.transform.SetParent(
+                _poolParent,
+                false);
+
             obj.SetActive(false);
 
             _objects.Enqueue(obj);

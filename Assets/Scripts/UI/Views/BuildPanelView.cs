@@ -4,13 +4,10 @@ namespace PanteonStrategyGame.UI.Views
 {
     public class BuildPanelView : MonoBehaviour
     {
-        [SerializeField] private Transform buttonContainer;
-        [SerializeField] private BuildButtonView buttonPrefab;
+        [SerializeField]
+        private Transform buttonContainer;
 
-        public BuildButtonView CreateButton()
-        {
-            return Instantiate(buttonPrefab, buttonContainer);
-        }
+        public Transform ButtonContainer => buttonContainer;
 
         public void Show()
         {

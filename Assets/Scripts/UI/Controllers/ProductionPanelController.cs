@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Core.Signals;
+using PanteonStrategyGame.UI.Interfaces;
 using PanteonStrategyGame.UI.Views;
 using Zenject;
 
@@ -10,15 +12,20 @@ namespace PanteonStrategyGame.UI.Controllers
     {
         private readonly SignalBus _signalBus;
         private readonly ProductionPanelView _view;
+        private readonly IUIFactory _uiFactory;
+
+        private readonly List<ProductionButtonView> _buttons = new();
 
         private Barracks _selectedBarracks;
 
         public ProductionPanelController(
             SignalBus signalBus,
-            ProductionPanelView view)
+            ProductionPanelView view,
+            IUIFactory uiFactory)
         {
             _signalBus = signalBus;
             _view = view;
+            _uiFactory = uiFactory;
         }
 
         public void Initialize()
@@ -48,23 +55,38 @@ namespace PanteonStrategyGame.UI.Controllers
 
             _selectedBarracks = null;
 
+            ClearButtons();
+
             _view.Hide();
         }
 
-
         private void BuildButtons(Barracks barracks)
         {
-            _view.ClearButtons();
+            ClearButtons();
 
             foreach (var unit in barracks.ProducibleUnits)
             {
-                var button = _view.CreateButton();
+                ProductionButtonView button =
+                    _uiFactory.CreateProductionButton(
+                        _view.ButtonContainer);
 
                 button.Initialize(
                     unit.DisplayName,
                     unit.Icon,
                     () => barracks.ProductionComponent.Produce(unit));
+
+                _buttons.Add(button);
             }
+        }
+
+        private void ClearButtons()
+        {
+            foreach (ProductionButtonView button in _buttons)
+            {
+                _uiFactory.Release(button.gameObject);
+            }
+
+            _buttons.Clear();
         }
     }
 }

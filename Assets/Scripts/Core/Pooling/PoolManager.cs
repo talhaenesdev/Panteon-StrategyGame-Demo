@@ -57,15 +57,19 @@ namespace PanteonStrategyGame.Core.Pooling
             _pools.Add(poolKey, pool);
         }
 
-        public GameObject Get(string poolKey)
+        public GameObject Get(
+            string poolKey,
+            Transform parent = null)
         {
             if (!_pools.TryGetValue(poolKey, out Pool pool))
             {
                 UnityEngine.Debug.LogError($"Pool bulunamadı : {poolKey}");
+
                 return null;
             }
 
-            GameObject obj = pool.Get();
+            GameObject obj =
+                pool.Get(parent);
 
             _spawnedObjects[obj] = pool;
 

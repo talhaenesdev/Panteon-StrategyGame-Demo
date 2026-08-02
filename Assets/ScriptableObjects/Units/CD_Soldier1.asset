@@ -19,5 +19,5 @@ MonoBehaviour:
   poolKey: Soldier1
   MaxHealth: 10
   Damage: 2
-  MoveSpeed: 1
+  MoveSpeed: 3
   productionTime: 0

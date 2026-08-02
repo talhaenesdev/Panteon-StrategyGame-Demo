@@ -34,3 +34,12 @@ MonoBehaviour:
   - poolKey: PowerPlantGhost
     prefab: {fileID: 7756101907054380781, guid: 6a89a6177d83d4c42a5205b9fc1ae8fb, type: 3}
     initialSize: 1
+  - poolKey: BuildButton
+    prefab: {fileID: 1867599388127548573, guid: 3003eeb5005dab847b326f3b71e59329, type: 3}
+    initialSize: 1
+  - poolKey: ProductionButton
+    prefab: {fileID: 8377560745696317181, guid: daef0866093cb6240b9770bda72871e2, type: 3}
+    initialSize: 3
+  - poolKey: QueueItem
+    prefab: {fileID: 8514762725660838901, guid: 653e883411f58364e941384d0e9ee6f2, type: 3}
+    initialSize: 3

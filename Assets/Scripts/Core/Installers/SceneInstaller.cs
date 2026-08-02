@@ -8,6 +8,8 @@ using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
 using PanteonStrategyGame.Pathfinding;
 using PanteonStrategyGame.UI.Controllers;
+using PanteonStrategyGame.UI.Factories;
+using PanteonStrategyGame.UI.Interfaces;
 using PanteonStrategyGame.UI.Views;
 using PanteonStrategyGame.Units.Factories;
 using PanteonStrategyGame.Units.Services;
@@ -92,7 +94,10 @@ namespace PanteonStrategyGame.Core.Installers
 
             Container.Bind<PoolManager>()
                 .AsSingle();
-
+         
+            Container.Bind<IUIFactory>()
+                .To<UIFactory>()
+                .AsSingle();
         }
     }
 }

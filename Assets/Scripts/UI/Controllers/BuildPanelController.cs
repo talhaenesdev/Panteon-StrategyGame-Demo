@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Core.Signals;
+using PanteonStrategyGame.UI.Interfaces;
 using PanteonStrategyGame.UI.Views;
 using UnityEngine;
 using Zenject;
@@ -18,6 +18,11 @@ namespace PanteonStrategyGame.UI.Controllers
 
         [Inject]
         private SignalBus _signalBus;
+
+        [Inject]
+        private IUIFactory _uiFactory;
+
+        private readonly List<BuildButtonView> _buttons = new();
 
         private void Start()
         {
@@ -44,9 +49,13 @@ namespace PanteonStrategyGame.UI.Controllers
 
         private void BuildButtons()
         {
-            foreach (var building in buildings)
+            ClearButtons();
+
+            foreach (BuildingData building in buildings)
             {
-                var button = view.CreateButton();
+                BuildButtonView button =
+                    _uiFactory.CreateBuildButton(
+                        view.ButtonContainer);
 
                 button.Initialize(
                     building.DisplayName,
@@ -58,7 +67,19 @@ namespace PanteonStrategyGame.UI.Controllers
 
                         view.Hide();
                     });
+
+                _buttons.Add(button);
             }
+        }
+
+        private void ClearButtons()
+        {
+            foreach (BuildButtonView button in _buttons)
+            {
+                _uiFactory.Release(button.gameObject);
+            }
+
+            _buttons.Clear();
         }
     }
 }
