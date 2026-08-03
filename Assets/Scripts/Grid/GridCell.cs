@@ -11,16 +11,19 @@ namespace PanteonStrategyGame.Grid
 
         public Building OccupiedBuilding { get; private set; }
 
+        public Building Building { get; private set; }
+
+        public void Occupy(Building building)
+        {
+            Building = building;
+            IsOccupied = true;
+        }
+
         public GridCell(Vector2Int position)
         {
             Position = position;
         }
 
-        public void Occupy(Building building)
-        {
-            OccupiedBuilding = building;
-            IsOccupied = true;
-        }
 
         public void Clear()
         {

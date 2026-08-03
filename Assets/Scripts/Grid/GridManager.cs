@@ -160,5 +160,23 @@ namespace PanteonStrategyGame.Grid
                 yield return node;
             }
         }
+
+        public void RemoveBuilding(Building building, BuildingData data, Vector2Int origin)
+        {
+            for (int x = 0; x < data.Size.x; x++)
+            {
+                for (int y = 0; y < data.Size.y; y++)
+                {
+                    Vector2Int position = origin + new Vector2Int(x, y);
+
+                    if (!IsInsideGrid(position))
+                        continue;
+
+                    GetCell(position).Clear();
+
+                    SetWalkable(position, true);
+                }
+            }
+        }
     }
 }
