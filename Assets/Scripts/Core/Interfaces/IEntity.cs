@@ -1,13 +1,11 @@
-﻿using UnityEngine;
+﻿using PanteonStrategyGame.Common.Enums;
+using UnityEngine;
 
-namespace PanteonStrategyGame.Core.Interfaces
+public interface IEntity
 {
-    public interface IEntity
-    {
-        Transform Transform { get; }
+    string Id { get; }
 
-        int CurrentHealth { get; }
+    Team Team { get; }
 
-        void TakeDamage(int damage);
-    }
+    Transform Transform { get; }
 }

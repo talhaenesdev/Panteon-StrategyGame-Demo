@@ -1,4 +1,5 @@
-﻿using PanteonStrategyGame.Core.Interfaces;
+﻿using PanteonStrategyGame.Common.Entities;
+using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Units.Models;
 using UnityEngine;
 using Zenject;
@@ -21,25 +22,60 @@ namespace PanteonStrategyGame.Units.Controllers
         {
             if (Input.GetMouseButtonDown(1))
             {
-                MoveSelectedUnit();
+                RightClick();
             }
         }
 
-        private void MoveSelectedUnit()
+        private void RightClick()
         {
             if (_selectionService.SelectedEntity is not Unit unit)
                 return;
 
+            Vector3 mouseWorld =
+                _camera.ScreenToWorldPoint(Input.mousePosition);
 
-            Vector3 target = _camera.ScreenToWorldPoint(Input.mousePosition);
-            target.z = 0;
+            mouseWorld.z = 0;
 
-            var path = _pathfindingService.FindPath(
-                unit.transform.position,
-                target);
+            RaycastHit2D hit =
+                Physics2D.Raycast(mouseWorld, Vector2.zero);
 
-            unit.Movement.SetPath(path);
+            if (hit.collider != null)
+            {
+                Entity entity =
+                    hit.collider.GetComponent<Entity>();
 
+                if (entity != null)
+                {
+                    if (entity == unit)
+                        return;
+
+                    if (entity.Team == unit.Team)
+                        return;
+
+                    if (entity is IDamageable damageable)
+                    {
+                        unit.Attack.SetTarget(damageable);
+
+                        var attackPath =
+                            _pathfindingService.FindPath(
+                                unit.transform.position,
+                                entity.transform.position);
+
+                        unit.Movement.SetPath(attackPath);
+
+                        return;
+                    }
+                }
+            }
+
+            unit.Attack.ClearTarget();
+
+            var movePath =
+                _pathfindingService.FindPath(
+                    unit.transform.position,
+                    mouseWorld);
+
+            unit.Movement.SetPath(movePath);
         }
     }
 }

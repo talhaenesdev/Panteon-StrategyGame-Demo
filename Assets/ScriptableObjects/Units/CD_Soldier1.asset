@@ -18,6 +18,8 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 749224e2198b1254eb21f6e7ab4f152a, type: 3}
   poolKey: Soldier1
   MaxHealth: 10
-  Damage: 2
   MoveSpeed: 3
   productionTime: 0
+  attackRange: 2
+  attackRate: 1
+  damage: 5

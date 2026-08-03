@@ -1,31 +1,24 @@
 ﻿using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Units.Data;
+using PanteonStrategyGame.Units.Models;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Units.Components
 {
     public class UnitAttack : MonoBehaviour
     {
-        [SerializeField]
-        private MonoBehaviour testTarget;
-
+        [SerializeField] private Unit _owner;
         private UnitData _unitData;
 
         private IDamageable _target;
 
         private Transform _targetTransform;
 
+        public Transform TargetTransform => _targetTransform;
         private float _attackTimer;
 
         public bool HasTarget => _target != null;
 
-        private void OnEnable()
-        {
-            if (testTarget is IDamageable damageable)
-            {
-                SetTarget(damageable);
-            }
-        }
         public void Initialize(UnitData unitData)
         {
             _unitData = unitData;
@@ -33,23 +26,21 @@ namespace PanteonStrategyGame.Units.Components
 
         public void SetTarget(IDamageable target)
         {
-            Debug.Log("Target Set");
             _target = target;
 
             if (target is Component component)
             {
                 _targetTransform = component.transform;
             }
-            else
-            {
-                _targetTransform = null;
-            }
+
+            _attackTimer = 0f;
         }
 
         public void ClearTarget()
         {
             _target = null;
             _targetTransform = null;
+            _attackTimer = 0f;
         }
 
         public bool IsTargetInRange()
@@ -86,7 +77,7 @@ namespace PanteonStrategyGame.Units.Components
 
             _attackTimer = 0f;
 
-            _target.TakeDamage(_unitData.Damage);
+            _target.TakeDamage(_unitData.Damage, _owner);
         }
     }
 }

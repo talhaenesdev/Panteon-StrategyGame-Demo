@@ -1,17 +1,18 @@
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Common.Enums;
+using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Units.Components;
 using PanteonStrategyGame.Units.Data;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Units.Models
 {
-    public abstract class Unit : Entity
+    public abstract class Unit : Entity, IDamageable
     {
         public override EntityType EntityType => EntityType.Unit;
 
         protected UnitData Data;
-
+        public int CurrentHealth { get; protected set; }
         public int Damage => Data.Damage;
         public float MoveSpeed => Data.MoveSpeed;
         public float AttackRange => Data.AttackRange;
@@ -49,14 +50,19 @@ namespace PanteonStrategyGame.Units.Models
             selectionCircle.SetActive(false);
         }
 
-        public override void TakeDamage(int damage)
+        public void TakeDamage(int damage, IEntity attacker)
         {
-            UnityEngine.Debug.Log("TakeDamage " + damage);
             CurrentHealth -= damage;
 
             if (CurrentHealth <= 0)
             {
                 DestroyEntity();
+                return;
+            }
+
+            if (attacker is IDamageable damageable)
+            {
+                Attack.SetTarget(damageable);
             }
         }
     }
