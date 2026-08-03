@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 7402150865975974605}
   - component: {fileID: 777459929687635862}
   - component: {fileID: 8052753599330218786}
+  - component: {fileID: 4719965307507401731}
   - component: {fileID: 8421960049297451702}
   m_Layer: 0
   m_Name: Barrack
@@ -183,6 +184,7 @@ MonoBehaviour:
   buildingData: {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
   selectionCircle: {fileID: 8832797371506606914}
   productionComponent: {fileID: 8052753599330218786}
+  spawnPositionProvider: {fileID: 4719965307507401731}
   producibleUnits:
   - {fileID: 11400000, guid: 11ce291a15e1b6e49bd57a524cb4e982, type: 2}
   - {fileID: 11400000, guid: 968d2d72e48e9654c9f39491a92e2aa2, type: 2}
@@ -214,6 +216,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 8761063850943751472}
   _barracks: {fileID: 7402150865975974605}
+--- !u!114 &4719965307507401731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206094125042187273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e32d5d07a948342887d3d1a2da45b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1.2
+  angleStep: 45
 --- !u!61 &8421960049297451702
 BoxCollider2D:
   m_ObjectHideFlags: 0

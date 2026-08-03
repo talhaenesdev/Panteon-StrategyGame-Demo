@@ -45,7 +45,7 @@ namespace PanteonStrategyGame.Buildings.Components
 
             _unitFactory.Create(
                 current.UnitData,
-                spawnPoint.transform.position);
+                _barracks.GetSpawnPosition());
 
             _queue.Dequeue();
 
