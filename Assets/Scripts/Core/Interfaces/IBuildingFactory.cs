@@ -6,6 +6,9 @@ namespace PanteonStrategyGame.Core.Interfaces
 {
     public interface IBuildingFactory
     {
-        Building Create(BuildingData data, Vector3 position);
+        Building Create(
+            BuildingData data,
+            Vector3 position,
+            Vector2Int originGridPosition);
     }
 }

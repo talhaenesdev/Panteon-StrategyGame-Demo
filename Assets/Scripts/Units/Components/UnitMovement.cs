@@ -18,6 +18,10 @@ namespace PanteonStrategyGame.Units.Components
 
         private void Update()
         {
+            if (_path.Count > 0)
+            {
+                Debug.Log($"Moving -> {_path.Peek()}");
+            }
             if (_path.Count == 0)
                 return;
 
@@ -38,6 +42,8 @@ namespace PanteonStrategyGame.Units.Components
         public void SetPath(List<Vector3> path)
         {
             _path.Clear();
+
+            Debug.Log($"SetPath : {(path == null ? 0 : path.Count)}");
 
             if (path == null)
                 return;

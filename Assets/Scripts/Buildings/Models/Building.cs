@@ -3,39 +3,61 @@ using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
-using PanteonStrategyGame.Units.Models;
 using UnityEngine;
+using Zenject;
 
 namespace PanteonStrategyGame.Buildings.Models
 {
     public abstract class Building : Entity, IDamageable
     {
-        public override EntityType EntityType => EntityType.Building; 
-        public int CurrentHealth { get; protected set; }
+        [Inject]
+        private IAttackPositionProvider _attackPositionProvider;
 
-        public int MaxHealth => buildingData.MaxHealth;
+        public override EntityType EntityType => EntityType.Building;
+
         [SerializeField]
         protected BuildingData buildingData;
 
         [SerializeField]
         private GameObject selectionCircle;
 
-        public virtual void Initialize(BuildingData data)
+        public BuildingData BuildingData => buildingData;
+
+        public Vector2Int OriginGridPosition { get; private set; }
+
+        public int CurrentHealth { get; protected set; }
+
+        public int MaxHealth => buildingData.MaxHealth;
+
+        public override string DisplayName => buildingData.DisplayName;
+
+        public override Sprite Icon => buildingData.Icon;
+
+        public virtual void Initialize(
+            BuildingData data,
+            Vector2Int originGridPosition)
         {
             buildingData = data;
 
+            OriginGridPosition = originGridPosition;
+
             CurrentHealth = data.MaxHealth;
+
+            Debug.Log($"{name} Initialize -> {CurrentHealth}/{MaxHealth}");
 
             gameObject.SetActive(true);
         }
 
+        public Vector3 GetAttackPosition(Vector3 attackerPosition)
+        {
+            return _attackPositionProvider.GetAttackPosition(
+                this,
+                attackerPosition);
+        }
+
         public void TakeDamage(int damage, IEntity attacker)
         {
-            Debug.Log($"{name} took {damage} damage.");
-
             CurrentHealth -= damage;
-
-            Debug.Log($"Current Health : {CurrentHealth}");
 
             SignalBus.Fire(new EntityHealthChangedSignal(this));
 
@@ -47,15 +69,14 @@ namespace PanteonStrategyGame.Buildings.Models
 
         public override void Select()
         {
-            selectionCircle.SetActive(true);
+            if (selectionCircle != null)
+                selectionCircle.SetActive(true);
         }
 
         public override void Deselect()
         {
             if (selectionCircle != null)
-            {
                 selectionCircle.SetActive(false);
-            }
         }
     }
 }

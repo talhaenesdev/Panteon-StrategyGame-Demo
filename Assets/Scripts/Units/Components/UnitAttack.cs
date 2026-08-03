@@ -2,6 +2,7 @@
 using PanteonStrategyGame.Units.Data;
 using PanteonStrategyGame.Units.Models;
 using UnityEngine;
+using Zenject;
 
 namespace PanteonStrategyGame.Units.Components
 {
@@ -12,6 +13,9 @@ namespace PanteonStrategyGame.Units.Components
 
         [SerializeField]
         private Unit _owner;
+
+        [Inject]
+        private IPathfindingService _pathfindingService;
 
         private UnitData _unitData;
 
@@ -31,6 +35,7 @@ namespace PanteonStrategyGame.Units.Components
 
         public void SetTarget(IDamageable target)
         {
+            Debug.Log("SetTarget");
             _target = target;
 
             if (target is Component component)
@@ -43,6 +48,7 @@ namespace PanteonStrategyGame.Units.Components
 
         public void ClearTarget()
         {
+            Debug.Log("ClearTarget");
             _target = null;
             _targetTransform = null;
             _attackTimer = 0f;
@@ -52,12 +58,15 @@ namespace PanteonStrategyGame.Units.Components
 
         public bool IsTargetInRange()
         {
-            if (_targetTransform == null)
+            if (_target == null)
                 return false;
+
+            Vector3 attackPosition =
+                _target.GetAttackPosition(transform.position);
 
             float distance = Vector3.Distance(
                 transform.position,
-                _targetTransform.position);
+                attackPosition);
 
             return distance <= _unitData.AttackRange;
         }
@@ -73,11 +82,24 @@ namespace PanteonStrategyGame.Units.Components
                 return;
             }
 
-            // Menzilde değilse yürümeye devam et
             if (!IsTargetInRange())
-                return;
+            {
+                if (!_movement.HasPath)
+                {
+                    Vector3 attackPosition =
+                        _target.GetAttackPosition(transform.position);
 
-            // Menzile girince dur
+                    var path =
+                        _pathfindingService.FindPath(
+                            transform.position,
+                            attackPosition);
+
+                    _movement.SetPath(path);
+                }
+
+                return;
+            }
+
             _movement.Stop();
 
             _attackTimer += Time.deltaTime;

@@ -10,7 +10,6 @@ namespace PanteonStrategyGame.Buildings.Factories
     public class BuildingFactory : IBuildingFactory
     {
         private readonly PoolManager _poolManager;
-
         private readonly IBuildingService _buildingService;
 
         public BuildingFactory(
@@ -21,7 +20,10 @@ namespace PanteonStrategyGame.Buildings.Factories
             _buildingService = buildingService;
         }
 
-        public Building Create(BuildingData data, Vector3 position)
+        public Building Create(
+            BuildingData data,
+            Vector3 position,
+            Vector2Int originGridPosition)
         {
             GameObject obj =
                 _poolManager.Get(data.PoolKey);
@@ -33,7 +35,13 @@ namespace PanteonStrategyGame.Buildings.Factories
             Building building =
                 obj.GetComponent<Building>();
 
-            building.Initialize(data);
+            Debug.Log($"Before Init : {building.CurrentHealth}");
+
+            building.Initialize(
+                data,
+                originGridPosition);
+
+            Debug.Log($"After Init : {building.CurrentHealth}");
 
             _buildingService.Register(building);
 

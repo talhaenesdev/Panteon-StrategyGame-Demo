@@ -31,7 +31,10 @@ namespace PanteonStrategyGame.Units.Models
         [SerializeField]
         private UnitAttack _attack;
         public UnitAttack Attack => _attack;
-
+        public Vector3 GetAttackPosition(Vector3 attackerPosition)
+        {
+            return transform.position;
+        }
         public virtual void Initialize(UnitData data)
         {
             Data = data;

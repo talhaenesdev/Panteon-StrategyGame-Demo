@@ -114,7 +114,8 @@ namespace PanteonStrategyGame.Buildings.Controllers
             Building building =
                 _buildingFactory.Create(
                     _selectedBuilding,
-                    _gridManager.GetWorldPosition(gridPosition));
+                    _gridManager.GetWorldPosition(gridPosition),
+                    gridPosition);
 
             _gridManager.PlaceBuilding(
                 building,

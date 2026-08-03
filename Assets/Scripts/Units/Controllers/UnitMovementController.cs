@@ -58,17 +58,19 @@ namespace PanteonStrategyGame.Units.Controllers
 
                     IDamageable damageable =
                         hit.collider.GetComponentInParent<IDamageable>();
+                    Debug.Log(damageable);
 
                     if (damageable != null)
                     {
-                        Debug.Log($"Attack Target : {entity.name}");
-
+                        Debug.Log($"Target = {entity.name}");
                         unit.Attack.SetTarget(damageable);
 
                         var attackPath =
                             _pathfindingService.FindPath(
                                 unit.transform.position,
                                 entity.transform.position);
+
+                        Debug.Log($"Path Count = {attackPath.Count}");
 
                         unit.Movement.SetPath(attackPath);
 

@@ -161,8 +161,12 @@ namespace PanteonStrategyGame.Grid
             }
         }
 
-        public void RemoveBuilding(Building building, BuildingData data, Vector2Int origin)
+        public void RemoveBuilding(Building building)
         {
+            BuildingData data = building.BuildingData;
+
+            Vector2Int origin = building.OriginGridPosition;
+
             for (int x = 0; x < data.Size.x; x++)
             {
                 for (int y = 0; y < data.Size.y; y++)

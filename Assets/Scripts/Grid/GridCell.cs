@@ -24,10 +24,10 @@ namespace PanteonStrategyGame.Grid
             Position = position;
         }
 
-
         public void Clear()
         {
             OccupiedBuilding = null;
+            Building = null;
             IsOccupied = false;
         }
     }

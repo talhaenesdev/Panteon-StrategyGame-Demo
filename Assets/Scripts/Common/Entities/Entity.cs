@@ -1,3 +1,4 @@
+using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
@@ -8,8 +9,7 @@ namespace PanteonStrategyGame.Common.Entities
 {
     public abstract class Entity : MonoBehaviour, IEntity, ISelectable
     {
-        [Inject]
-        protected SignalBus SignalBus;
+        [Inject] protected SignalBus SignalBus;
         public abstract EntityType EntityType { get; }
 
         public abstract string DisplayName { get; }
@@ -28,6 +28,16 @@ namespace PanteonStrategyGame.Common.Entities
 
         public Transform Transform => transform;
 
+        public Vector2Int OriginGridPosition { get; private set; }
+
+        public virtual void Initialize(
+            BuildingData data,
+            Vector2Int originGridPosition)
+        {
+            OriginGridPosition = originGridPosition;
+
+            gameObject.SetActive(true);
+        }
         public virtual void Select()
         {
         }
@@ -38,6 +48,8 @@ namespace PanteonStrategyGame.Common.Entities
 
         protected virtual void DestroyEntity()
         {
+            SignalBus.Fire(new EntityDestroyedSignal(this));
+
             SignalBus.Fire(new EntitySelectedSignal(null));
 
             Destroy(gameObject);

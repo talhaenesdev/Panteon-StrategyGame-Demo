@@ -34,6 +34,7 @@ namespace PanteonStrategyGame.Core.Installers
             Container.DeclareSignal<ProductionQueueChangedSignal>();
             Container.DeclareSignal<BuildingPlacementRequestedSignal>();
             Container.DeclareSignal<EntityHealthChangedSignal>();
+            Container.DeclareSignal<EntityDestroyedSignal>();
 
             Container.BindInterfacesTo<SignalLogger>().AsSingle();
 
@@ -55,12 +56,14 @@ namespace PanteonStrategyGame.Core.Installers
             Container.BindInterfacesTo<EntityInfoPanelController>().AsSingle();
             Container.BindInterfacesTo<ProductionPanelController>().AsSingle();
             Container.BindInterfacesTo<ProductionQueueController>().AsSingle();
+            Container.BindInterfacesTo<BuildingLifecycleController>().AsSingle();
 
             Container.BindInstance(poolDatabase).AsSingle();
 
             Container.Bind<IUIFactory>().To<UIFactory>().AsSingle();
             Container.Bind<IBuildingFactory>().To<BuildingFactory>().AsSingle();
             Container.Bind<IUnitFactory>().To<UnitFactory>().AsSingle();
+            Container.Bind<IAttackPositionProvider>().To<AttackPositionProvider>().AsSingle();
         }
     }
 }
