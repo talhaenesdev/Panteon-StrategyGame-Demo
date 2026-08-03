@@ -7,17 +7,22 @@ namespace PanteonStrategyGame.Units.Components
 {
     public class UnitAttack : MonoBehaviour
     {
-        [SerializeField] private Unit _owner;
+        [SerializeField]
+        private UnitMovement _movement;
+
+        [SerializeField]
+        private Unit _owner;
+
         private UnitData _unitData;
 
         private IDamageable _target;
-
         private Transform _targetTransform;
 
-        public Transform TargetTransform => _targetTransform;
         private float _attackTimer;
 
         public bool HasTarget => _target != null;
+
+        public Transform TargetTransform => _targetTransform;
 
         public void Initialize(UnitData unitData)
         {
@@ -41,6 +46,8 @@ namespace PanteonStrategyGame.Units.Components
             _target = null;
             _targetTransform = null;
             _attackTimer = 0f;
+
+            _movement.Stop();
         }
 
         public bool IsTargetInRange()
@@ -48,10 +55,9 @@ namespace PanteonStrategyGame.Units.Components
             if (_targetTransform == null)
                 return false;
 
-            float distance =
-                Vector3.Distance(
-                    transform.position,
-                    _targetTransform.position);
+            float distance = Vector3.Distance(
+                transform.position,
+                _targetTransform.position);
 
             return distance <= _unitData.AttackRange;
         }
@@ -67,8 +73,12 @@ namespace PanteonStrategyGame.Units.Components
                 return;
             }
 
+            // Menzilde değilse yürümeye devam et
             if (!IsTargetInRange())
                 return;
+
+            // Menzile girince dur
+            _movement.Stop();
 
             _attackTimer += Time.deltaTime;
 
@@ -77,7 +87,9 @@ namespace PanteonStrategyGame.Units.Components
 
             _attackTimer = 0f;
 
-            _target.TakeDamage(_unitData.Damage, _owner);
+            _target.TakeDamage(
+                _unitData.Damage,
+                _owner);
         }
     }
 }

@@ -1,5 +1,6 @@
 using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Signals;
 using UnityEngine;
 using Zenject;
 
@@ -37,6 +38,8 @@ namespace PanteonStrategyGame.Common.Entities
 
         protected virtual void DestroyEntity()
         {
+            SignalBus.Fire(new EntitySelectedSignal(null));
+
             Destroy(gameObject);
         }
     }

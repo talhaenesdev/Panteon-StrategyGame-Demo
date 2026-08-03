@@ -41,8 +41,12 @@ namespace PanteonStrategyGame.Units.Controllers
 
             if (hit.collider != null)
             {
+                Debug.Log($"Hit : {hit.collider.name}");
+
                 Entity entity =
-                    hit.collider.GetComponent<Entity>();
+                    hit.collider.GetComponentInParent<Entity>();
+
+                Debug.Log($"Entity : {entity}");
 
                 if (entity != null)
                 {
@@ -52,8 +56,13 @@ namespace PanteonStrategyGame.Units.Controllers
                     if (entity.Team == unit.Team)
                         return;
 
-                    if (entity is IDamageable damageable)
+                    IDamageable damageable =
+                        hit.collider.GetComponentInParent<IDamageable>();
+
+                    if (damageable != null)
                     {
+                        Debug.Log($"Attack Target : {entity.name}");
+
                         unit.Attack.SetTarget(damageable);
 
                         var attackPath =

@@ -32,7 +32,10 @@ namespace PanteonStrategyGame.Units.Services
 
         public void ClearSelection()
         {
-            SelectedEntity?.Deselect();
+            if (SelectedEntity != null)
+            {
+                SelectedEntity.Deselect();
+            }
 
             SelectedEntity = null;
 

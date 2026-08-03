@@ -22,6 +22,15 @@ namespace PanteonStrategyGame.Pathfinding
             if (startNode == null || targetNode == null)
                 return new List<Vector3>();
 
+            // Hedef yürünebilir deðilse en yakýn yürünebilir node'u bul
+            if (!targetNode.Walkable)
+            {
+                targetNode = GetClosestWalkableNode(targetNode);
+
+                if (targetNode == null)
+                    return new List<Vector3>();
+            }
+
             foreach (GridNode node in _gridManager.GetAllNodes())
             {
                 node.ResetPathData();
@@ -42,8 +51,8 @@ namespace PanteonStrategyGame.Pathfinding
                 for (int i = 1; i < openSet.Count; i++)
                 {
                     if (openSet[i].FCost < currentNode.FCost ||
-                        openSet[i].FCost == currentNode.FCost &&
-                        openSet[i].HCost < currentNode.HCost)
+                        (openSet[i].FCost == currentNode.FCost &&
+                         openSet[i].HCost < currentNode.HCost))
                     {
                         currentNode = openSet[i];
                     }
@@ -75,6 +84,31 @@ namespace PanteonStrategyGame.Pathfinding
             }
 
             return new List<Vector3>();
+        }
+
+        private GridNode GetClosestWalkableNode(GridNode target)
+        {
+            Queue<GridNode> queue = new();
+            HashSet<GridNode> visited = new();
+
+            queue.Enqueue(target);
+            visited.Add(target);
+
+            while (queue.Count > 0)
+            {
+                GridNode current = queue.Dequeue();
+
+                if (current.Walkable)
+                    return current;
+
+                foreach (GridNode neighbour in _gridManager.GetNeighbours(current))
+                {
+                    if (visited.Add(neighbour))
+                        queue.Enqueue(neighbour);
+                }
+            }
+
+            return null;
         }
 
         private int GetDistance(GridNode a, GridNode b)

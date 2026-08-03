@@ -31,10 +31,13 @@ namespace PanteonStrategyGame.Buildings.Models
 
         public void TakeDamage(int damage, IEntity attacker)
         {
+            Debug.Log($"{name} took {damage} damage.");
+
             CurrentHealth -= damage;
 
-            SignalBus.Fire(
-                new EntityHealthChangedSignal(this));
+            Debug.Log($"Current Health : {CurrentHealth}");
+
+            SignalBus.Fire(new EntityHealthChangedSignal(this));
 
             if (CurrentHealth <= 0)
             {
@@ -49,7 +52,10 @@ namespace PanteonStrategyGame.Buildings.Models
 
         public override void Deselect()
         {
-            selectionCircle.SetActive(false);
+            if (selectionCircle != null)
+            {
+                selectionCircle.SetActive(false);
+            }
         }
     }
 }

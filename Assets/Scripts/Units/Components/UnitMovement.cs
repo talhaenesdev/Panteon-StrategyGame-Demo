@@ -32,6 +32,7 @@ namespace PanteonStrategyGame.Units.Components
             {
                 _path.Dequeue();
             }
+
         }
 
         public void SetPath(List<Vector3> path)
