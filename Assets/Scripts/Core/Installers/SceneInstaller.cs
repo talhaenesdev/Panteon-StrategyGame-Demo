@@ -33,71 +33,34 @@ namespace PanteonStrategyGame.Core.Installers
             Container.DeclareSignal<EntityDestroyedSignal>();
             Container.DeclareSignal<ProductionQueueChangedSignal>();
             Container.DeclareSignal<BuildingPlacementRequestedSignal>();
+            Container.DeclareSignal<EntityHealthChangedSignal>();
 
             Container.BindInterfacesTo<SignalLogger>().AsSingle();
 
-            Container.Bind<IBuildingFactory>()
-                .To<BuildingFactory>()
-                .AsSingle();
-            Container.Bind<GridManager>()
-                .FromComponentInHierarchy()
-                .AsSingle();
-            Container.Bind<IBuildingPlacementService>()
-                .To<BuildingPlacementService>()
-                .AsSingle();
-            Container.Bind<IPathfindingService>()
-                .To<AStarPathfinder>()
-                .AsSingle();
-            Container.Bind<IBuildingService>()
-                .To<BuildingService>()
-                .AsSingle();
-            Container.Bind<IUnitService>()
-                .To<UnitService>()
-                .AsSingle();
-            Container.Bind<IUnitFactory>()
-                .To<UnitFactory>()
-                .AsSingle();
-            Container.Bind<ISelectionService>()
-                .To<SelectionService>()
-                .AsSingle();
-            Container.Bind<IProductionService>()
-                .To<ProductionService>()
-                .AsSingle();
+            Container.Bind<GridManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<PoolManager>().AsSingle();
 
-            Container.Bind<EntityInfoPanelView>()
-                .FromComponentInHierarchy()
-                .AsSingle();
+            Container.Bind<IBuildingPlacementService>().To<BuildingPlacementService>().AsSingle();
+            Container.Bind<IPathfindingService>().To<AStarPathfinder>().AsSingle();
+            Container.Bind<IBuildingService>().To<BuildingService>().AsSingle();
+            Container.Bind<IUnitService>().To<UnitService>().AsSingle();
+            Container.Bind<ISelectionService>().To<SelectionService>().AsSingle();
+            Container.Bind<IProductionService>().To<ProductionService>().AsSingle();
 
-            Container.BindInterfacesTo<EntityInfoPanelController>()
-                .AsSingle();
-            
-            Container.Bind<ProductionPanelView>()
-                .FromComponentInHierarchy()
-                .AsSingle();
+            Container.Bind<EntityInfoPanelView>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ProductionPanelView>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ProductionQueueView>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<BuildPanelView>().FromComponentInHierarchy().AsSingle();
 
-            Container.BindInterfacesTo<ProductionPanelController>()
-                .AsSingle();
+            Container.BindInterfacesTo<EntityInfoPanelController>().AsSingle();
+            Container.BindInterfacesTo<ProductionPanelController>().AsSingle();
+            Container.BindInterfacesTo<ProductionQueueController>().AsSingle();
 
-            Container.Bind<ProductionQueueView>()
-                .FromComponentInHierarchy()
-                .AsSingle();
+            Container.BindInstance(poolDatabase).AsSingle();
 
-            Container.BindInterfacesTo<ProductionQueueController>()
-                .AsSingle();
-
-            Container.Bind<BuildPanelView>()
-                .FromComponentInHierarchy()
-                .AsSingle();
-
-            Container.BindInstance(poolDatabase)
-                .AsSingle();
-
-            Container.Bind<PoolManager>()
-                .AsSingle();
-         
-            Container.Bind<IUIFactory>()
-                .To<UIFactory>()
-                .AsSingle();
+            Container.Bind<IUIFactory>().To<UIFactory>().AsSingle();
+            Container.Bind<IBuildingFactory>().To<BuildingFactory>().AsSingle();
+            Container.Bind<IUnitFactory>().To<UnitFactory>().AsSingle();
         }
     }
 }

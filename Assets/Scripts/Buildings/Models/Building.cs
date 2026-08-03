@@ -2,6 +2,7 @@ using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Units.Models;
 using UnityEngine;
 
@@ -9,8 +10,10 @@ namespace PanteonStrategyGame.Buildings.Models
 {
     public abstract class Building : Entity, IDamageable
     {
-        public override EntityType EntityType => EntityType.Building;
+        public override EntityType EntityType => EntityType.Building; 
         public int CurrentHealth { get; protected set; }
+
+        public int MaxHealth => buildingData.MaxHealth;
         [SerializeField]
         protected BuildingData buildingData;
 
@@ -29,6 +32,9 @@ namespace PanteonStrategyGame.Buildings.Models
         public void TakeDamage(int damage, IEntity attacker)
         {
             CurrentHealth -= damage;
+
+            SignalBus.Fire(
+                new EntityHealthChangedSignal(this));
 
             if (CurrentHealth <= 0)
             {

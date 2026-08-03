@@ -1,6 +1,7 @@
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Units.Components;
 using PanteonStrategyGame.Units.Data;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace PanteonStrategyGame.Units.Models
 
         protected UnitData Data;
         public int CurrentHealth { get; protected set; }
+
+        public int MaxHealth => Data.MaxHealth;
         public int Damage => Data.Damage;
         public float MoveSpeed => Data.MoveSpeed;
         public float AttackRange => Data.AttackRange;
@@ -37,7 +40,7 @@ namespace PanteonStrategyGame.Units.Models
 
             _movement.Initialize(data.MoveSpeed);
 
-            _attack.Initialize(data);
+            Attack.Initialize(data);
         }
 
         public override void Select()
@@ -53,6 +56,9 @@ namespace PanteonStrategyGame.Units.Models
         public void TakeDamage(int damage, IEntity attacker)
         {
             CurrentHealth -= damage;
+
+            SignalBus.Fire(
+                new EntityHealthChangedSignal(this));
 
             if (CurrentHealth <= 0)
             {
