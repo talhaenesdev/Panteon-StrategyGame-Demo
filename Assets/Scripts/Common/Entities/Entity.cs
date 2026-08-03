@@ -1,11 +1,18 @@
 using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Pooling;
 using UnityEngine;
+using Zenject;
 
 namespace PanteonStrategyGame.Common.Entities
 {
-    public abstract class Entity : MonoBehaviour, IEntity, ISelectable
+    public abstract class Entity : MonoBehaviour, IEntity, ISelectable, IDamageable
     {
+        [Inject]
+        private PoolManager _poolManager;
+
+        [Inject]
+        private ISelectionService _selectionService;
         public abstract EntityType EntityType { get; }
 
         public abstract string DisplayName { get; }
@@ -29,7 +36,12 @@ namespace PanteonStrategyGame.Common.Entities
         public virtual void TakeDamage(int damage) { }
         protected virtual void DestroyEntity()
         {
-            Destroy(gameObject);
+            if (_selectionService.SelectedEntity == this)
+            {
+                _selectionService.ClearSelection();
+            }
+
+            _poolManager.Release(gameObject);
         }
 
     }

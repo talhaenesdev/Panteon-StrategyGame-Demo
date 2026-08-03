@@ -25,13 +25,24 @@ namespace PanteonStrategyGame.Units.Data
         [Header("Stats")]
         public int MaxHealth;
 
-        public int Damage;
-
         public float MoveSpeed;
 
         [Header("Production")]
         [SerializeField]
         private float productionTime = 3f;
         public float ProductionTime => productionTime;
+
+        [Header("Combat")]
+        [SerializeField]
+        private float attackRange = 2f;
+        public float AttackRange => attackRange;
+
+        [SerializeField]
+        private float attackRate = 1f;
+        public float AttackRate => attackRate;
+
+        [SerializeField]
+        private int damage = 10;
+        public int Damage => damage;
     }
 }
