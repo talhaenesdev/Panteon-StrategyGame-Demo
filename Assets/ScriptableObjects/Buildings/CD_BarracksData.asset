@@ -19,4 +19,4 @@ MonoBehaviour:
   _poolKey: Barrack
   _ghostPoolKey: BarrackGhost
   MaxHealth: 100
-  Size: {x: 3, y: 3}
+  Size: {x: 2, y: 4}

@@ -108,7 +108,16 @@ namespace PanteonStrategyGame.Grid
                 gridPosition.y * cellSize,
                 0f);
         }
+        public Vector3 GetBuildingCenterPosition(Vector2Int origin, Vector2Int size)
+        {
+            float offsetX = size.x * cellSize * 0.5f - cellSize * 0.5f;
+            float offsetY = size.y * cellSize * 0.5f - cellSize * 0.5f;
 
+            return transform.position + new Vector3(
+                origin.x * cellSize + offsetX,
+                origin.y * cellSize + offsetY,
+                0f);
+        }
 
         public Vector2Int GetGridPosition(Vector3 worldPosition)
         {
@@ -182,5 +191,33 @@ namespace PanteonStrategyGame.Grid
                 }
             }
         }
+
+#if UNITY_EDITOR
+        [SerializeField]
+        private bool drawWalkableGizmos = true;
+
+        private void OnDrawGizmos()
+        {
+            if (!drawWalkableGizmos)
+                return;
+
+            if (_nodes == null)
+                return;
+
+            foreach (GridNode node in _nodes)
+            {
+                if (node == null)
+                    continue;
+
+                Gizmos.color = node.Walkable
+                    ? new Color(0f, 1f, 0f, 0.35f)
+                    : new Color(1f, 0f, 0f, 0.35f);
+
+                Gizmos.DrawWireCube(
+                    node.WorldPosition,
+                    Vector3.one * cellSize);
+            }
+        }
+#endif
     }
 }

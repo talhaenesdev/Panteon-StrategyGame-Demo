@@ -88,7 +88,9 @@ namespace PanteonStrategyGame.Buildings.Controllers
                 _gridManager.GetGridPosition(mouseWorld);
 
             Vector3 worldPosition =
-                _gridManager.GetWorldPosition(gridPosition);
+                _gridManager.GetBuildingCenterPosition(
+                    gridPosition,
+                    _selectedBuilding.Size);
 
             _ghostBuilding.transform.position = worldPosition;
 
@@ -114,7 +116,9 @@ namespace PanteonStrategyGame.Buildings.Controllers
             Building building =
                 _buildingFactory.Create(
                     _selectedBuilding,
-                    _gridManager.GetWorldPosition(gridPosition),
+                    _gridManager.GetBuildingCenterPosition(
+                        gridPosition,
+                        _selectedBuilding.Size),
                     gridPosition);
 
             _gridManager.PlaceBuilding(
@@ -136,5 +140,6 @@ namespace PanteonStrategyGame.Buildings.Controllers
             _selectedBuilding = null;
             _isPlacing = false;
         }
+
     }
 }

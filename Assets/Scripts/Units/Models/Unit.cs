@@ -10,6 +10,8 @@ namespace PanteonStrategyGame.Units.Models
 {
     public abstract class Unit : Entity, IDamageable
     {
+        [SerializeField]
+        private UnitTeamMaterial _teamMaterial;
         public override EntityType EntityType => EntityType.Unit;
 
         protected UnitData Data;
@@ -44,6 +46,8 @@ namespace PanteonStrategyGame.Units.Models
             _movement.Initialize(data.MoveSpeed);
 
             Attack.Initialize(data);
+
+            _teamMaterial.SetTeam(Team);
         }
 
         public override void Select()
