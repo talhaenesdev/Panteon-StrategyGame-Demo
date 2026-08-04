@@ -5,6 +5,11 @@ namespace PanteonStrategyGame.Buildings.Data
     [CreateAssetMenu(fileName = "BuildingData",  menuName = "Panteon Strategy Game/Buildings/Building Data")]
     public class BuildingData : ScriptableObject
     {
+        [SerializeField, Min(0)]
+        private int buildingBuffer = 0;
+
+        public int BuildingBuffer => buildingBuffer;
+
         [field: SerializeField]
         public string DisplayName { get; private set; }
         public BuildingType Type;

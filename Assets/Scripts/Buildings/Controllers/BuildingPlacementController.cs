@@ -19,7 +19,7 @@ namespace PanteonStrategyGame.Buildings.Controllers
         [Inject] private PoolManager _poolManager;
 
         private BuildingData _selectedBuilding;
-        private GhostBuilding _ghostBuilding;
+        private GhostBuildingView _ghostBuilding;
 
         private bool _isPlacing;
 
@@ -55,7 +55,7 @@ namespace PanteonStrategyGame.Buildings.Controllers
                 Vector3.zero,
                 Quaternion.identity);
 
-            _ghostBuilding = ghost.GetComponent<GhostBuilding>();
+            _ghostBuilding = ghost.GetComponent<GhostBuildingView>();
 
             _isPlacing = true;
         }

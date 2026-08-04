@@ -12,6 +12,7 @@ namespace PanteonStrategyGame.Grid
         [SerializeField] private int height = 20;
         [SerializeField] private float cellSize = 1f;
 
+
         private GridCell[,] _cells;
         private GridNode[,] _nodes;
 
@@ -30,7 +31,9 @@ namespace PanteonStrategyGame.Grid
                 for (int y = 0; y < height; y++)
                 {
                     Vector2Int gridPosition = new Vector2Int(x, y);
-                    Vector3 worldPosition = GetWorldPosition(gridPosition);
+
+                    Vector3 worldPosition =
+                        GetWorldPosition(gridPosition);
 
                     _cells[x, y] = new GridCell(gridPosition);
 
@@ -60,12 +63,21 @@ namespace PanteonStrategyGame.Grid
 
         public GridNode GetNode(Vector3 worldPosition)
         {
-            Vector2Int gridPosition = GetGridPosition(worldPosition);
+            Vector2Int gridPosition =
+                GetGridPosition(worldPosition);
 
             if (!IsInsideGrid(gridPosition))
                 return null;
 
             return _nodes[gridPosition.x, gridPosition.y];
+        }
+
+        public IEnumerable<GridNode> GetAllNodes()
+        {
+            foreach (GridNode node in _nodes)
+            {
+                yield return node;
+            }
         }
 
         public List<GridNode> GetNeighbours(GridNode node)
@@ -82,17 +94,20 @@ namespace PanteonStrategyGame.Grid
 
             foreach (Vector2Int direction in directions)
             {
-                Vector2Int neighbourPosition = node.GridPosition + direction;
+                Vector2Int neighbourPosition =
+                    node.GridPosition + direction;
 
                 if (!IsInsideGrid(neighbourPosition))
                     continue;
 
-                neighbours.Add(_nodes[neighbourPosition.x, neighbourPosition.y]);
+                neighbours.Add(
+                    _nodes[neighbourPosition.x, neighbourPosition.y]);
             }
 
             return neighbours;
         }
-
+        
+       
         public void SetWalkable(Vector2Int position, bool walkable)
         {
             if (!IsInsideGrid(position))
@@ -108,52 +123,42 @@ namespace PanteonStrategyGame.Grid
                 gridPosition.y * cellSize,
                 0f);
         }
-        public Vector3 GetBuildingCenterPosition(Vector2Int origin, Vector2Int size)
-        {
-            float offsetX = size.x * cellSize * 0.5f - cellSize * 0.5f;
-            float offsetY = size.y * cellSize * 0.5f - cellSize * 0.5f;
 
-            return transform.position + new Vector3(
-                origin.x * cellSize + offsetX,
-                origin.y * cellSize + offsetY,
-                0f);
+        public Vector3 GetBuildingCenterPosition(
+            Vector2Int origin,
+            Vector2Int size)
+        {
+            float offsetX =
+                (size.x - 1) * cellSize * 0.5f;
+
+            float offsetY =
+                (size.y - 1) * cellSize * 0.5f;
+
+            return GetWorldPosition(origin) +
+                   new Vector3(offsetX, offsetY, 0f);
         }
 
         public Vector2Int GetGridPosition(Vector3 worldPosition)
         {
-            Vector3 localPosition = worldPosition - transform.position;
+            Vector3 localPosition =
+                worldPosition - transform.position;
 
             return new Vector2Int(
                 Mathf.RoundToInt(localPosition.x / cellSize),
                 Mathf.RoundToInt(localPosition.y / cellSize));
         }
 
-        public bool CanPlaceBuilding(BuildingData data, Vector2Int origin)
+        public void PlaceBuilding(
+            Building building,
+            BuildingData data,
+            Vector2Int origin)
         {
             for (int x = 0; x < data.Size.x; x++)
             {
                 for (int y = 0; y < data.Size.y; y++)
                 {
-                    Vector2Int position = origin + new Vector2Int(x, y);
-
-                    if (!IsInsideGrid(position))
-                        return false;
-
-                    if (GetCell(position).IsOccupied)
-                        return false;
-                }
-            }
-
-            return true;
-        }
-
-        public void PlaceBuilding(Building building, BuildingData data, Vector2Int origin)
-        {
-            for (int x = 0; x < data.Size.x; x++)
-            {
-                for (int y = 0; y < data.Size.y; y++)
-                {
-                    Vector2Int position = origin + new Vector2Int(x, y);
+                    Vector2Int position =
+                        origin + new Vector2Int(x, y);
 
                     GetCell(position).Occupy(building);
 
@@ -162,25 +167,19 @@ namespace PanteonStrategyGame.Grid
             }
         }
 
-        public IEnumerable<GridNode> GetAllNodes()
-        {
-            foreach (GridNode node in _nodes)
-            {
-                yield return node;
-            }
-        }
-
         public void RemoveBuilding(Building building)
         {
             BuildingData data = building.BuildingData;
 
-            Vector2Int origin = building.OriginGridPosition;
+            Vector2Int origin =
+                building.OriginGridPosition;
 
             for (int x = 0; x < data.Size.x; x++)
             {
                 for (int y = 0; y < data.Size.y; y++)
                 {
-                    Vector2Int position = origin + new Vector2Int(x, y);
+                    Vector2Int position =
+                        origin + new Vector2Int(x, y);
 
                     if (!IsInsideGrid(position))
                         continue;
@@ -193,6 +192,7 @@ namespace PanteonStrategyGame.Grid
         }
 
 #if UNITY_EDITOR
+
         [SerializeField]
         private bool drawWalkableGizmos = true;
 
@@ -210,14 +210,15 @@ namespace PanteonStrategyGame.Grid
                     continue;
 
                 Gizmos.color = node.Walkable
-                    ? new Color(0f, 1f, 0f, 0.35f)
-                    : new Color(1f, 0f, 0f, 0.35f);
+                    ? new Color(0f, 1f, 0f, .35f)
+                    : new Color(1f, 0f, 0f, .35f);
 
                 Gizmos.DrawWireCube(
                     node.WorldPosition,
                     Vector3.one * cellSize);
             }
         }
+
 #endif
     }
 }

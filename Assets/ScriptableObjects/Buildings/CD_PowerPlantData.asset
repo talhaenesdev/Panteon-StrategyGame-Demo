@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
   m_Name: CD_PowerPlantData
   m_EditorClassIdentifier: 
+  buildingBuffer: 0
   <DisplayName>k__BackingField: Power
   Type: 0
   BuildingName: Power Plant
@@ -19,4 +20,4 @@ MonoBehaviour:
   _poolKey: PowerPlant
   _ghostPoolKey: PowerPlantGhost
   MaxHealth: 50
-  Size: {x: 2, y: 2}
+  Size: {x: 1, y: 1}

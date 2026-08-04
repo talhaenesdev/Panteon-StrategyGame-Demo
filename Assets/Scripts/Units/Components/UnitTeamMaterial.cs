@@ -1,5 +1,7 @@
 ﻿using PanteonStrategyGame.Common.Enums;
+using PanteonStrategyGame.Core.Interfaces;
 using UnityEngine;
+using Zenject;
 
 namespace PanteonStrategyGame.Units.Components
 {
@@ -8,11 +10,8 @@ namespace PanteonStrategyGame.Units.Components
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 
-        [SerializeField]
-        private Material playerMaterial;
-
-        [SerializeField]
-        private Material enemyMaterial;
+        [Inject]
+        private ITeamMaterialService _teamMaterialService;
 
         private void Awake()
         {
@@ -22,15 +21,12 @@ namespace PanteonStrategyGame.Units.Components
 
         public void SetTeam(Team team)
         {
-            switch (team)
-            {
-                case Team.Player:
-                    spriteRenderer.sharedMaterial = playerMaterial;
-                    break;
+            Material material =
+                _teamMaterialService.GetMaterial(team);
 
-                case Team.Enemy:
-                    spriteRenderer.sharedMaterial = enemyMaterial;
-                    break;
+            if (material != null)
+            {
+                spriteRenderer.sharedMaterial = material;
             }
         }
     }

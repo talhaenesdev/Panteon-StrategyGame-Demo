@@ -1,5 +1,6 @@
 ﻿using PanteonStrategyGame.Buildings.Controllers;
 using PanteonStrategyGame.Buildings.Factories;
+using PanteonStrategyGame.Buildings.Placement.Rules;
 using PanteonStrategyGame.Buildings.Services;
 using PanteonStrategyGame.Core.Debug;
 using PanteonStrategyGame.Core.Interfaces;
@@ -64,6 +65,10 @@ namespace PanteonStrategyGame.Core.Installers
             Container.Bind<IBuildingFactory>().To<BuildingFactory>().AsSingle();
             Container.Bind<IUnitFactory>().To<UnitFactory>().AsSingle();
             Container.Bind<IAttackPositionProvider>().To<AttackPositionProvider>().AsSingle();
+
+            Container.Bind<IPlacementRule>().To<FootprintRule>().AsSingle();
+            Container.Bind<IPlacementRule>().To<BufferRule>().AsSingle();
+
         }
     }
 }

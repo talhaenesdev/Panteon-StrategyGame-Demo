@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PanteonStrategyGame.Buildings.Views
 {
-    public class GhostBuilding : MonoBehaviour
+    public class GhostBuildingView : MonoBehaviour
     {
         private SpriteRenderer[] _renderers;
 
