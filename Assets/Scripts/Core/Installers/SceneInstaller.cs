@@ -7,6 +7,7 @@ using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Grid.Interfaces;
 using PanteonStrategyGame.Pathfinding;
 using PanteonStrategyGame.UI.Controllers;
 using PanteonStrategyGame.UI.Factories;
@@ -39,7 +40,7 @@ namespace PanteonStrategyGame.Core.Installers
 
             Container.BindInterfacesTo<SignalLogger>().AsSingle();
 
-            Container.Bind<GridManager>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesAndSelfTo<GridManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PoolManager>().AsSingle();
 
             Container.Bind<IBuildingPlacementService>().To<BuildingPlacementService>().AsSingle();

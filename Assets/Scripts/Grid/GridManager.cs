@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
-using PanteonStrategyGame.Buildings.Data;
+﻿using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
+using PanteonStrategyGame.Grid.Interfaces;
+using PanteonStrategyGame.Grid.Models;
 using PanteonStrategyGame.Pathfinding;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Grid
 {
-    public class GridManager : MonoBehaviour
+    public class GridManager : MonoBehaviour, IMapInfoProvider
     {
         [SerializeField] private int width = 20;
         [SerializeField] private int height = 20;
@@ -20,6 +22,12 @@ namespace PanteonStrategyGame.Grid
         {
             CreateGrid();
         }
+        public Vector2 MapSize =>
+    new(
+        width * cellSize,
+        height * cellSize);
+
+        public MapBounds MapBounds {  get; private set; }
 
         private void CreateGrid()
         {
@@ -189,6 +197,25 @@ namespace PanteonStrategyGame.Grid
                     SetWalkable(position, true);
                 }
             }
+        }
+
+
+        public MapBounds GetMapBounds()
+        {
+            float minX = transform.position.x;
+            float minY = transform.position.y;
+
+            float maxX =
+                transform.position.x + (width - 1) * cellSize;
+
+            float maxY =
+                transform.position.y + (height - 1) * cellSize;
+
+            return new MapBounds(
+                minX,
+                maxX,
+                minY,
+                maxY);
         }
 
 #if UNITY_EDITOR
