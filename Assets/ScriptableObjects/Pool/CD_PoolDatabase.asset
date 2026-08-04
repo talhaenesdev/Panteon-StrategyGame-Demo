@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe235c882ca8df44afa4b4da256e92d, type: 3}
-  m_Name: PoolDatabase
+  m_Name: CD_PoolDatabase
   m_EditorClassIdentifier: 
   pools:
   - poolKey: Soldier1

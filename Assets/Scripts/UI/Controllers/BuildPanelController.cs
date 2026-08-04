@@ -11,7 +11,7 @@ namespace PanteonStrategyGame.UI.Controllers
     public class BuildPanelController : MonoBehaviour
     {
         [SerializeField]
-        private List<BuildingData> buildings;
+        private BuildMenuData buildMenuData;
 
         [SerializeField]
         private BuildPanelView view;
@@ -44,7 +44,7 @@ namespace PanteonStrategyGame.UI.Controllers
         {
             ClearButtons();
 
-            foreach (BuildingData building in buildings)
+            foreach (BuildingData building in buildMenuData.Buildings)
             {
                 BuildButtonView button =
                     _uiFactory.CreateBuildButton(

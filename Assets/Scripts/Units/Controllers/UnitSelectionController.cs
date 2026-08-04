@@ -35,7 +35,7 @@ namespace PanteonStrategyGame.Units.Controllers
 
             Collider2D hit =
                 Physics2D.OverlapPoint(worldPoint);
-
+            Debug.Log(hit);
             if (hit == null)
             {
                 _selectionService.ClearSelection();
@@ -43,10 +43,13 @@ namespace PanteonStrategyGame.Units.Controllers
             }
 
             Entity entity =
-                hit.GetComponent<Entity>();
-
+                hit.GetComponentInParent<Entity>();
+            Debug.Log(entity);
             if (entity == null)
+            {
+                _selectionService.ClearSelection();
                 return;
+            }
 
             _selectionService.Select(entity);
         }

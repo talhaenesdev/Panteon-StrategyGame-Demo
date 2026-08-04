@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1783282694875965519}
   - component: {fileID: 5593612767300690259}
   - component: {fileID: -274542088917856606}
+  - component: {fileID: 837505417425779874}
   m_Layer: 5
   m_Name: BuildButton
   m_TagString: Untagged
@@ -139,6 +140,26 @@ MonoBehaviour:
   button: {fileID: 5593612767300690259}
   title: {fileID: 8002988917733365304}
   buttonIcon: {fileID: 8614735847181536440}
+--- !u!114 &837505417425779874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867599388127548573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: 145.9
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &6782748146458980503
 GameObject:
   m_ObjectHideFlags: 0

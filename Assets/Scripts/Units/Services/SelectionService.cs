@@ -18,6 +18,7 @@ namespace PanteonStrategyGame.Units.Services
 
         public void Select(Entity entity)
         {
+            UnityEngine.Debug.Log($"Selected : {entity?.name}");
             if (SelectedEntity == entity)
                 return;
 

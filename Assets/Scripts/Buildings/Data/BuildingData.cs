@@ -1,3 +1,5 @@
+using PanteonStrategyGame.Units.Data;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Buildings.Data
@@ -30,5 +32,9 @@ namespace PanteonStrategyGame.Buildings.Data
 
         [Header("Placement")]
         public Vector2Int Size;
+
+        [SerializeField]
+        private UnitData[] producibleUnits;
+        public IReadOnlyList<UnitData> ProducibleUnits => producibleUnits;
     }
 }
