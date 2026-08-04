@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
   m_Name: CD_FactoryData
   m_EditorClassIdentifier: 
+  buildingBuffer: 0
   <DisplayName>k__BackingField: Factory
   Type: 2
   BuildingName: Factory
-  Icon: {fileID: 21300000, guid: 13466b0f1825cdb47a656623b263c32b, type: 3}
+  Icon: {fileID: 21300000, guid: 2cdfff0892bf5304cad0d1c319ad8a2d, type: 3}
   _poolKey: Factory
   _ghostPoolKey: FactoryGhost
   MaxHealth: 25

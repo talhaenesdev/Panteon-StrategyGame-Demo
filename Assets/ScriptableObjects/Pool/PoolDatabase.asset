@@ -45,4 +45,4 @@ MonoBehaviour:
     initialSize: 3
   - poolKey: Factory
     prefab: {fileID: 6206094125042187273, guid: 42d5cb60de5bae24988bbaff7854d860, type: 3}
-    initialSize: 3
+    initialSize: 1
