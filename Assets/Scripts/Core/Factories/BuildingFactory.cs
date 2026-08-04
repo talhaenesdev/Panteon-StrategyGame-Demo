@@ -25,23 +25,27 @@ namespace PanteonStrategyGame.Buildings.Factories
             Vector3 position,
             Vector2Int originGridPosition)
         {
-            GameObject obj =
+            GameObject pooledObject =
                 _poolManager.Get(data.PoolKey);
 
-            obj.transform.SetPositionAndRotation(
+            pooledObject.transform.SetPositionAndRotation(
                 position,
                 Quaternion.identity);
 
             Building building =
-                obj.GetComponent<Building>();
+                pooledObject.GetComponent<Building>();
 
-            Debug.Log($"Before Init : {building.CurrentHealth}");
+            if (building == null)
+            {
+                Debug.LogError(
+                    $"Pool '{data.PoolKey}' returned an object without a {nameof(Building)} component.");
+
+                return null;
+            }
 
             building.Initialize(
                 data,
                 originGridPosition);
-
-            Debug.Log($"After Init : {building.CurrentHealth}");
 
             _buildingService.Register(building);
 

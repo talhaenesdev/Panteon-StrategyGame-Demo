@@ -1,22 +1,31 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
 using PanteonStrategyGame.Buildings.Data;
+using PanteonStrategyGame.Buildings.Placement.Rules;
 using PanteonStrategyGame.Core.Interfaces;
-using PanteonStrategyGame.Grid;
+using UnityEngine;
 
-namespace PanteonStrategyGame.Buildings.Controllers
+namespace PanteonStrategyGame.Buildings.Services
 {
-    public class BuildingPlacementService : IBuildingPlacementService
+    public class BuildingPlacementService
+        : IBuildingPlacementService
     {
-        private readonly GridManager _gridManager;
+        private readonly List<IPlacementRule> _rules;
 
-        public BuildingPlacementService(GridManager gridManager)
+        public BuildingPlacementService(
+            List<IPlacementRule> rules)
         {
-            _gridManager = gridManager;
+            _rules = rules;
         }
 
-        public bool CanPlace(BuildingData buildingData, Vector2Int gridPosition)
+        public bool CanPlace(BuildingData data, Vector2Int origin)
         {
-            return _gridManager.CanPlaceBuilding(buildingData, gridPosition);
+            foreach (IPlacementRule rule in _rules)
+            {
+                if (!rule.Validate(data, origin))
+                    return false;
+            }
+
+            return true;
         }
     }
 }

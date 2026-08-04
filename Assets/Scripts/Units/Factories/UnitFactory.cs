@@ -20,15 +20,27 @@ namespace PanteonStrategyGame.Units.Factories
             _unitService = unitService;
         }
 
-        public Unit Create(UnitData data, Vector3 position)
+        public Unit Create(
+            UnitData data,
+            Vector3 position)
         {
-            GameObject obj = _poolManager.Get(data.PoolKey);
+            GameObject pooledObject =
+                _poolManager.Get(data.PoolKey);
 
-            obj.transform.SetPositionAndRotation(
+            pooledObject.transform.SetPositionAndRotation(
                 position,
                 Quaternion.identity);
 
-            Unit unit = obj.GetComponent<Unit>();
+            Unit unit =
+                pooledObject.GetComponent<Unit>();
+
+            if (unit == null)
+            {
+                Debug.LogError(
+                    $"Pool '{data.PoolKey}' returned an object without a {nameof(Unit)} component.");
+
+                return null;
+            }
 
             unit.Initialize(data);
 

@@ -30,10 +30,11 @@ namespace PanteonStrategyGame.Units.Controllers
 
         private void SelectUnit()
         {
-            Vector2 worldPoint = _camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 worldPoint =
+                _camera.ScreenToWorldPoint(Input.mousePosition);
 
-            Collider2D hit = Physics2D.OverlapPoint(worldPoint);
-
+            Collider2D hit =
+                Physics2D.OverlapPoint(worldPoint);
 
             if (hit == null)
             {
@@ -41,13 +42,11 @@ namespace PanteonStrategyGame.Units.Controllers
                 return;
             }
 
-            Entity entity = hit.GetComponent<Entity>();
+            Entity entity =
+                hit.GetComponent<Entity>();
 
             if (entity == null)
-            {
-                Debug.Log("Hit object is not an Entity.");
                 return;
-            }
 
             _selectionService.Select(entity);
         }

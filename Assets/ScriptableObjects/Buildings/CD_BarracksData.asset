@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
   m_Name: CD_BarracksData
   m_EditorClassIdentifier: 
+  buildingBuffer: 1
   <DisplayName>k__BackingField: Soldier House
   Type: 0
   BuildingName: Barrack
