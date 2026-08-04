@@ -26,8 +26,6 @@ namespace PanteonStrategyGame.UI.Controllers
 
         private void Start()
         {
-            view.Hide();
-
             BuildButtons();
         }
 
@@ -39,11 +37,6 @@ namespace PanteonStrategyGame.UI.Controllers
                     view.Hide();
                 else
                     view.Show();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                view.Hide();
             }
         }
 
@@ -65,7 +58,6 @@ namespace PanteonStrategyGame.UI.Controllers
                         _signalBus.Fire(
                             new BuildingPlacementRequestedSignal(building));
 
-                        view.Hide();
                     });
 
                 _buttons.Add(button);
