@@ -4,6 +4,7 @@ using PanteonStrategyGame.Buildings.Views;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Signals;
+using PanteonStrategyGame.Core.Utilities;
 using PanteonStrategyGame.Grid;
 using UnityEngine;
 using Zenject;
@@ -78,11 +79,9 @@ namespace PanteonStrategyGame.Buildings.Controllers
         {
             if (_ghostBuilding == null)
                 return;
-
+            
             Vector3 mouseWorld =
-                Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            mouseWorld.z = 0;
+                MouseUtility.GetMouseWorldPosition(Camera.main);
 
             Vector2Int gridPosition =
                 _gridManager.GetGridPosition(mouseWorld);
@@ -92,18 +91,19 @@ namespace PanteonStrategyGame.Buildings.Controllers
                     gridPosition,
                     _selectedBuilding.Size);
 
-            _ghostBuilding.transform.position = worldPosition;
-
             bool canPlace =
-                _validator.CanPlace(_selectedBuilding, gridPosition);
+                _validator.CanPlace(
+                    _selectedBuilding,
+                    gridPosition);
 
-            _ghostBuilding.SetValid(canPlace);
+            _ghostBuilding.UpdateVisual(
+                worldPosition,
+                canPlace);
         }
-
         private void PlaceBuilding()
         {
             Vector3 mouseWorld =
-                Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                MouseUtility.GetMouseWorldPosition(Camera.main);
 
             mouseWorld.z = 0;
 

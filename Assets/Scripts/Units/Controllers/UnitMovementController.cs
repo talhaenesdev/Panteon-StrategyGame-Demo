@@ -1,8 +1,10 @@
 ﻿using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Core.Utilities;
 using PanteonStrategyGame.Units.Models;
 using UnityEngine;
 using Zenject;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace PanteonStrategyGame.Units.Controllers
 {
@@ -28,65 +30,101 @@ namespace PanteonStrategyGame.Units.Controllers
 
         private void RightClick()
         {
-            if (_selectionService.SelectedEntity is not Unit unit)
+            Unit unit = GetSelectedUnit();
+
+            if (unit == null)
                 return;
 
             Vector3 mouseWorld =
-                _camera.ScreenToWorldPoint(Input.mousePosition);
+                MouseUtility.GetMouseWorldPosition(_camera);
 
-            mouseWorld.z = 0;
+            Entity clickedEntity =
+                GetClickedEntity(mouseWorld);
 
-            RaycastHit2D hit =
-                Physics2D.Raycast(mouseWorld, Vector2.zero);
-
-            if (hit.collider != null)
+            if (CanAttack(unit, clickedEntity))
             {
-                Debug.Log($"Hit : {hit.collider.name}");
+                StartAttack(
+                    unit,
+                    (IDamageable)clickedEntity);
 
-                Entity entity =
-                    hit.collider.GetComponentInParent<Entity>();
-
-                Debug.Log($"Entity : {entity}");
-
-                if (entity != null)
-                {
-                    if (entity == unit)
-                        return;
-
-                    if (entity.Team == unit.Team)
-                        return;
-
-                    IDamageable damageable =
-                        hit.collider.GetComponentInParent<IDamageable>();
-                    Debug.Log(damageable);
-
-                    if (damageable != null)
-                    {
-                        Debug.Log($"Target = {entity.name}");
-                        unit.Attack.SetTarget(damageable);
-
-                        var attackPath =
-                            _pathfindingService.FindPath(
-                                unit.transform.position,
-                                entity.transform.position);
-
-                        Debug.Log($"Path Count = {attackPath.Count}");
-
-                        unit.Movement.SetPath(attackPath);
-
-                        return;
-                    }
-                }
+                return;
             }
 
+            MoveToPosition(
+                unit,
+                mouseWorld);
+        }
+
+        private Unit GetSelectedUnit()
+        {
+            return _selectionService.SelectedEntity as Unit;
+        }
+
+        private Entity GetClickedEntity(Vector3 mouseWorld)
+        {
+            RaycastHit2D hit =
+                Physics2D.Raycast(
+                    mouseWorld,
+                    Vector2.zero);
+
+            if (hit.collider == null)
+                return null;
+
+            return hit.collider.GetComponentInParent<Entity>();
+        }
+
+        private bool TryAttack(
+            Unit attacker,
+            Entity target)
+        {
+            if (!CanAttack(attacker, target))
+                return false;
+
+            StartAttack(
+                attacker,
+                (IDamageable)target);
+
+            return true;
+        }
+
+        private bool CanAttack(Unit attacker,Entity target)
+        {
+            if (target == null)
+                return false;
+
+            if (target == attacker)
+                return false;
+
+            if (target.Team == attacker.Team)
+                return false;
+
+            return target is IDamageable;
+        }
+
+        private void StartAttack(Unit attacker,IDamageable target)
+        {
+            attacker.Attack.SetTarget(target);
+
+            MoveUnit(
+                attacker,
+                ((Component)target).transform.position);
+        }
+
+        private void MoveToPosition(Unit unit,Vector3 destination)
+        {
             unit.Attack.ClearTarget();
 
-            var movePath =
+            MoveUnit(unit, destination);
+        }
+
+        private void MoveUnit(Unit unit,Vector3 destination)
+        {
+            var path =
                 _pathfindingService.FindPath(
                     unit.transform.position,
-                    mouseWorld);
+                    destination);
 
-            unit.Movement.SetPath(movePath);
+            unit.Movement.SetPath(path);
         }
     }
 }

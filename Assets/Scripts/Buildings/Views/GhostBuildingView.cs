@@ -4,21 +4,37 @@ namespace PanteonStrategyGame.Buildings.Views
 {
     public class GhostBuildingView : MonoBehaviour
     {
-        private SpriteRenderer[] _renderers;
+        [SerializeField]
+        private SpriteRenderer[] renderers;
 
-        private void Awake()
+        [SerializeField]
+        private Color validColor = Color.green;
+
+        [SerializeField]
+        private Color invalidColor = Color.red;
+
+        public void UpdateVisual(
+            Vector3 position,
+            bool isValid)
         {
-            _renderers = GetComponentsInChildren<SpriteRenderer>();
+            SetPosition(position);
+            SetValid(isValid);
         }
 
-        public void SetValid(bool isValid)
+        private void SetPosition(Vector3 position)
         {
-            Color color = isValid ? Color.green : Color.red;
-            color.a = 0.5f;
+            transform.position = position;
+        }
 
-            foreach (var renderer in _renderers)
+        private void SetValid(bool isValid)
+        {
+            Color targetColor = isValid
+                ? validColor
+                : invalidColor;
+
+            foreach (SpriteRenderer renderer in renderers)
             {
-                renderer.color = color;
+                renderer.color = targetColor;
             }
         }
     }
