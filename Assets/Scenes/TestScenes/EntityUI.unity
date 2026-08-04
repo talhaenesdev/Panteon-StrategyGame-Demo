@@ -1055,7 +1055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c9d5ef66d7124439760e4e9c4d5878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: 858e324bce2199341a2c00ea1f52c6ba, type: 2}
 --- !u!114 &941457493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,9 +1395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0360e946439aa234faaa491ee4745724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 20
-  height: 20
-  cellSize: 1
+  settings: {fileID: 11400000, guid: c2940ec60eb58784db888ca740716f22, type: 2}
   drawWalkableGizmos: 1
 --- !u!4 &1220785002
 Transform:

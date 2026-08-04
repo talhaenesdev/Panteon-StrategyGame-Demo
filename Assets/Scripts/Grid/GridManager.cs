@@ -1,5 +1,6 @@
 ﻿using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
+using PanteonStrategyGame.Grid.Data;
 using PanteonStrategyGame.Grid.Interfaces;
 using PanteonStrategyGame.Grid.Models;
 using PanteonStrategyGame.Pathfinding;
@@ -10,10 +11,8 @@ namespace PanteonStrategyGame.Grid
 {
     public class GridManager : MonoBehaviour, IMapInfoProvider
     {
-        [SerializeField] private int width = 20;
-        [SerializeField] private int height = 20;
-        [SerializeField] private float cellSize = 1f;
-
+        [SerializeField]
+        private GridSettings settings;
 
         private GridCell[,] _cells;
         private GridNode[,] _nodes;
@@ -24,19 +23,19 @@ namespace PanteonStrategyGame.Grid
         }
         public Vector2 MapSize =>
     new(
-        width * cellSize,
-        height * cellSize);
+        settings.Width * settings.CellSize,
+        settings.Height * settings.CellSize);
 
         public MapBounds MapBounds {  get; private set; }
 
         private void CreateGrid()
         {
-            _cells = new GridCell[width, height];
-            _nodes = new GridNode[width, height];
+            _cells = new GridCell[settings.Width, settings.Height];
+            _nodes = new GridNode[settings.Width, settings.Height];
 
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < settings.Width; x++)
             {
-                for (int y = 0; y < height; y++)
+                for (int y = 0; y < settings.Height; y++)
                 {
                     Vector2Int gridPosition = new Vector2Int(x, y);
 
@@ -56,9 +55,9 @@ namespace PanteonStrategyGame.Grid
         public bool IsInsideGrid(Vector2Int position)
         {
             return position.x >= 0 &&
-                   position.x < width &&
+                   position.x < settings.Width &&
                    position.y >= 0 &&
-                   position.y < height;
+                   position.y < settings.Height;
         }
 
         public GridCell GetCell(Vector2Int position)
@@ -127,8 +126,8 @@ namespace PanteonStrategyGame.Grid
         public Vector3 GetWorldPosition(Vector2Int gridPosition)
         {
             return transform.position + new Vector3(
-                gridPosition.x * cellSize,
-                gridPosition.y * cellSize,
+                gridPosition.x * settings.CellSize,
+                gridPosition.y * settings.CellSize,
                 0f);
         }
 
@@ -137,10 +136,10 @@ namespace PanteonStrategyGame.Grid
             Vector2Int size)
         {
             float offsetX =
-                (size.x - 1) * cellSize * 0.5f;
+                (size.x - 1) * settings.CellSize * 0.5f;
 
             float offsetY =
-                (size.y - 1) * cellSize * 0.5f;
+                (size.y - 1) * settings.CellSize * 0.5f;
 
             return GetWorldPosition(origin) +
                    new Vector3(offsetX, offsetY, 0f);
@@ -152,8 +151,8 @@ namespace PanteonStrategyGame.Grid
                 worldPosition - transform.position;
 
             return new Vector2Int(
-                Mathf.RoundToInt(localPosition.x / cellSize),
-                Mathf.RoundToInt(localPosition.y / cellSize));
+                Mathf.RoundToInt(localPosition.x / settings.CellSize),
+                Mathf.RoundToInt(localPosition.y / settings.CellSize));
         }
 
         public void PlaceBuilding(
@@ -206,10 +205,10 @@ namespace PanteonStrategyGame.Grid
             float minY = transform.position.y;
 
             float maxX =
-                transform.position.x + (width - 1) * cellSize;
+                transform.position.x + (settings.Width - 1) * settings.CellSize;
 
             float maxY =
-                transform.position.y + (height - 1) * cellSize;
+                transform.position.y + (settings.Height - 1) * settings.CellSize;
 
             return new MapBounds(
                 minX,
@@ -242,7 +241,7 @@ namespace PanteonStrategyGame.Grid
 
                 Gizmos.DrawWireCube(
                     node.WorldPosition,
-                    Vector3.one * cellSize);
+                    Vector3.one * settings.CellSize);
             }
         }
 
