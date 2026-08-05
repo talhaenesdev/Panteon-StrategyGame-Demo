@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
-  team: 0
+  _team: 0
   _teamMaterial: {fileID: 6835034481144666555}
   selectionCircle: {fileID: 8220261632371384898}
   _movement: {fileID: 6959653015881676824}
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85171158ac5558b419a709f17271eb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 701362464026841315}
   _movement: {fileID: 6959653015881676824}
   _owner: {fileID: 3408054282656219898}
 --- !u!114 &2162391790002592693
@@ -248,8 +249,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1936734223149462784}
-  playerMaterial: {fileID: 2100000, guid: 81c76d2d6d96ce84ea41bcb1c2a6549b, type: 2}
-  enemyMaterial: {fileID: 2100000, guid: dfe678fff02f80e4d90c0a935d937118, type: 2}
 --- !u!61 &701362464026841315
 BoxCollider2D:
   m_ObjectHideFlags: 0

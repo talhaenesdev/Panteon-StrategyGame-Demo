@@ -1,9 +1,10 @@
-using System;
-using System.Collections.Generic;
 using PanteonStrategyGame.Buildings.Models;
+using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.UI.Interfaces;
 using PanteonStrategyGame.UI.Views;
+using System;
+using System.Collections.Generic;
 using Zenject;
 
 namespace PanteonStrategyGame.UI.Controllers
@@ -16,7 +17,7 @@ namespace PanteonStrategyGame.UI.Controllers
 
         private readonly List<ProductionButtonView> _buttons = new();
 
-        private Barracks _selectedBarracks;
+        private PlayerBarracks _selectedBarracks;
 
         public ProductionPanelController(
             SignalBus signalBus,
@@ -42,9 +43,15 @@ namespace PanteonStrategyGame.UI.Controllers
 
         private void OnEntitySelected(EntitySelectedSignal signal)
         {
-            if (signal.SelectedEntity is Barracks barracks)
+            if (signal.SelectedEntity is PlayerBarracks barracks)
             {
                 _selectedBarracks = barracks;
+
+                if (barracks.Team != Team.Player)
+                {
+                    _view.Hide();
+                    return;
+                }
 
                 _view.Show();
 
@@ -60,7 +67,7 @@ namespace PanteonStrategyGame.UI.Controllers
             _view.Hide();
         }
 
-        private void BuildButtons(Barracks barracks)
+        private void BuildButtons(PlayerBarracks barracks)
         {
             ClearButtons();
 

@@ -5,6 +5,7 @@ using PanteonStrategyGame.Grid.Interfaces;
 using PanteonStrategyGame.Grid.Models;
 using PanteonStrategyGame.Pathfinding;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Grid
@@ -216,6 +217,63 @@ namespace PanteonStrategyGame.Grid
                 minY,
                 maxY);
         }
+
+        public GridNode GetClosestAttackNode(
+            Vector3 attackerPosition,
+            Vector3 targetPosition,
+            float attackRange)
+        {
+            Vector2Int targetGrid =
+                GetGridPosition(targetPosition);
+
+            GridNode bestNode = null;
+
+            float bestDistance = float.MaxValue;
+
+            int radius =
+                Mathf.CeilToInt(
+                    attackRange / settings.CellSize) + 1;
+
+            for (int x = -radius; x <= radius; x++)
+            {
+                for (int y = -radius; y <= radius; y++)
+                {
+                    Vector2Int pos =
+                        targetGrid + new Vector2Int(x, y);
+
+                    if (!IsInsideGrid(pos))
+                        continue;
+
+                    GridNode node =
+                        _nodes[pos.x, pos.y];
+
+                    if (!node.Walkable)
+                        continue;
+
+                    float distanceToTarget =
+                        Vector3.Distance(
+                            node.WorldPosition,
+                            targetPosition);
+
+                    if (distanceToTarget > attackRange)
+                        continue;
+
+                    float distanceToAttacker =
+                        Vector3.Distance(
+                            attackerPosition,
+                            node.WorldPosition);
+
+                    if (distanceToAttacker < bestDistance)
+                    {
+                        bestDistance = distanceToAttacker;
+                        bestNode = node;
+                    }
+                }
+            }
+
+            return bestNode;
+        }
+
 
 #if UNITY_EDITOR
 

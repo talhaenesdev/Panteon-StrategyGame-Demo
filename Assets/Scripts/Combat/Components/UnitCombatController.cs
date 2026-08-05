@@ -1,4 +1,3 @@
-using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Units.Models;
 using UnityEngine;

@@ -2,12 +2,13 @@
 using PanteonStrategyGame.Buildings.Factories;
 using PanteonStrategyGame.Buildings.Placement.Rules;
 using PanteonStrategyGame.Buildings.Services;
+using PanteonStrategyGame.Common.Interfaces;
+using PanteonStrategyGame.Common.Services;
 using PanteonStrategyGame.Core.Debug;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
-using PanteonStrategyGame.Grid.Interfaces;
 using PanteonStrategyGame.Pathfinding;
 using PanteonStrategyGame.UI.Controllers;
 using PanteonStrategyGame.UI.Factories;
@@ -41,7 +42,6 @@ namespace PanteonStrategyGame.Core.Installers
             Container.BindInterfacesTo<SignalLogger>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<GridManager>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<PoolManager>().AsSingle();
 
             Container.Bind<IBuildingPlacementService>().To<BuildingPlacementService>().AsSingle();
             Container.Bind<IPathfindingService>().To<AStarPathfinder>().AsSingle();
@@ -49,6 +49,7 @@ namespace PanteonStrategyGame.Core.Installers
             Container.Bind<IUnitService>().To<UnitService>().AsSingle();
             Container.Bind<ISelectionService>().To<SelectionService>().AsSingle();
             Container.Bind<IProductionService>().To<ProductionService>().AsSingle();
+            Container.Bind<IEntitySpawnService>().To<EntitySpawnService>().AsSingle();
 
             Container.Bind<EntityInfoPanelView>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ProductionPanelView>().FromComponentInHierarchy().AsSingle();
@@ -69,6 +70,9 @@ namespace PanteonStrategyGame.Core.Installers
 
             Container.Bind<IPlacementRule>().To<FootprintRule>().AsSingle();
             Container.Bind<IPlacementRule>().To<BufferRule>().AsSingle();
+
+
+            Container.BindInterfacesAndSelfTo<PoolManager>().AsSingle();
 
         }
     }

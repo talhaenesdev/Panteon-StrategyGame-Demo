@@ -10,14 +10,14 @@ using Zenject;
 
 namespace PanteonStrategyGame.Buildings.Components
 {
-    [RequireComponent(typeof(Barracks))]
+    [RequireComponent(typeof(PlayerBarracks))]
     public class ProductionComponent : MonoBehaviour
     {
         [Inject] private SignalBus _signalBus;
         [Inject] private IUnitFactory _unitFactory;
 
         [SerializeField] private SpawnPoint spawnPoint;
-        [SerializeField] private Barracks _barracks;
+        [SerializeField] private PlayerBarracks _barracks;
 
         private readonly Queue<ProductionItem> _queue = new();
 

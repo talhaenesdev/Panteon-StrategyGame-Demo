@@ -4,7 +4,7 @@ using Zenject;
 
 namespace PanteonStrategyGame.Core.Pooling
 {
-    public class PoolManager
+    public class PoolManager : IInitializable
     {
         private readonly Dictionary<string, Pool> _pools = new();
         private readonly Dictionary<GameObject, Pool> _spawnedObjects = new();

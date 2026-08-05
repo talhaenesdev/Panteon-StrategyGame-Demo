@@ -9,6 +9,9 @@ namespace PanteonStrategyGame.Units.Components
     public class UnitAttack : MonoBehaviour
     {
         [SerializeField]
+        private Collider2D _collider;
+
+        [SerializeField]
         private UnitMovement _movement;
 
         [SerializeField]
@@ -20,13 +23,15 @@ namespace PanteonStrategyGame.Units.Components
         private UnitData _unitData;
 
         private IDamageable _target;
-        private Transform _targetTransform;
 
         private float _attackTimer;
+        private float _pathRefreshTimer;
 
-        public bool HasTarget => _target != null;
+        private const float PathRefreshInterval = 0.25f;
+        private Transform _targetTransform;
 
         public Transform TargetTransform => _targetTransform;
+        public bool HasTarget => _target != null;
 
         public void Initialize(UnitData unitData)
         {
@@ -35,23 +40,17 @@ namespace PanteonStrategyGame.Units.Components
 
         public void SetTarget(IDamageable target)
         {
-            Debug.Log("SetTarget");
             _target = target;
-
-            if (target is Component component)
-            {
-                _targetTransform = component.transform;
-            }
-
             _attackTimer = 0f;
+            _pathRefreshTimer = 0f;
         }
 
         public void ClearTarget()
         {
-            Debug.Log("ClearTarget");
             _target = null;
-            _targetTransform = null;
+
             _attackTimer = 0f;
+            _pathRefreshTimer = 0f;
 
             _movement.Stop();
         }
@@ -61,20 +60,38 @@ namespace PanteonStrategyGame.Units.Components
             if (_target == null)
                 return false;
 
-            Vector3 attackPosition =
-                _target.GetAttackPosition(transform.position);
+            Component targetComponent = _target as Component;
 
-            float distance = Vector3.Distance(
-                transform.position,
-                attackPosition);
+            if (targetComponent == null)
+                return false;
 
-            return distance <= _unitData.AttackRange;
+            Collider2D targetCollider =
+                targetComponent.GetComponent<Collider2D>();
+
+            if (targetCollider == null)
+                return false;
+
+            ColliderDistance2D distance =
+                Physics2D.Distance(
+                    _collider,
+                    targetCollider);
+
+            return distance.distance <= _unitData.AttackRange;
         }
 
         private void Update()
         {
             if (_target == null)
                 return;
+
+            Component targetComponent =
+                _target as Component;
+
+            if (targetComponent == null)
+            {
+                ClearTarget();
+                return;
+            }
 
             if (_target.CurrentHealth <= 0)
             {
@@ -84,17 +101,25 @@ namespace PanteonStrategyGame.Units.Components
 
             if (!IsTargetInRange())
             {
-                if (!_movement.HasPath)
+                _pathRefreshTimer += Time.deltaTime;
+
+                if (_pathRefreshTimer >= PathRefreshInterval)
                 {
-                    Vector3 attackPosition =
-                        _target.GetAttackPosition(transform.position);
+                    _pathRefreshTimer = 0f;
+
+                    Vector3 attackPoint =
+                        _target.GetAttackPosition(
+                            transform.position);
 
                     var path =
                         _pathfindingService.FindPath(
                             transform.position,
-                            attackPosition);
+                            attackPoint);
 
-                    _movement.SetPath(path);
+                    if (path != null)
+                    {
+                        _movement.SetPath(path);
+                    }
                 }
 
                 return;

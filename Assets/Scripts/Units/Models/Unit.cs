@@ -18,10 +18,6 @@ namespace PanteonStrategyGame.Units.Models
         public int CurrentHealth { get; protected set; }
 
         public int MaxHealth => Data.MaxHealth;
-        public int Damage => Data.Damage;
-        public float MoveSpeed => Data.MoveSpeed;
-        public float AttackRange => Data.AttackRange;
-        public float AttackRate => Data.AttackRate;
 
         [SerializeField]
         private GameObject selectionCircle;
@@ -33,10 +29,12 @@ namespace PanteonStrategyGame.Units.Models
         [SerializeField]
         private UnitAttack _attack;
         public UnitAttack Attack => _attack;
+
         public Vector3 GetAttackPosition(Vector3 attackerPosition)
         {
             return transform.position;
         }
+
         public virtual void Initialize(UnitData data)
         {
             Data = data;
@@ -44,6 +42,7 @@ namespace PanteonStrategyGame.Units.Models
             CurrentHealth = data.MaxHealth;
 
             _movement.Initialize(data.MoveSpeed);
+
 
             Attack.Initialize(data);
 

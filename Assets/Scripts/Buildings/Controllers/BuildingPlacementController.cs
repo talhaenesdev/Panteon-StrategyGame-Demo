@@ -1,6 +1,7 @@
 using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Buildings.Views;
+using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Signals;
@@ -120,6 +121,8 @@ namespace PanteonStrategyGame.Buildings.Controllers
                         gridPosition,
                         _selectedBuilding.Size),
                     gridPosition);
+
+            building.SetTeam(Team.Player);
 
             _gridManager.PlaceBuilding(
                 building,

@@ -46,3 +46,6 @@ MonoBehaviour:
   - poolKey: Factory
     prefab: {fileID: 6206094125042187273, guid: 42d5cb60de5bae24988bbaff7854d860, type: 3}
     initialSize: 1
+  - poolKey: EnemySoldier1
+    prefab: {fileID: 5144816163918969260, guid: 4acf6224f8799be4c9aa9cb044beae09, type: 3}
+    initialSize: 5

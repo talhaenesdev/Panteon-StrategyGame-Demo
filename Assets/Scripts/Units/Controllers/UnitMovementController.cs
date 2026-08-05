@@ -35,11 +35,15 @@ namespace PanteonStrategyGame.Units.Controllers
             if (unit == null)
                 return;
 
+            if (!unit.IsControllable)
+                return;
+
             Vector3 mouseWorld =
                 MouseUtility.GetMouseWorldPosition(_camera);
 
             Entity clickedEntity =
                 GetClickedEntity(mouseWorld);
+
 
             if (CanAttack(unit, clickedEntity))
             {
@@ -57,7 +61,16 @@ namespace PanteonStrategyGame.Units.Controllers
 
         private Unit GetSelectedUnit()
         {
-            return _selectionService.SelectedEntity as Unit;
+            Unit unit =
+                _selectionService.SelectedEntity as Unit;
+
+            if (unit == null)
+                return null;
+
+            if (!unit.IsControllable)
+                return null;
+
+            return unit;
         }
 
         private Entity GetClickedEntity(Vector3 mouseWorld)
@@ -71,20 +84,6 @@ namespace PanteonStrategyGame.Units.Controllers
                 return null;
 
             return hit.collider.GetComponentInParent<Entity>();
-        }
-
-        private bool TryAttack(
-            Unit attacker,
-            Entity target)
-        {
-            if (!CanAttack(attacker, target))
-                return false;
-
-            StartAttack(
-                attacker,
-                (IDamageable)target);
-
-            return true;
         }
 
         private bool CanAttack(Unit attacker,Entity target)

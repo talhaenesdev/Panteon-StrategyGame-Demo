@@ -6,12 +6,12 @@ namespace PanteonStrategyGame.Core.Signals
 {
     public class ProductionQueueChangedSignal
     {
-        public Barracks Barracks { get; }
+        public PlayerBarracks Barracks { get; }
 
         public IReadOnlyCollection<UnitData> Queue { get; }
 
         public ProductionQueueChangedSignal(
-            Barracks barracks,
+            PlayerBarracks barracks,
             IReadOnlyCollection<UnitData> queue)
         {
             Barracks = barracks;

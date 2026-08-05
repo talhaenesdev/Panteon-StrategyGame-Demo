@@ -20,6 +20,6 @@ MonoBehaviour:
   MaxHealth: 10
   MoveSpeed: 3
   productionTime: 0
-  attackRange: 0.02
+  attackRange: 0.1
   attackRate: 1
   damage: 5

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c853a843940644fbba560472ec8790, type: 3}
+  m_Name: EnemyBaseLayout
+  m_EditorClassIdentifier: 
+  spawns:
+  - poolKey: EnemySoldier1
+    gridPosition: {x: 5, y: 5}
+    unitData: {fileID: 11400000, guid: 11ce291a15e1b6e49bd57a524cb4e982, type: 2}
+    buildingData: {fileID: 0}
+  - poolKey: Barrack
+    gridPosition: {x: 8, y: 5}
+    unitData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
+  - poolKey: PowerPlant
+    gridPosition: {x: 12, y: 5}
+    unitData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
+  - poolKey: Factory
+    gridPosition: {x: 15, y: 5}
+    unitData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: 762590bfd30dc5447ba3cfc100714db3, type: 2}

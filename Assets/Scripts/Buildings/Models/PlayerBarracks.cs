@@ -5,8 +5,9 @@ using UnityEngine;
 
 namespace PanteonStrategyGame.Buildings.Models
 {
-    public class Barracks : Building
+    public class PlayerBarracks : Building
     {
+        public virtual bool IsControllable => true;
         [SerializeField]
         private ProductionComponent productionComponent;
 

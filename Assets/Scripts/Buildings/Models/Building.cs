@@ -32,7 +32,26 @@ namespace PanteonStrategyGame.Buildings.Models
         public override string DisplayName => buildingData.DisplayName;
 
         public override Sprite Icon => buildingData.Icon;
+        [SerializeField]
+        private GameObject playerFlag;
 
+        [SerializeField]
+        private GameObject enemyFlag;
+
+        protected override void OnTeamChanged()
+        {
+            RefreshFlag();
+        }
+        private void RefreshFlag()
+        {
+            var currentTeam = Team;
+
+            if (playerFlag != null)
+                playerFlag.SetActive(currentTeam == PanteonStrategyGame.Common.Enums.Team.Player);
+
+            if (enemyFlag != null)
+                enemyFlag.SetActive(currentTeam == PanteonStrategyGame.Common.Enums.Team.Enemy);
+        }
         public virtual void Initialize(
             BuildingData data,
             Vector2Int originGridPosition)
@@ -42,8 +61,6 @@ namespace PanteonStrategyGame.Buildings.Models
             OriginGridPosition = originGridPosition;
 
             CurrentHealth = data.MaxHealth;
-
-            Debug.Log($"{name} Initialize -> {CurrentHealth}/{MaxHealth}");
 
             gameObject.SetActive(true);
         }

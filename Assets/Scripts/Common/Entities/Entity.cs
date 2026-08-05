@@ -20,15 +20,26 @@ namespace PanteonStrategyGame.Common.Entities
         private string id;
 
         [SerializeField]
-        private Team team;
+        private Team _team;
 
         public string Id => id;
 
-        public Team Team => team;
+        public Team Team => _team;
 
         public Transform Transform => transform;
-
+        public virtual bool IsControllable => true;
         public Vector2Int OriginGridPosition { get; private set; }
+
+        protected virtual void OnTeamChanged()
+        {
+        }
+
+        public void SetTeam(Team team)
+        {
+            _team = team;
+
+            OnTeamChanged();
+        }
 
         public virtual void Initialize(
             BuildingData data,
@@ -38,6 +49,7 @@ namespace PanteonStrategyGame.Common.Entities
 
             gameObject.SetActive(true);
         }
+
         public virtual void Select()
         {
         }
