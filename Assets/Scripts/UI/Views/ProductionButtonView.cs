@@ -7,16 +7,16 @@ namespace PanteonStrategyGame.UI.Views
 {
     public class ProductionButtonView : MonoBehaviour
     {
-        [SerializeField] private Button button;
-        [SerializeField] private TMP_Text title;
-        [SerializeField] private Image buttonIcon;
+        [SerializeField] private Button _button;
+        [SerializeField] private TMP_Text _title;
+        [SerializeField] private Image _buttonIcon;
 
         public void Initialize(string titleText,Sprite icon, Action onClick)
         {
-            title.text = titleText;
-            buttonIcon.sprite = icon;
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => onClick?.Invoke());
+            _title.text = titleText;
+            _buttonIcon.sprite = icon;
+            _button.onClick.RemoveAllListeners();
+            _button.onClick.AddListener(() => onClick?.Invoke());
         }
     }
 }

@@ -6,11 +6,10 @@ namespace PanteonStrategyGame.UI.Views
 {
     public class EntityInfoPanelView : MonoBehaviour
     {
-        private int _maxHealth;
-        [SerializeField] private TMP_Text nameText;
-        [SerializeField] private TMP_Text typeText;
-        [SerializeField] private TMP_Text healthText;
-        [SerializeField] private Image entityIcon;
+        [SerializeField] private TMP_Text _nameText;
+        [SerializeField] private TMP_Text _typeText;
+        [SerializeField] private TMP_Text _healthText;
+        [SerializeField] private Image _entityIcon;
 
         private void Awake()
         {
@@ -34,16 +33,16 @@ namespace PanteonStrategyGame.UI.Views
             int maxHealth,
             Sprite icon)
         {
-            nameText.text = entityName;
-            typeText.text = entityType;
-            entityIcon.sprite = icon;
+            _nameText.text = entityName;
+            _typeText.text = entityType;
+            _entityIcon.sprite = icon;
 
-            healthText.text = $"{currentHealth} / {maxHealth}";
+            _healthText.text = $"{currentHealth} / {maxHealth}";
         }
 
         public void SetHealth(int currentHealth, int maxHealth)
         {
-            healthText.text = $"{currentHealth} / {maxHealth}";
+            _healthText.text = $"{currentHealth} / {maxHealth}";
         }
     }
 }

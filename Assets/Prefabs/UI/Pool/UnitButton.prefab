@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc4234c9fb60c14c9be202149e08181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 2308263652737956659}
-  title: {fileID: 3671509513157545864}
-  buttonIcon: {fileID: 8406729624517305473}
+  _button: {fileID: 2308263652737956659}
+  _title: {fileID: 3671509513157545864}
+  _buttonIcon: {fileID: 8406729624517305473}
 --- !u!114 &1302678416396836388
 MonoBehaviour:
   m_ObjectHideFlags: 0
