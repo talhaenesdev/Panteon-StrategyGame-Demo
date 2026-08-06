@@ -7,15 +7,31 @@ namespace PanteonStrategyGame.Grid.Data
         menuName = "Panteon Strategy Game/Grid/Grid Settings")]
     public class GridSettings : ScriptableObject
     {
-        [Header("Grid Size")]
-        [Min(1)]
-        public int Width = 20;
+        #region Grid
 
-        [Min(1)]
-        public int Height = 20;
+        [field: Header("Grid")]
 
-        [Header("Cell")]
-        [Min(0.1f)]
-        public float CellSize = 1f;
+        [field: SerializeField]
+        [field: Tooltip("Number of cells on the X axis.")]
+        [field: Range(5, 500)]
+        public int Width { get; private set; } = 20;
+
+        [field: SerializeField]
+        [field: Tooltip("Number of cells on the Y axis.")]
+        [field: Range(5, 500)]
+        public int Height { get; private set; } = 20;
+
+        #endregion
+
+        #region Cell
+
+        [field: Header("Cell")]
+
+        [field: SerializeField]
+        [field: Tooltip("World size of a single grid cell.")]
+        [field: Range(0.25f, 5f)]
+        public float CellSize { get; private set; } = 1f;
+
+        #endregion
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc346d436e4895043bd7dda9cd15732e, type: 3}
   m_Name: CD_GridSettings
   m_EditorClassIdentifier: 
-  Width: 100
-  Height: 100
-  CellSize: 1
+  <Width>k__BackingField: 50
+  <Height>k__BackingField: 50
+  <CellSize>k__BackingField: 1
