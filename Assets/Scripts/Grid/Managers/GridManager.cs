@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace PanteonStrategyGame.Grid
+namespace PanteonStrategyGame.Grid.Managers
 {
     public class GridManager : MonoBehaviour, IMapInfoProvider
     {

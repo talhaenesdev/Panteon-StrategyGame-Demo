@@ -1,4 +1,4 @@
-﻿namespace PanteonStrategyGame.Grid
+﻿namespace PanteonStrategyGame.Grid.Models
 {
     public readonly struct GridPosition
     {

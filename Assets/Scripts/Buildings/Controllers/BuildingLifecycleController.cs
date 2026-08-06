@@ -1,7 +1,7 @@
 ﻿using System;
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Core.Signals;
-using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Grid.Managers;
 using Zenject;
 
 namespace PanteonStrategyGame.Buildings.Controllers

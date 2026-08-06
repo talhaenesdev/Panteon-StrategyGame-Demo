@@ -1,7 +1,7 @@
 ﻿using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Services;
-using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Grid.Managers;
 using Zenject;
 
 namespace PanteonStrategyGame.Core.Installers

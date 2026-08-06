@@ -4,7 +4,7 @@ using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Common.Interfaces;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
-using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Grid.Managers;
 using PanteonStrategyGame.Units.Data;
 using PanteonStrategyGame.Units.Models;
 using UnityEngine;

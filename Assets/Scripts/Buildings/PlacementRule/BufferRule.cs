@@ -1,6 +1,7 @@
 ﻿using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
-using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Grid.Managers;
+using PanteonStrategyGame.Grid.Models;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Buildings.Placement.Rules

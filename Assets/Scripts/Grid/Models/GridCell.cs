@@ -1,7 +1,7 @@
 using PanteonStrategyGame.Buildings.Models;
 using UnityEngine;
 
-namespace PanteonStrategyGame.Grid
+namespace PanteonStrategyGame.Grid.Models
 {
     public class GridCell
     {

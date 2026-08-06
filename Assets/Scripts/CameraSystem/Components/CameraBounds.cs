@@ -1,4 +1,4 @@
-﻿using PanteonStrategyGame.Grid;
+﻿using PanteonStrategyGame.Grid.Managers;
 using PanteonStrategyGame.Grid.Models;
 using UnityEngine;
 using Zenject;

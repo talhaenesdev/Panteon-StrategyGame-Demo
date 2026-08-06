@@ -1,7 +1,7 @@
 ﻿using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Core.Interfaces;
-using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Grid.Managers;
 using PanteonStrategyGame.Pathfinding;
 using UnityEngine;
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PanteonStrategyGame.Core.Interfaces;
-using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Grid.Managers;
 
 namespace PanteonStrategyGame.Pathfinding
 {

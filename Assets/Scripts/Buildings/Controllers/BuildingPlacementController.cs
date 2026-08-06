@@ -6,7 +6,7 @@ using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Core.Utilities;
-using PanteonStrategyGame.Grid;
+using PanteonStrategyGame.Grid.Managers;
 using UnityEngine;
 using Zenject;
 
