@@ -14,10 +14,8 @@ namespace PanteonStrategyGame.Buildings.Data
 
         [field: SerializeField]
         public string DisplayName { get; private set; }
-        public BuildingType Type;
 
         [Header("General")]
-        public string BuildingName;
         public Sprite Icon;
 
         [Header("Pooling")]

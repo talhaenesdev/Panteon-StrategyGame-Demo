@@ -3,7 +3,6 @@ using System.Linq;
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
-using PanteonStrategyGame.Units.Components;
 using PanteonStrategyGame.Units.Data;
 using UnityEngine;
 using Zenject;
@@ -13,51 +12,70 @@ namespace PanteonStrategyGame.Buildings.Components
     [RequireComponent(typeof(PlayerBarracks))]
     public class ProductionComponent : MonoBehaviour
     {
-        [Inject] private SignalBus _signalBus;
-        [Inject] private IUnitFactory _unitFactory;
+        [Inject]
+        private SignalBus _signalBus;
 
-        [SerializeField] private SpawnPoint spawnPoint;
-        [SerializeField] private PlayerBarracks _barracks;
+        [Inject]
+        private IUnitFactory _unitFactory;
+
+        [SerializeField]
+        private PlayerBarracks _barracks;
 
         private readonly Queue<ProductionItem> _queue = new();
 
         public IReadOnlyCollection<UnitData> Queue =>
-            _queue.Select(x => x.UnitData).ToList();
+            _queue.Select(item => item.UnitData).ToList();
 
-        public void Produce(UnitData data)
+        public bool IsProducing =>
+            _queue.Count > 0;
+
+        public float RemainingTime =>
+            IsProducing
+                ? _queue.Peek().RemainingTime
+                : 0f;
+
+        public void Produce(UnitData unitData)
         {
-            _queue.Enqueue(new ProductionItem(data));
+            _queue.Enqueue(
+                new ProductionItem(unitData));
 
             NotifyQueueChanged();
         }
 
         private void Update()
         {
-            if (_queue.Count == 0)
+            if (!IsProducing)
                 return;
 
-            ProductionItem current = _queue.Peek();
+            ProductionItem current =
+                _queue.Peek();
 
             current.RemainingTime -= Time.deltaTime;
 
-            if (current.RemainingTime > 0)
+            if (current.RemainingTime > 0f)
                 return;
 
-            _unitFactory.Create(
-                current.UnitData,
-                _barracks.GetSpawnPosition());
+            SpawnUnit(current);
 
             _queue.Dequeue();
 
             NotifyQueueChanged();
         }
 
+        private void SpawnUnit(
+            ProductionItem item)
+        {
+            _unitFactory.Create(
+                item.UnitData,
+                _barracks.GetSpawnPosition());
+        }
+
         private void NotifyQueueChanged()
         {
             _signalBus.Fire(
-             new ProductionQueueChangedSignal(
-                 _barracks,
-                 Queue));
+                new ProductionQueueChangedSignal(
+                    _barracks,
+                    Queue));
         }
     }
 }

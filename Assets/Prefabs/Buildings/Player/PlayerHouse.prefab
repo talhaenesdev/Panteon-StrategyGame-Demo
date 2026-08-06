@@ -205,10 +205,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   _team: 0
-  buildingData: {fileID: 0}
-  selectionCircle: {fileID: 7701007461205722966}
-  playerFlag: {fileID: 6356449477157877798}
-  enemyFlag: {fileID: 4010766610236294069}
+  buildingData: {fileID: 11400000, guid: d497744bd7fc2f64d88aebc661c25bc2, type: 2}
+  _selectionCircle: {fileID: 7701007461205722966}
+  _playerFlag: {fileID: 6356449477157877798}
+  _enemyFlag: {fileID: 4010766610236294069}
 --- !u!1 &7701007461205722966
 GameObject:
   m_ObjectHideFlags: 0

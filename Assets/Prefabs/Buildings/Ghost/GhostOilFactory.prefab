@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2787c9a2c855b041abd3c67bc096ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderers:
+  _renderers:
   - {fileID: 817181178444613432}
-  validColor: {r: 0, g: 1, b: 0, a: 0.5019608}
-  invalidColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+  _validColor: {r: 0, g: 1, b: 0, a: 0.5019608}
+  _invalidColor: {r: 1, g: 0, b: 0, a: 0.5019608}

@@ -4,8 +4,6 @@ namespace PanteonStrategyGame.Buildings.Models
 {
     public class EnemyBarracks : Building
     {
-        public virtual bool IsControllable => false;
-
         public override string DisplayName => BuildingData.DisplayName;
 
         public override Sprite Icon => BuildingData.Icon;

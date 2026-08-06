@@ -161,9 +161,9 @@ MonoBehaviour:
   id: 
   _team: 0
   buildingData: {fileID: 11400000, guid: 762590bfd30dc5447ba3cfc100714db3, type: 2}
-  selectionCircle: {fileID: 8832797371506606914}
-  playerFlag: {fileID: 3769284282572384936}
-  enemyFlag: {fileID: 6615946121458422075}
+  _selectionCircle: {fileID: 8832797371506606914}
+  _playerFlag: {fileID: 3769284282572384936}
+  _enemyFlag: {fileID: 6615946121458422075}
 --- !u!1 &8832797371506606914
 GameObject:
   m_ObjectHideFlags: 0

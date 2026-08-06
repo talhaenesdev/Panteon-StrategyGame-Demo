@@ -91,10 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   _team: 1
-  buildingData: {fileID: 0}
-  selectionCircle: {fileID: 4657143318165793172}
-  playerFlag: {fileID: 8235011451436242660}
-  enemyFlag: {fileID: 2150218875553590647}
+  buildingData: {fileID: 11400000, guid: 4687e705d4f180145990a82b691b2662, type: 2}
+  _selectionCircle: {fileID: 4657143318165793172}
+  _playerFlag: {fileID: 8235011451436242660}
+  _enemyFlag: {fileID: 2150218875553590647}
 --- !u!1 &8235011451436242660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5149841351767422972, guid: 91d410236a063db488709c71a9d8fe50, type: 3}

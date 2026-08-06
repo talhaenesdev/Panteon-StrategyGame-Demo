@@ -88,9 +88,9 @@ MonoBehaviour:
   id: 
   _team: 0
   buildingData: {fileID: 11400000, guid: 762590bfd30dc5447ba3cfc100714db3, type: 2}
-  selectionCircle: {fileID: 7077458981586913609}
-  playerFlag: {fileID: 3234562062587109539}
-  enemyFlag: {fileID: 4862980408375122736}
+  _selectionCircle: {fileID: 7077458981586913609}
+  _playerFlag: {fileID: 3234562062587109539}
+  _enemyFlag: {fileID: 4862980408375122736}
 --- !u!1 &7077458981586913609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8832797371506606914, guid: 42d5cb60de5bae24988bbaff7854d860, type: 3}

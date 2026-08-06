@@ -5,7 +5,6 @@ namespace Assets.Scripts.Buildings.Models
 {
     internal class PlayerGeneralBuilding : Building
     {
-        public virtual bool IsControllable => true;
         public override string DisplayName => buildingData.DisplayName;
         public override Sprite Icon => buildingData.Icon;
     }

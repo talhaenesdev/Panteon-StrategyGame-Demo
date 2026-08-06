@@ -84,16 +84,16 @@ MonoBehaviour:
   id: 
   _team: 0
   buildingData: {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
-  selectionCircle: {fileID: 49174208194428260}
-  playerFlag: {fileID: 7648631638729609654}
-  enemyFlag: {fileID: 7557694491865501365}
---- !u!1 &7557694491865501365 stripped
+  _selectionCircle: {fileID: 49174208194428260}
+  _playerFlag: {fileID: 3622987340444631572}
+  _enemyFlag: {fileID: 6762383736926845319}
+--- !u!1 &3622987340444631572 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1357983579362832531, guid: 917c01f033a467242bc105cde337ed08, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5223535710549408818, guid: 917c01f033a467242bc105cde337ed08, type: 3}
   m_PrefabInstance: {fileID: 8807587075410755110}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7648631638729609654 stripped
+--- !u!1 &6762383736926845319 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1161840967517941648, guid: 917c01f033a467242bc105cde337ed08, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2873866014062987169, guid: 917c01f033a467242bc105cde337ed08, type: 3}
   m_PrefabInstance: {fileID: 8807587075410755110}
   m_PrefabAsset: {fileID: 0}

@@ -4,32 +4,40 @@ namespace PanteonStrategyGame.Buildings.Components
 {
     public class SpawnPositionProvider : MonoBehaviour
     {
-        private float _radius;
-        private float _angleStep;
+        private const int SpawnPointsPerRing = 8;
+        private const float RingOffset = 0.5f;
+
+        private float _spawnRadius;
+        private float _spawnAngleStep;
         private int _spawnIndex;
 
-        public void Initialize(float radius, float angleStep)
+        public void Initialize(
+            float spawnRadius,
+            float spawnAngleStep)
         {
-            _radius = radius;
-            _angleStep = angleStep;
+            _spawnRadius = spawnRadius;
+            _spawnAngleStep = spawnAngleStep;
+            _spawnIndex = 0;
         }
 
         public Vector3 GetSpawnPosition()
         {
-            float angle = _spawnIndex * _angleStep * Mathf.Deg2Rad;
+            float angle =
+                _spawnIndex * _spawnAngleStep * Mathf.Deg2Rad;
 
-            float spiralRadius =
-                _radius + (_spawnIndex / 8) * 0.5f;
+            float radius =
+                _spawnRadius +
+                (_spawnIndex / SpawnPointsPerRing) * RingOffset;
 
             Vector3 offset =
-                new Vector3(
+                new(
                     Mathf.Cos(angle),
                     Mathf.Sin(angle),
-                    0f) * spiralRadius;
+                    0f);
 
             _spawnIndex++;
 
-            return transform.position + offset;
+            return transform.position + offset * radius;
         }
 
         public void ResetIndex()

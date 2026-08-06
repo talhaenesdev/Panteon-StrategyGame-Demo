@@ -7,54 +7,88 @@ namespace PanteonStrategyGame.Buildings.Placement.Rules
 {
     public class BufferRule : IPlacementRule
     {
-        private readonly GridManager _grid;
+        private readonly GridManager _gridManager;
 
-        public BufferRule(GridManager grid)
+        public BufferRule(GridManager gridManager)
         {
-            _grid = grid;
+            _gridManager = gridManager;
         }
 
-        public bool Validate(BuildingData data, Vector2Int origin)
+        public bool Validate(
+            BuildingData buildingData,
+            Vector2Int origin)
         {
-            int ownBuffer = data.BuildingBuffer;
+            int buffer =
+                Mathf.Max(1, buildingData.BuildingBuffer);
 
-            int radius = Mathf.Max(1, ownBuffer);
+            int minX = -buffer;
+            int minY = -buffer;
 
-            int minX = -radius;
-            int minY = -radius;
+            int maxX =
+                buildingData.Size.x - 1 + buffer;
 
-            int maxX = data.Size.x - 1 + radius;
-            int maxY = data.Size.y - 1 + radius;
+            int maxY =
+                buildingData.Size.y - 1 + buffer;
 
             for (int x = minX; x <= maxX; x++)
             {
                 for (int y = minY; y <= maxY; y++)
                 {
-                    if (x >= 0 &&
-                        x < data.Size.x &&
-                        y >= 0 &&
-                        y < data.Size.y)
+                    if (IsInsideBuildingArea(
+                        x,
+                        y,
+                        buildingData.Size))
+                    {
+                        continue;
+                    }
+
+                    Vector2Int position =
+                        origin + new Vector2Int(x, y);
+
+                    if (!_gridManager.IsInsideGrid(position))
                         continue;
 
-                    Vector2Int pos = origin + new Vector2Int(x, y);
-
-                    if (!_grid.IsInsideGrid(pos))
-                        continue;
-
-                    GridCell cell = _grid.GetCell(pos);
+                    GridCell cell =
+                        _gridManager.GetCell(position);
 
                     if (!cell.IsOccupied)
                         continue;
 
-                    Building other = cell.OccupiedBuilding;
+                    Building neighbour =
+                        cell.OccupiedBuilding;
 
-                    if (ownBuffer > 0 ||
-                        other.BuildingData.BuildingBuffer > 0)
+                    if (neighbour == null)
+                        continue;
+
+                    if (HasBufferConflict(
+                        buildingData,
+                        neighbour.BuildingData))
+                    {
                         return false;
+                    }
                 }
             }
 
             return true;
+        }
+
+        private static bool IsInsideBuildingArea(
+            int x,
+            int y,
+            Vector2Int size)
+        {
+            return x >= 0 &&
+                   x < size.x &&
+                   y >= 0 &&
+                   y < size.y;
+        }
+
+        private static bool HasBufferConflict(
+            BuildingData first,
+            BuildingData second)
+        {
+            return first.BuildingBuffer > 0 ||
+                   second.BuildingBuffer > 0;
         }
     }
 }

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4007409848148712247, guid: 33173296b5aa2c442982c9df4791d157, type: 3}
       propertyPath: m_Name
-      value: PlayerTankFactory Variant
+      value: EnemyTankFactory
       objectReference: {fileID: 0}
     - target: {fileID: 5029396367921334452, guid: 33173296b5aa2c442982c9df4791d157, type: 3}
       propertyPath: m_RootOrder
@@ -85,10 +85,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   _team: 1
-  buildingData: {fileID: 0}
-  selectionCircle: {fileID: 7558332425821107803}
-  playerFlag: {fileID: 6488925304421648683}
-  enemyFlag: {fileID: 3860416984240829112}
+  buildingData: {fileID: 11400000, guid: a22f69b1884afbf4e90d4ea91b3b3bec, type: 2}
+  _selectionCircle: {fileID: 7558332425821107803}
+  _playerFlag: {fileID: 6488925304421648683}
+  _enemyFlag: {fileID: 3860416984240829112}
 --- !u!1 &6488925304421648683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3008665900973038348, guid: 33173296b5aa2c442982c9df4791d157, type: 3}

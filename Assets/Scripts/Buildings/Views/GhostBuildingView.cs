@@ -5,13 +5,13 @@ namespace PanteonStrategyGame.Buildings.Views
     public class GhostBuildingView : MonoBehaviour
     {
         [SerializeField]
-        private SpriteRenderer[] renderers;
+        private SpriteRenderer[] _renderers;
 
         [SerializeField]
-        private Color validColor = Color.green;
+        private Color _validColor = Color.green;
 
         [SerializeField]
-        private Color invalidColor = Color.red;
+        private Color _invalidColor = Color.red;
 
         public void UpdateVisual(
             Vector3 position,
@@ -29,10 +29,10 @@ namespace PanteonStrategyGame.Buildings.Views
         private void SetValid(bool isValid)
         {
             Color targetColor = isValid
-                ? validColor
-                : invalidColor;
+                ? _validColor
+                : _invalidColor;
 
-            foreach (SpriteRenderer renderer in renderers)
+            foreach (SpriteRenderer renderer in _renderers)
             {
                 renderer.color = targetColor;
             }

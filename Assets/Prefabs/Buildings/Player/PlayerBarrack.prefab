@@ -138,7 +138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2625975605339762570}
   - component: {fileID: 9118376501962700125}
-  - component: {fileID: 777459929687635862}
   - component: {fileID: 8052753599330218786}
   - component: {fileID: 4719965307507401731}
   - component: {fileID: 1672282117071072910}
@@ -183,24 +182,11 @@ MonoBehaviour:
   id: 
   _team: 0
   buildingData: {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
-  selectionCircle: {fileID: 8832797371506606914}
-  playerFlag: {fileID: 5223535710549408818}
-  enemyFlag: {fileID: 2873866014062987169}
-  productionComponent: {fileID: 8052753599330218786}
-  spawnPositionProvider: {fileID: 4719965307507401731}
---- !u!114 &777459929687635862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6206094125042187273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b12929a95047e42b6bd842c483f898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 8761063850943751472}
+  _selectionCircle: {fileID: 8832797371506606914}
+  _playerFlag: {fileID: 5223535710549408818}
+  _enemyFlag: {fileID: 2873866014062987169}
+  _productionComponent: {fileID: 8052753599330218786}
+  _spawnPositionProvider: {fileID: 4719965307507401731}
 --- !u!114 &8052753599330218786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d399a93341c7b40860775329dcc1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 8761063850943751472}
   _barracks: {fileID: 9118376501962700125}
 --- !u!114 &4719965307507401731
 MonoBehaviour:
@@ -227,8 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e32d5d07a948342887d3d1a2da45b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1.2
-  angleStep: 45
 --- !u!61 &1672282117071072910
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
-  _team: 0
+  _team: 1
   buildingData: {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  selectionCircle: {fileID: 6211441100973181292}
-  playerFlag: {fileID: 854514737030789584}
-  enemyFlag: {fileID: 7225013245216145987}
+  _selectionCircle: {fileID: 6211441100973181292}
+  _playerFlag: {fileID: 854514737030789584}
+  _enemyFlag: {fileID: 7225013245216145987}

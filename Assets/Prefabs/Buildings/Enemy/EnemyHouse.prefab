@@ -77,10 +77,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   _team: 1
-  buildingData: {fileID: 0}
-  selectionCircle: {fileID: 2979898242399426370}
-  playerFlag: {fileID: 1996050991710857266}
-  enemyFlag: {fileID: 8371305678562284449}
+  buildingData: {fileID: 11400000, guid: d497744bd7fc2f64d88aebc661c25bc2, type: 2}
+  _selectionCircle: {fileID: 2979898242399426370}
+  _playerFlag: {fileID: 1996050991710857266}
+  _enemyFlag: {fileID: 8371305678562284449}
 --- !u!1 &1996050991710857266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6356449477157877798, guid: 92fd9f81e723a1143ab6367bc4098945, type: 3}

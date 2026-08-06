@@ -1,4 +1,3 @@
-using PanteonStrategyGame.Buildings.Components;
 using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Common.Enums;
@@ -11,16 +10,42 @@ namespace PanteonStrategyGame.Buildings.Models
 {
     public abstract class Building : Entity, IDamageable
     {
+        #region Inject
+
         [Inject]
         private IAttackPositionProvider _attackPositionProvider;
 
-        public override EntityType EntityType => EntityType.Building;
+        #endregion
+
+        #region Inspector
+
+        [Header("Building")]
 
         [SerializeField]
         protected BuildingData buildingData;
 
+        [Header("Selection")]
+
         [SerializeField]
-        private GameObject selectionCircle;
+        private GameObject _selectionCircle;
+
+        [Header("Team Flags")]
+
+        [SerializeField]
+        private GameObject _playerFlag;
+
+        [SerializeField]
+        private GameObject _enemyFlag;
+
+        #endregion
+
+        #region Properties
+
+        public override EntityType EntityType => EntityType.Building;
+
+        public override string DisplayName => buildingData.DisplayName;
+
+        public override Sprite Icon => buildingData.Icon;
 
         public BuildingData BuildingData => buildingData;
 
@@ -30,29 +55,10 @@ namespace PanteonStrategyGame.Buildings.Models
 
         public int MaxHealth => buildingData.MaxHealth;
 
-        public override string DisplayName => buildingData.DisplayName;
+        #endregion
 
-        public override Sprite Icon => buildingData.Icon;
-        [SerializeField]
-        private GameObject playerFlag;
+        #region Initialization
 
-        [SerializeField]
-        private GameObject enemyFlag;
-
-        protected override void OnTeamChanged()
-        {
-            RefreshFlag();
-        }
-        private void RefreshFlag()
-        {
-            var currentTeam = Team;
-
-            if (playerFlag != null)
-                playerFlag.SetActive(currentTeam == PanteonStrategyGame.Common.Enums.Team.Player);
-
-            if (enemyFlag != null)
-                enemyFlag.SetActive(currentTeam == PanteonStrategyGame.Common.Enums.Team.Enemy);
-        }
         public virtual void Initialize(
             BuildingData data,
             Vector2Int originGridPosition)
@@ -63,8 +69,32 @@ namespace PanteonStrategyGame.Buildings.Models
 
             CurrentHealth = data.MaxHealth;
 
+            RefreshFlag();
+
             gameObject.SetActive(true);
         }
+
+        #endregion
+
+        #region Team
+
+        protected override void OnTeamChanged()
+        {
+            RefreshFlag();
+        }
+
+        private void RefreshFlag()
+        {
+            if (_playerFlag != null)
+                _playerFlag.SetActive(Team == Team.Player);
+
+            if (_enemyFlag != null)
+                _enemyFlag.SetActive(Team == Team.Enemy);
+        }
+
+        #endregion
+
+        #region Combat
 
         public Vector3 GetAttackPosition(Vector3 attackerPosition)
         {
@@ -73,11 +103,14 @@ namespace PanteonStrategyGame.Buildings.Models
                 attackerPosition);
         }
 
-        public void TakeDamage(int damage, IEntity attacker)
+        public void TakeDamage(
+            int damage,
+            IEntity attacker)
         {
             CurrentHealth -= damage;
 
-            SignalBus.Fire(new EntityHealthChangedSignal(this));
+            SignalBus.Fire(
+                new EntityHealthChangedSignal(this));
 
             if (CurrentHealth <= 0)
             {
@@ -85,16 +118,22 @@ namespace PanteonStrategyGame.Buildings.Models
             }
         }
 
+        #endregion
+
+        #region Selection
+
         public override void Select()
         {
-            if (selectionCircle != null)
-                selectionCircle.SetActive(true);
+            if (_selectionCircle != null)
+                _selectionCircle.SetActive(true);
         }
 
         public override void Deselect()
         {
-            if (selectionCircle != null)
-                selectionCircle.SetActive(false);
+            if (_selectionCircle != null)
+                _selectionCircle.SetActive(false);
         }
+
+        #endregion
     }
 }
