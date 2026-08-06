@@ -21,7 +21,7 @@ Players can:
 # Screenshots
 
 ## Gameplay
-![Gameplay](Assets/Screenshots/screenshotsgameplay-soldier-house.png)
+![Gameplay](screenshotsgameplay-enemy-build-attack.png)
 
 ## Building Placement
 ![Building Placement](Assets/Screenshots/screenshotsgameplay-ghost-builder.png)
