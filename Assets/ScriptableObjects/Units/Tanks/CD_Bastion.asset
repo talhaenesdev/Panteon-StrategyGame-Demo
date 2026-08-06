@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e55040d161f649468cd8b8440f142b3, type: 3}
+  m_Name: CD_Bastion
+  m_EditorClassIdentifier: 
+  <DisplayName>k__BackingField: Bastion
+  Type: 0
+  UnitName: Bastion
+  Icon: {fileID: 21300000, guid: 86f34b4044616dc40939170a75dc1456, type: 3}
+  poolKey: Bastion
+  MaxHealth: 1000
+  MoveSpeed: 0.5
+  productionTime: 0
+  attackRange: 5
+  attackRate: 3
+  damage: 100

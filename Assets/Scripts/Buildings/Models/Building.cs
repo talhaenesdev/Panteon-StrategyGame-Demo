@@ -1,3 +1,4 @@
+using PanteonStrategyGame.Buildings.Components;
 using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Common.Enums;

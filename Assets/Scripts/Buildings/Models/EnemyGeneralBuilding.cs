@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Buildings.Models
 {
-    internal class GeneralBuilding : Building
+    internal class EnemyGeneralBuilding : Building
     {
+        public virtual bool IsControllable => false;
         public override string DisplayName => buildingData.DisplayName;
         public override Sprite Icon => buildingData.Icon;
     }

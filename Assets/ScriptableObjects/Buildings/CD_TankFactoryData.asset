@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
+  m_Name: CD_TankFactoryData
+  m_EditorClassIdentifier: 
+  buildingBuffer: 1
+  <DisplayName>k__BackingField: TankFactory
+  Type: 0
+  BuildingName: TankFactory
+  Icon: {fileID: 21300000, guid: c5e538dff5844144c85e69e7546cd841, type: 3}
+  _poolKey: TankFactory
+  _ghostPoolKey: TankFactoryGhost
+  MaxHealth: 150
+  Size: {x: 5, y: 4}
+  producibleUnits:
+  - {fileID: 11400000, guid: f33a077018791d34b8b5262d2c3afd2a, type: 2}
+  - {fileID: 11400000, guid: fdb75455ad4f9a340b4c355436cd8884, type: 2}
+  - {fileID: 11400000, guid: 2efcb3d8a15bd134993dfc4e4a906b11, type: 2}
+  spawnRadius: 4
+  spawnAngleStep: 90

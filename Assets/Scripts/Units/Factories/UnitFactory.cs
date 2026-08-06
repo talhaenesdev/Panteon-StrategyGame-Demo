@@ -10,14 +10,17 @@ namespace PanteonStrategyGame.Units.Factories
     public class UnitFactory : IUnitFactory
     {
         private readonly PoolManager _poolManager;
-        private readonly IUnitService _unitService;
+        private readonly IUnitService _unitService; 
+        private readonly IRuntimeHierarchyService _runtimeHierarchy;
 
         public UnitFactory(
             PoolManager poolManager,
-            IUnitService unitService)
+            IUnitService unitService,
+            IRuntimeHierarchyService runtimeHierarchy)
         {
             _poolManager = poolManager;
             _unitService = unitService;
+            _runtimeHierarchy = runtimeHierarchy;
         }
 
         public Unit Create(
@@ -25,7 +28,7 @@ namespace PanteonStrategyGame.Units.Factories
             Vector3 position)
         {
             GameObject pooledObject =
-                _poolManager.Get(data.PoolKey);
+                _poolManager.Get(data.PoolKey, _runtimeHierarchy.RuntimeUnits);
 
             pooledObject.transform.SetPositionAndRotation(
                 position,

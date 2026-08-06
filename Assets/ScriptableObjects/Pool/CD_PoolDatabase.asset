@@ -13,39 +13,102 @@ MonoBehaviour:
   m_Name: CD_PoolDatabase
   m_EditorClassIdentifier: 
   pools:
-  - poolKey: Soldier1
-    prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
-    initialSize: 5
-  - poolKey: Soldier2
-    prefab: {fileID: 6206094125042187273, guid: fbfab09004e595145ab5c43f1a272f91, type: 3}
-    initialSize: 5
-  - poolKey: Soldier3
-    prefab: {fileID: 6206094125042187273, guid: 54a082c884859b9499049f86f88ba363, type: 3}
-    initialSize: 5
+  - poolKey: BuildButton
+    prefab: {fileID: 1867599388127548573, guid: 3003eeb5005dab847b326f3b71e59329, type: 3}
+    initialSize: 1
+  - poolKey: QueueItem
+    prefab: {fileID: 8514762725660838901, guid: 653e883411f58364e941384d0e9ee6f2, type: 3}
+    initialSize: 3
+  - poolKey: ProductionButton
+    prefab: {fileID: 8377560745696317181, guid: daef0866093cb6240b9770bda72871e2, type: 3}
+    initialSize: 3
   - poolKey: Barrack
     prefab: {fileID: 6206094125042187273, guid: 917c01f033a467242bc105cde337ed08, type: 3}
     initialSize: 2
   - poolKey: BarrackGhost
     prefab: {fileID: 6206094125042187273, guid: 985e0627062a5644183c142cb269010e, type: 3}
     initialSize: 1
+  - poolKey: BarrackEnemy
+    prefab: {fileID: 3178042146308145711, guid: 69684bda1fa47ac42af298ddd5987b6a, type: 3}
+    initialSize: 2
   - poolKey: PowerPlant
     prefab: {fileID: 7756101907054380781, guid: 051cea98d168361489e4f3489bd3f159, type: 3}
     initialSize: 2
   - poolKey: PowerPlantGhost
     prefab: {fileID: 7756101907054380781, guid: 6a89a6177d83d4c42a5205b9fc1ae8fb, type: 3}
     initialSize: 1
-  - poolKey: BuildButton
-    prefab: {fileID: 1867599388127548573, guid: 3003eeb5005dab847b326f3b71e59329, type: 3}
-    initialSize: 1
-  - poolKey: ProductionButton
-    prefab: {fileID: 8377560745696317181, guid: daef0866093cb6240b9770bda72871e2, type: 3}
-    initialSize: 3
-  - poolKey: QueueItem
-    prefab: {fileID: 8514762725660838901, guid: 653e883411f58364e941384d0e9ee6f2, type: 3}
-    initialSize: 3
+  - poolKey: PowerPlantEnemy
+    prefab: {fileID: 8829138936499828263, guid: 15e3d3b8b3eeec1458ea843688d05341, type: 3}
+    initialSize: 2
   - poolKey: Factory
     prefab: {fileID: 6206094125042187273, guid: 42d5cb60de5bae24988bbaff7854d860, type: 3}
     initialSize: 1
-  - poolKey: EnemySoldier1
+  - poolKey: FactoryGhost
+    prefab: {fileID: 6206094125042187273, guid: a056c355d0b6d7b489e43609ca7766bd, type: 3}
+    initialSize: 1
+  - poolKey: FactoryEnemy
+    prefab: {fileID: 5659952308025439746, guid: de72f5adec1a147488c2fa5e19c62c1f, type: 3}
+    initialSize: 2
+  - poolKey: House
+    prefab: {fileID: 5074262289950717981, guid: 92fd9f81e723a1143ab6367bc4098945, type: 3}
+    initialSize: 2
+  - poolKey: HouseGhost
+    prefab: {fileID: 7172951716863311398, guid: 88ad5efb2038bf0499db69d58518528d, type: 3}
+    initialSize: 1
+  - poolKey: HouseEnemy
+    prefab: {fileID: 427462054298232841, guid: 309b226e858f0a445b506f03536ad3f0, type: 3}
+    initialSize: 2
+  - poolKey: OilFactory
+    prefab: {fileID: 6424994928596400071, guid: 91d410236a063db488709c71a9d8fe50, type: 3}
+    initialSize: 2
+  - poolKey: OilFactoryGhost
+    prefab: {fileID: 5158844552659783217, guid: 7fde495ef3851534f86b13e0ee06c244, type: 3}
+    initialSize: 1
+  - poolKey: OilFactoryEnemy
+    prefab: {fileID: 7788237768927991519, guid: d8134ba34e6989f4ba0497fbe0d71ea2, type: 3}
+    initialSize: 2
+  - poolKey: TankFactory
+    prefab: {fileID: 4007409848148712247, guid: 33173296b5aa2c442982c9df4791d157, type: 3}
+    initialSize: 2
+  - poolKey: TankFactoryGhost
+    prefab: {fileID: 1432346018907065848, guid: 4f484d27327f6c440b2e5739e11d5237, type: 3}
+    initialSize: 2
+  - poolKey: TankFactoryEnemy
+    prefab: {fileID: 4922584593477060880, guid: a23601a156d78dd4a9e230909397d67c, type: 3}
+    initialSize: 2
+  - poolKey: Assault
+    prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
+    initialSize: 5
+  - poolKey: AssaultEnemy
+    prefab: {fileID: 5144816163918969260, guid: 4acf6224f8799be4c9aa9cb044beae09, type: 3}
+    initialSize: 5
+  - poolKey: Heavy
+    prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
+    initialSize: 5
+  - poolKey: HeavyEnemy
+    prefab: {fileID: 5144816163918969260, guid: 4acf6224f8799be4c9aa9cb044beae09, type: 3}
+    initialSize: 5
+  - poolKey: Striker
+    prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
+    initialSize: 5
+  - poolKey: StrikerEnemy
+    prefab: {fileID: 5144816163918969260, guid: 4acf6224f8799be4c9aa9cb044beae09, type: 3}
+    initialSize: 5
+  - poolKey: Bastion
+    prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
+    initialSize: 5
+  - poolKey: BastionEnemy
+    prefab: {fileID: 5144816163918969260, guid: 4acf6224f8799be4c9aa9cb044beae09, type: 3}
+    initialSize: 5
+  - poolKey: Guardian
+    prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
+    initialSize: 5
+  - poolKey: GuardianEnemy
+    prefab: {fileID: 5144816163918969260, guid: 4acf6224f8799be4c9aa9cb044beae09, type: 3}
+    initialSize: 5
+  - poolKey: Sentinel
+    prefab: {fileID: 6206094125042187273, guid: eb7eac503ede52e48ab831483f706129, type: 3}
+    initialSize: 5
+  - poolKey: SentinelEnemy
     prefab: {fileID: 5144816163918969260, guid: 4acf6224f8799be4c9aa9cb044beae09, type: 3}
     initialSize: 5

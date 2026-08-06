@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
-  m_Name: CD_FactoryData
+  m_Name: CD_HouseData
   m_EditorClassIdentifier: 
   buildingBuffer: 0
-  <DisplayName>k__BackingField: Factory
-  Type: 2
-  BuildingName: Factory
-  Icon: {fileID: 21300000, guid: 0149168eaeed9914f9038311a73effda, type: 3}
-  _poolKey: Factory
-  _ghostPoolKey: FactoryGhost
-  MaxHealth: 25
-  Size: {x: 4, y: 4}
+  <DisplayName>k__BackingField: House
+  Type: 0
+  BuildingName: House
+  Icon: {fileID: 21300000, guid: 2cdfff0892bf5304cad0d1c319ad8a2d, type: 3}
+  _poolKey: House
+  _ghostPoolKey: HouseGhost
+  MaxHealth: 20
+  Size: {x: 1, y: 1}
   producibleUnits: []

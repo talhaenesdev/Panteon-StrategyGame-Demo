@@ -14,13 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildings:
   - {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
+  - {fileID: 11400000, guid: a22f69b1884afbf4e90d4ea91b3b3bec, type: 2}
+  - {fileID: 11400000, guid: 762590bfd30dc5447ba3cfc100714db3, type: 2}
+  - {fileID: 11400000, guid: d497744bd7fc2f64d88aebc661c25bc2, type: 2}
+  - {fileID: 11400000, guid: 4687e705d4f180145990a82b691b2662, type: 2}
   - {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}

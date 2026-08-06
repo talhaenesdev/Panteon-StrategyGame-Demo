@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using PanteonStrategyGame.Buildings.Components;
+﻿using PanteonStrategyGame.Buildings.Components;
+using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Units.Data;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Buildings.Models
@@ -22,10 +23,21 @@ namespace PanteonStrategyGame.Buildings.Models
 
         public IReadOnlyList<UnitData> ProducibleUnits =>
             BuildingData.ProducibleUnits;
+        public override void Initialize(
+            BuildingData data,
+            Vector2Int originGridPosition)
+        {
+            base.Initialize(data, originGridPosition);
+
+            spawnPositionProvider.Initialize(
+                data.SpawnRadius,
+                data.SpawnAngleStep);
+        }
 
         public Vector3 GetSpawnPosition()
         {
             return spawnPositionProvider.GetSpawnPosition();
         }
+        
     }
 }

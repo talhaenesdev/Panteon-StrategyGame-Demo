@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e55040d161f649468cd8b8440f142b3, type: 3}
-  m_Name: CD_Soldier3
+  m_Name: CD_Assault
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Knight
-  Type: 2
-  UnitName: Soldier3
-  Icon: {fileID: 21300000, guid: 05052de3074cbf4439d4c4cbd2130bab, type: 3}
-  poolKey: Soldier3
-  MaxHealth: 100
-  Damage: 10
-  MoveSpeed: 1
+  <DisplayName>k__BackingField: Assault
+  Type: 0
+  UnitName: Assault
+  Icon: {fileID: 21300000, guid: 749224e2198b1254eb21f6e7ab4f152a, type: 3}
+  poolKey: Assault
+  MaxHealth: 10
+  MoveSpeed: 3
   productionTime: 0
+  attackRange: 0.1
+  attackRate: 1
+  damage: 5

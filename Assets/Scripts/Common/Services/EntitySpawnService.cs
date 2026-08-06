@@ -2,6 +2,7 @@ using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Common.Interfaces;
+using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Grid;
 using PanteonStrategyGame.Units.Data;
@@ -14,13 +15,16 @@ namespace PanteonStrategyGame.Common.Services
     {
         private readonly PoolManager _poolManager;
         private readonly GridManager _gridManager;
+        private readonly IRuntimeHierarchyService _runtimeHierarchy;
 
         public EntitySpawnService(
             PoolManager poolManager,
-            GridManager gridManager)
+            GridManager gridManager,
+            IRuntimeHierarchyService runtimeHierarchy)
         {
             _poolManager = poolManager;
             _gridManager = gridManager;
+            _runtimeHierarchy = runtimeHierarchy;
         }
 
         public Unit SpawnUnit(
@@ -33,7 +37,7 @@ namespace PanteonStrategyGame.Common.Services
                 _gridManager.GetWorldPosition(gridPosition);
 
             GameObject obj =
-                _poolManager.Get(poolKey);
+                _poolManager.Get(poolKey,_runtimeHierarchy.RuntimeUnits);
 
             obj.transform.SetPositionAndRotation(
                 worldPosition,
@@ -65,7 +69,7 @@ namespace PanteonStrategyGame.Common.Services
                     data.Size);
 
             GameObject obj =
-                _poolManager.Get(poolKey);
+                _poolManager.Get(poolKey,_runtimeHierarchy.RuntimeBuildings);
 
             obj.transform.SetPositionAndRotation(
                 worldPosition,

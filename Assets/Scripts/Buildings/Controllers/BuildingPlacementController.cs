@@ -17,6 +17,7 @@ namespace PanteonStrategyGame.Buildings.Controllers
         [Inject] private GridManager _gridManager;
         [Inject] private IBuildingFactory _buildingFactory;
         [Inject] private IBuildingPlacementService _validator;
+        [Inject] private IRuntimeHierarchyService _runtimeHierarchy;
         [Inject] private SignalBus _signalBus;
         [Inject] private PoolManager _poolManager;
 
@@ -51,7 +52,7 @@ namespace PanteonStrategyGame.Buildings.Controllers
             _selectedBuilding = buildingData;
 
             GameObject ghost =
-                _poolManager.Get(buildingData.GhostPoolKey);
+                _poolManager.Get(buildingData.GhostPoolKey, _runtimeHierarchy.RuntimeBuildings);
 
             ghost.transform.SetPositionAndRotation(
                 Vector3.zero,

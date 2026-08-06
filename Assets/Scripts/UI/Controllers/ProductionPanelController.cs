@@ -17,8 +17,6 @@ namespace PanteonStrategyGame.UI.Controllers
 
         private readonly List<ProductionButtonView> _buttons = new();
 
-        private PlayerBarracks _selectedBarracks;
-
         public ProductionPanelController(
             SignalBus signalBus,
             ProductionPanelView view,
@@ -45,8 +43,6 @@ namespace PanteonStrategyGame.UI.Controllers
         {
             if (signal.SelectedEntity is PlayerBarracks barracks)
             {
-                _selectedBarracks = barracks;
-
                 if (barracks.Team != Team.Player)
                 {
                     _view.Hide();
@@ -59,8 +55,6 @@ namespace PanteonStrategyGame.UI.Controllers
 
                 return;
             }
-
-            _selectedBarracks = null;
 
             ClearButtons();
 

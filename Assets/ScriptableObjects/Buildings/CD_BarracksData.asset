@@ -25,3 +25,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11ce291a15e1b6e49bd57a524cb4e982, type: 2}
   - {fileID: 11400000, guid: 968d2d72e48e9654c9f39491a92e2aa2, type: 2}
   - {fileID: 11400000, guid: a659f337b8931764e842b916d2f49eac, type: 2}
+  spawnRadius: 2
+  spawnAngleStep: 90

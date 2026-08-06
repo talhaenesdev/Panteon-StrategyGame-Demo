@@ -7,6 +7,7 @@ using PanteonStrategyGame.Common.Services;
 using PanteonStrategyGame.Core.Debug;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Pooling;
+using PanteonStrategyGame.Core.Services;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Grid;
 using PanteonStrategyGame.Pathfinding;
@@ -25,8 +26,9 @@ namespace PanteonStrategyGame.Core.Installers
     {
 
         [SerializeField]
-        private PoolDatabase poolDatabase;
-
+        private PoolDatabase poolDatabase; 
+        [SerializeField]
+        private RuntimeHierarchyService runtimeHierarchyService;
         public override void InstallBindings()
         {
 
@@ -50,6 +52,7 @@ namespace PanteonStrategyGame.Core.Installers
             Container.Bind<ISelectionService>().To<SelectionService>().AsSingle();
             Container.Bind<IProductionService>().To<ProductionService>().AsSingle();
             Container.Bind<IEntitySpawnService>().To<EntitySpawnService>().AsSingle();
+            Container.Bind<IRuntimeHierarchyService>().FromInstance(runtimeHierarchyService).AsSingle();
 
             Container.Bind<EntityInfoPanelView>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ProductionPanelView>().FromComponentInHierarchy().AsSingle();
@@ -72,8 +75,7 @@ namespace PanteonStrategyGame.Core.Installers
             Container.Bind<IPlacementRule>().To<BufferRule>().AsSingle();
 
 
-            Container.BindInterfacesAndSelfTo<PoolManager>().AsSingle();
-
+            Container.BindInterfacesAndSelfTo<PoolManager>().AsSingle(); 
         }
     }
 }

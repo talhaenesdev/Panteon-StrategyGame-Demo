@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
-  m_Name: CD_FactoryData
+  m_Name: CD_OitFactoryData
   m_EditorClassIdentifier: 
   buildingBuffer: 0
-  <DisplayName>k__BackingField: Factory
+  <DisplayName>k__BackingField: OilFactory
   Type: 2
-  BuildingName: Factory
-  Icon: {fileID: 21300000, guid: 0149168eaeed9914f9038311a73effda, type: 3}
-  _poolKey: Factory
-  _ghostPoolKey: FactoryGhost
-  MaxHealth: 25
-  Size: {x: 4, y: 4}
+  BuildingName: OilFactory
+  Icon: {fileID: 21300000, guid: 4799a15b5054e4d49b0ac1a41b9c855a, type: 3}
+  _poolKey: OilFactory
+  _ghostPoolKey: OilFactoryGhost
+  MaxHealth: 60
+  Size: {x: 3, y: 3}
   producibleUnits: []

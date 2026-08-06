@@ -10,14 +10,17 @@ namespace PanteonStrategyGame.Buildings.Factories
     public class BuildingFactory : IBuildingFactory
     {
         private readonly PoolManager _poolManager;
-        private readonly IBuildingService _buildingService;
+        private readonly IBuildingService _buildingService; 
+        private readonly IRuntimeHierarchyService _runtimeHierarchy;
 
         public BuildingFactory(
             PoolManager poolManager,
-            IBuildingService buildingService)
+            IBuildingService buildingService,
+            IRuntimeHierarchyService runtimeHierarchy)
         {
             _poolManager = poolManager;
             _buildingService = buildingService;
+            _runtimeHierarchy = runtimeHierarchy;
         }
 
         public Building Create(
@@ -26,7 +29,7 @@ namespace PanteonStrategyGame.Buildings.Factories
             Vector2Int originGridPosition)
         {
             GameObject pooledObject =
-                _poolManager.Get(data.PoolKey);
+                _poolManager.Get(data.PoolKey, _runtimeHierarchy.RuntimeBuildings);
 
             pooledObject.transform.SetPositionAndRotation(
                 position,

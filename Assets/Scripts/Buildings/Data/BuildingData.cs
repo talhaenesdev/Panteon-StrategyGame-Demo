@@ -36,5 +36,15 @@ namespace PanteonStrategyGame.Buildings.Data
         [SerializeField]
         private UnitData[] producibleUnits;
         public IReadOnlyList<UnitData> ProducibleUnits => producibleUnits;
+
+        [Header("Spawn Settings")]
+        [SerializeField]
+        private float spawnRadius = 1.2f;
+
+        [SerializeField]
+        private float spawnAngleStep = 45f;
+
+        public float SpawnRadius => spawnRadius;
+        public float SpawnAngleStep => spawnAngleStep;
     }
 }
