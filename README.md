@@ -144,7 +144,7 @@ The goal is to keep every system loosely coupled and easily extendable.
 
 # Technologies
 
-- Unity 2021.3.45f1 LTS
+- Unity 2021.3.45f2 LTS
 - C#
 - Zenject
 - TextMeshPro
@@ -155,14 +155,6 @@ The goal is to keep every system loosely coupled and easily extendable.
 # Build
 
 Windows x64 executable is available in the **Releases** section.
-
----
-
-# Unity Version
-
-```
-2021.3.45f1
-```
 
 ---
 
