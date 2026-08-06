@@ -15,10 +15,10 @@ namespace PanteonStrategyGame.Units.Models
         private UnitTeamMaterial _teamMaterial;
         public override EntityType EntityType => EntityType.Unit;
 
-        protected UnitData Data;
+        protected UnitData _data;
         public int CurrentHealth { get; protected set; }
 
-        public int MaxHealth => Data.MaxHealth;
+        public int MaxHealth => _data.MaxHealth;
 
         [SerializeField]
         private GameObject selectionCircle;
@@ -38,7 +38,7 @@ namespace PanteonStrategyGame.Units.Models
 
         public virtual void Initialize(UnitData data)
         {
-            Data = data;
+            _data = data;
 
             CurrentHealth = data.MaxHealth;
 

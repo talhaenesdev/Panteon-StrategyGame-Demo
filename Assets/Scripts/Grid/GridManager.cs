@@ -13,7 +13,7 @@ namespace PanteonStrategyGame.Grid
     public class GridManager : MonoBehaviour, IMapInfoProvider
     {
         [SerializeField]
-        private GridSettings settings;
+        private GridSettings _settings;
 
         private GridCell[,] _cells;
         private GridNode[,] _nodes;
@@ -24,19 +24,19 @@ namespace PanteonStrategyGame.Grid
         }
         public Vector2 MapSize =>
     new(
-        settings.Width * settings.CellSize,
-        settings.Height * settings.CellSize);
+        _settings.Width * _settings.CellSize,
+        _settings.Height * _settings.CellSize);
 
         public MapBounds MapBounds {  get; private set; }
 
         private void CreateGrid()
         {
-            _cells = new GridCell[settings.Width, settings.Height];
-            _nodes = new GridNode[settings.Width, settings.Height];
+            _cells = new GridCell[_settings.Width, _settings.Height];
+            _nodes = new GridNode[_settings.Width, _settings.Height];
 
-            for (int x = 0; x < settings.Width; x++)
+            for (int x = 0; x < _settings.Width; x++)
             {
-                for (int y = 0; y < settings.Height; y++)
+                for (int y = 0; y < _settings.Height; y++)
                 {
                     Vector2Int gridPosition = new Vector2Int(x, y);
 
@@ -56,9 +56,9 @@ namespace PanteonStrategyGame.Grid
         public bool IsInsideGrid(Vector2Int position)
         {
             return position.x >= 0 &&
-                   position.x < settings.Width &&
+                   position.x < _settings.Width &&
                    position.y >= 0 &&
-                   position.y < settings.Height;
+                   position.y < _settings.Height;
         }
 
         public GridCell GetCell(Vector2Int position)
@@ -127,8 +127,8 @@ namespace PanteonStrategyGame.Grid
         public Vector3 GetWorldPosition(Vector2Int gridPosition)
         {
             return transform.position + new Vector3(
-                gridPosition.x * settings.CellSize,
-                gridPosition.y * settings.CellSize,
+                gridPosition.x * _settings.CellSize,
+                gridPosition.y * _settings.CellSize,
                 0f);
         }
 
@@ -137,10 +137,10 @@ namespace PanteonStrategyGame.Grid
             Vector2Int size)
         {
             float offsetX =
-                (size.x - 1) * settings.CellSize * 0.5f;
+                (size.x - 1) * _settings.CellSize * 0.5f;
 
             float offsetY =
-                (size.y - 1) * settings.CellSize * 0.5f;
+                (size.y - 1) * _settings.CellSize * 0.5f;
 
             return GetWorldPosition(origin) +
                    new Vector3(offsetX, offsetY, 0f);
@@ -152,8 +152,8 @@ namespace PanteonStrategyGame.Grid
                 worldPosition - transform.position;
 
             return new Vector2Int(
-                Mathf.RoundToInt(localPosition.x / settings.CellSize),
-                Mathf.RoundToInt(localPosition.y / settings.CellSize));
+                Mathf.RoundToInt(localPosition.x / _settings.CellSize),
+                Mathf.RoundToInt(localPosition.y / _settings.CellSize));
         }
 
         public void PlaceBuilding(
@@ -206,10 +206,10 @@ namespace PanteonStrategyGame.Grid
             float minY = transform.position.y;
 
             float maxX =
-                transform.position.x + (settings.Width - 1) * settings.CellSize;
+                transform.position.x + (_settings.Width - 1) * _settings.CellSize;
 
             float maxY =
-                transform.position.y + (settings.Height - 1) * settings.CellSize;
+                transform.position.y + (_settings.Height - 1) * _settings.CellSize;
 
             return new MapBounds(
                 minX,
@@ -232,7 +232,7 @@ namespace PanteonStrategyGame.Grid
 
             int radius =
                 Mathf.CeilToInt(
-                    attackRange / settings.CellSize) + 1;
+                    attackRange / _settings.CellSize) + 1;
 
             for (int x = -radius; x <= radius; x++)
             {
@@ -299,7 +299,7 @@ namespace PanteonStrategyGame.Grid
 
                 Gizmos.DrawWireCube(
                     node.WorldPosition,
-                    Vector3.one * settings.CellSize);
+                    Vector3.one * _settings.CellSize);
             }
         }
 

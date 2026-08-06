@@ -28,7 +28,7 @@ namespace PanteonStrategyGame.Units.Components
         private float _attackTimer;
         private float _pathRefreshTimer;
 
-        private const float PathRefreshInterval = 0.25f;
+        private const float C_PathRefreshInterval = 0.25f;
         private Transform _targetTransform;
 
         public Transform TargetTransform => _targetTransform;
@@ -104,7 +104,7 @@ namespace PanteonStrategyGame.Units.Components
             {
                 _pathRefreshTimer += Time.deltaTime;
 
-                if (_pathRefreshTimer >= PathRefreshInterval)
+                if (_pathRefreshTimer >= C_PathRefreshInterval)
                 {
                     _pathRefreshTimer = 0f;
 

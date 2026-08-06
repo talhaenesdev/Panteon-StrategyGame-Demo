@@ -11,10 +11,10 @@ namespace PanteonStrategyGame.UI.Controllers
     public class BuildPanelController : MonoBehaviour
     {
         [SerializeField]
-        private BuildMenuData buildMenuData;
+        private BuildMenuData _buildMenuData;
 
         [SerializeField]
-        private BuildPanelView view;
+        private BuildPanelView _view;
 
         [Inject]
         private SignalBus _signalBus;
@@ -33,10 +33,10 @@ namespace PanteonStrategyGame.UI.Controllers
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
-                if (view.gameObject.activeSelf)
-                    view.Hide();
+                if (_view.gameObject.activeSelf)
+                    _view.Hide();
                 else
-                    view.Show();
+                    _view.Show();
             }
         }
 
@@ -44,11 +44,11 @@ namespace PanteonStrategyGame.UI.Controllers
         {
             ClearButtons();
 
-            foreach (BuildingData building in buildMenuData.Buildings)
+            foreach (BuildingData building in _buildMenuData.Buildings)
             {
                 BuildButtonView button =
                     _uiFactory.CreateBuildButton(
-                        view.ButtonContainer);
+                        _view.ButtonContainer);
 
                 button.Initialize(
                     building.DisplayName,

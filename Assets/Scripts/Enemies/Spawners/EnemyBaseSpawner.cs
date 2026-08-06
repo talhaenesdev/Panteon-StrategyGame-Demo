@@ -9,14 +9,14 @@ namespace PanteonStrategyGame.Enemies.Spawners
     public class EnemyBaseSpawner : MonoBehaviour
     {
         [SerializeField]
-        private EnemyBaseLayout layout;
+        private EnemyBaseLayout _layout;
 
         [Inject]
         private IEntitySpawnService _spawnService;
 
         private void Start()
         {
-            foreach (EnemySpawnData spawn in layout.Spawns)
+            foreach (EnemySpawnData spawn in _layout.Spawns)
             {
                 if (spawn.UnitData != null)
                 {

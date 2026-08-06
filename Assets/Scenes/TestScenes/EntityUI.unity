@@ -1029,8 +1029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42ee53258801394bbf58b0cabf0b267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildMenuData: {fileID: 11400000, guid: 407b9d53ea704bf42807b59aec2f5e2e, type: 2}
-  view: {fileID: 119008715}
+  _buildMenuData: {fileID: 11400000, guid: 407b9d53ea704bf42807b59aec2f5e2e, type: 2}
+  _view: {fileID: 119008715}
 --- !u!4 &924124985
 Transform:
   m_ObjectHideFlags: 0
@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0360e946439aa234faaa491ee4745724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: c2940ec60eb58784db888ca740716f22, type: 2}
+  _settings: {fileID: 11400000, guid: c2940ec60eb58784db888ca740716f22, type: 2}
   drawWalkableGizmos: 1
 --- !u!4 &1220785002
 Transform:
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c43aa5b4a38fc4eaea1264bb57c54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layout: {fileID: 11400000, guid: dd569d4a6decbb04aa15c066e14e470b, type: 2}
+  _layout: {fileID: 11400000, guid: dd569d4a6decbb04aa15c066e14e470b, type: 2}
 --- !u!4 &1406757714
 Transform:
   m_ObjectHideFlags: 0
@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27670eddb7a41446986e2cca04eb29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamMaterials:
+  _teamMaterials:
   - Team: 0
     Material: {fileID: 2100000, guid: 81c76d2d6d96ce84ea41bcb1c2a6549b, type: 2}
   - Team: 1

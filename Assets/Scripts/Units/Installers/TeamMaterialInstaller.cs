@@ -10,14 +10,14 @@ namespace PanteonStrategyGame.Units.Installers
     public class TeamMaterialInstaller : MonoInstaller
     {
         [SerializeField]
-        private List<TeamMaterialEntry> teamMaterials;
+        private List<TeamMaterialEntry> _teamMaterials;
 
         public override void InstallBindings()
         {
             Container.Bind<ITeamMaterialService>()
                 .To<TeamMaterialService>()
                 .AsSingle()
-                .WithArguments(teamMaterials);
+                .WithArguments(_teamMaterials);
         }
     }
 }

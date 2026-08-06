@@ -9,7 +9,6 @@ namespace PanteonStrategyGame.Units.Components
 
         private float _moveSpeed;
 
-        public bool HasPath => _path.Count > 0;
 
         public void Initialize(float moveSpeed)
         {

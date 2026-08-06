@@ -1,5 +1,4 @@
 using PanteonStrategyGame.Common.Entities;
-using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;

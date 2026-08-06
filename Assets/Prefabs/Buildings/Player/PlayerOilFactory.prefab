@@ -31,7 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6752428123682692442}
-  - {fileID: 5559350043052838013}
   - {fileID: 7533746263545098118}
   - {fileID: 4141850060256961340}
   m_Father: {fileID: 0}
@@ -79,50 +78,6 @@ MonoBehaviour:
   _selectionCircle: {fileID: 8475269858354546828}
   _playerFlag: {fileID: 5149841351767422972}
   _enemyFlag: {fileID: 2947701101771705455}
---- !u!1 &6540763962297718326
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5559350043052838013}
-  - component: {fileID: 8547795012240223998}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!4 &5559350043052838013
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6540763962297718326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3133104044998239300}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8547795012240223998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6540763962297718326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9687e4ccdd3412248be36c02d7873b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6884745035009281869
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +192,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3133104044998239300}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8905705337973166975
 SpriteRenderer:
@@ -300,7 +255,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 38523786429901045, guid: 8425a02dcc3a27b41a247d841e148e18, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 38523786429901045, guid: 8425a02dcc3a27b41a247d841e148e18, type: 3}
       propertyPath: m_LocalScale.x
