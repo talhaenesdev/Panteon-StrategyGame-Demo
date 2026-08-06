@@ -134,7 +134,6 @@ The goal is to keep every system loosely coupled and easily extendable.
 - Object Pooling
 - Physics2D NonAlloc Queries
 - Reduced UI Draw Calls
-- Sprite Atlas Usage
 - RectMask2D instead of Mask where possible
 - Optimized TextMeshPro settings
 - Clean dependency graph
