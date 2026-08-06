@@ -2,7 +2,7 @@
 using PanteonStrategyGame.Common.Interfaces;
 using PanteonStrategyGame.Common.Services;
 using PanteonStrategyGame.Core.Interfaces;
-using PanteonStrategyGame.Pathfinding;
+using PanteonStrategyGame.Pathfinding.Services;
 using PanteonStrategyGame.Units.Services;
 using Zenject;
 

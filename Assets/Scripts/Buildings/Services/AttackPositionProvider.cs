@@ -2,7 +2,7 @@
 using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Grid.Managers;
-using PanteonStrategyGame.Pathfinding;
+using PanteonStrategyGame.Pathfinding.Models;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Buildings.Services
