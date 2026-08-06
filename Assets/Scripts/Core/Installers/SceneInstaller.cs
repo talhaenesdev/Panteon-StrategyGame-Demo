@@ -48,8 +48,8 @@ namespace PanteonStrategyGame.Core.Installers
             Container.Bind<IBuildingPlacementService>().To<BuildingPlacementService>().AsSingle();
             Container.Bind<IPathfindingService>().To<AStarPathfinder>().AsSingle();
             Container.Bind<IBuildingService>().To<BuildingService>().AsSingle();
-            Container.Bind<IUnitService>().To<UnitService>().AsSingle();
-            Container.Bind<ISelectionService>().To<SelectionService>().AsSingle();
+            Container.Bind<IUnitService>().To<UnitService>().AsSingle(); 
+            Container.BindInterfacesAndSelfTo<SelectionService>().AsSingle();
             Container.Bind<IProductionService>().To<ProductionService>().AsSingle();
             Container.Bind<IEntitySpawnService>().To<EntitySpawnService>().AsSingle();
             Container.Bind<IRuntimeHierarchyService>().FromInstance(runtimeHierarchyService).AsSingle();

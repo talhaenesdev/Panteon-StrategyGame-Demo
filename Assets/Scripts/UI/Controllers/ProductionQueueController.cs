@@ -51,7 +51,7 @@ namespace PanteonStrategyGame.UI.Controllers
                     _uiFactory.CreateQueueItem(
                         _view.Container);
 
-                item.Initialize(unit.DisplayName);
+                item.Initialize(unit.DisplayName,unit.Icon);
 
                 _items.Add(item);
             }

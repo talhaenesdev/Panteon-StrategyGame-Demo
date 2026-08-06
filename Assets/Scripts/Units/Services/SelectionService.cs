@@ -5,7 +5,7 @@ using Zenject;
 
 namespace PanteonStrategyGame.Units.Services
 {
-    public class SelectionService : ISelectionService
+    public class SelectionService : ISelectionService, IInitializable, System.IDisposable
     {
         private readonly SignalBus _signalBus;
 
@@ -16,17 +16,32 @@ namespace PanteonStrategyGame.Units.Services
             _signalBus = signalBus;
         }
 
+        public void Initialize()
+        {
+            _signalBus.Subscribe<EntityDestroyedSignal>(OnEntityDestroyed);
+        }
+
+        public void Dispose()
+        {
+            _signalBus.Unsubscribe<EntityDestroyedSignal>(OnEntityDestroyed);
+        }
+
         public void Select(Entity entity)
         {
-            UnityEngine.Debug.Log($"Selected : {entity?.name}");
             if (SelectedEntity == entity)
                 return;
 
-            SelectedEntity?.Deselect();
+            if (SelectedEntity != null)
+            {
+                SelectedEntity.Deselect();
+            }
 
             SelectedEntity = entity;
 
-            SelectedEntity?.Select();
+            if (SelectedEntity != null)
+            {
+                SelectedEntity.Select();
+            }
 
             _signalBus.Fire(new EntitySelectedSignal(entity));
         }
@@ -41,6 +56,14 @@ namespace PanteonStrategyGame.Units.Services
             SelectedEntity = null;
 
             _signalBus.Fire(new EntitySelectedSignal(null));
+        }
+
+        private void OnEntityDestroyed(EntityDestroyedSignal signal)
+        {
+            if (SelectedEntity == signal.DestroyedEntity)
+            {
+                SelectedEntity = null;
+            }
         }
     }
 }
