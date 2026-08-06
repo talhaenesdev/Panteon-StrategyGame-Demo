@@ -47,7 +47,7 @@ Players can:
 | Place Building | Left Mouse Button |
 | Cancel Building Placement | Right Mouse Button |
 | Toggle Build Panel | **B** |
-| Camera Move | WASD / Mouse Edge |
+| Camera Move | Mouse Edge |
 | Camera Zoom | Mouse Wheel |
 
 ---
