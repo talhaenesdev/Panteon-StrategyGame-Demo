@@ -12,12 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56310399d574e934dba9d473a5cda6c8, type: 3}
   m_Name: CD_CameraSettings
   m_EditorClassIdentifier: 
-  MoveSpeed: 12
-  EdgeSize: 20
-  ZoomSpeed: 20
-  MinZoom: 4
-  MaxZoom: 12
-  MinX: -100
-  MaxX: 100
-  MinY: -100
-  MaxY: 100
+  <MoveSpeed>k__BackingField: 12
+  <EdgeSize>k__BackingField: 20
+  <ZoomSpeed>k__BackingField: 50
+  <MinZoom>k__BackingField: 4
