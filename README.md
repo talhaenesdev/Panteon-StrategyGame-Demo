@@ -43,7 +43,9 @@ Players can:
 |---------|-------|
 | Select Unit / Building | Left Mouse Button |
 | Move Selected Unit | Right Mouse Button |
+| Attack Enemy Unit / Building | Right Mouse Button |
 | Place Building | Left Mouse Button |
+| Cancel Building Placement | Right Mouse Button |
 | Toggle Build Panel | **B** |
 | Camera Move | WASD / Mouse Edge |
 | Camera Zoom | Mouse Wheel |
