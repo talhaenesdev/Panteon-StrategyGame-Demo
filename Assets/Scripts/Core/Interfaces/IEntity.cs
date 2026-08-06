@@ -3,7 +3,6 @@ using UnityEngine;
 
 public interface IEntity
 {
-    string Id { get; }
 
     Team Team { get; }
 

@@ -5,16 +5,17 @@ using Zenject;
 
 namespace PanteonStrategyGame.Units.Components
 {
+    [RequireComponent(typeof(Unit))]
     public class UnitCombatController : MonoBehaviour
     {
-        [Inject] private IPathfindingService _pathfindingService;
-
-        private Unit _unit;
+        [Inject]
+        private IPathfindingService _pathfindingService;
 
         [SerializeField]
-        private float repathInterval = 0.25f;
+        private float _repathInterval = 0.25f;
 
-        private float _timer;
+        private Unit _unit;
+        private float _repathTimer;
 
         private void Awake()
         {
@@ -23,34 +24,48 @@ namespace PanteonStrategyGame.Units.Components
 
         private void Update()
         {
-            if (!_unit.Attack.HasTarget)
+            if (_unit == null)
                 return;
 
-            if (_unit.Attack.IsTargetInRange())
+            if (!_unit.Attack.HasTarget)
             {
-                _unit.Movement.Stop();
+                _repathTimer = 0f;
                 return;
             }
-
-            _timer += Time.deltaTime;
-
-            if (_timer < repathInterval)
-                return;
-
-            _timer = 0;
 
             Transform target =
                 _unit.Attack.TargetTransform;
 
             if (target == null)
+            {
+                _unit.Attack.ClearTarget();
+                _repathTimer = 0f;
                 return;
+            }
+
+            if (_unit.Attack.IsTargetInRange())
+            {
+                _unit.Movement.Stop();
+                _repathTimer = 0f;
+                return;
+            }
+
+            _repathTimer += Time.deltaTime;
+
+            if (_repathTimer < _repathInterval)
+                return;
+
+            _repathTimer = 0f;
 
             var path =
                 _pathfindingService.FindPath(
                     transform.position,
                     target.position);
 
-            _unit.Movement.SetPath(path);
+            if (path != null)
+            {
+                _unit.Movement.SetPath(path);
+            }
         }
     }
 }

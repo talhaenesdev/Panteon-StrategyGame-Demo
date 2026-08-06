@@ -1,4 +1,3 @@
-using PanteonStrategyGame.Buildings.Data;
 using PanteonStrategyGame.Common.Enums;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
@@ -9,46 +8,50 @@ namespace PanteonStrategyGame.Common.Entities
 {
     public abstract class Entity : MonoBehaviour, IEntity, ISelectable
     {
-        [Inject] protected SignalBus SignalBus;
+        #region Inject
+
+        [Inject]
+        protected SignalBus SignalBus;
+
+        #endregion
+
+        #region Properties
+
+        private Team _team;
+
         public abstract EntityType EntityType { get; }
 
         public abstract string DisplayName { get; }
 
         public abstract Sprite Icon { get; }
 
-        [SerializeField]
-        private string id;
-
-        [SerializeField]
-        private Team _team;
-
-        public string Id => id;
+        public virtual bool IsControllable => true;
 
         public Team Team => _team;
 
         public Transform Transform => transform;
-        public virtual bool IsControllable => true;
-        public Vector2Int OriginGridPosition { get; private set; }
 
-        protected virtual void OnTeamChanged()
-        {
-        }
+        #endregion
+
+        #region Team
 
         public void SetTeam(Team team)
         {
+            if (_team == team)
+                return;
+
             _team = team;
 
             OnTeamChanged();
         }
 
-        public virtual void Initialize(
-            BuildingData data,
-            Vector2Int originGridPosition)
+        protected virtual void OnTeamChanged()
         {
-            OriginGridPosition = originGridPosition;
-
-            gameObject.SetActive(true);
         }
+
+        #endregion
+
+        #region Selection
 
         public virtual void Select()
         {
@@ -58,13 +61,21 @@ namespace PanteonStrategyGame.Common.Entities
         {
         }
 
+        #endregion
+
+        #region Lifetime
+
         protected virtual void DestroyEntity()
         {
-            SignalBus.Fire(new EntityDestroyedSignal(this));
+            SignalBus.Fire(
+                new EntityDestroyedSignal(this));
 
-            SignalBus.Fire(new EntitySelectedSignal(null));
+            SignalBus.Fire(
+                new EntitySelectedSignal(null));
 
             Destroy(gameObject);
         }
+
+        #endregion
     }
 }
