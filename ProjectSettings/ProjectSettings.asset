@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Talha Enes Islamoglu
+  companyName: "Talha Enes \u0130slamo\u011Flu"
   productName: Panteon Strategy Game Demo
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
