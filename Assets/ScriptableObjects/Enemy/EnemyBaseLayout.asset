@@ -12,44 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c853a843940644fbba560472ec8790, type: 3}
   m_Name: EnemyBaseLayout
   m_EditorClassIdentifier: 
-  spawns:
-  - poolKey: AssaultEnemy
-    gridPosition: {x: 5, y: 5}
-    unitData: {fileID: 11400000, guid: 11ce291a15e1b6e49bd57a524cb4e982, type: 2}
-    buildingData: {fileID: 0}
-  - poolKey: BarrackEnemy
-    gridPosition: {x: 12, y: 5}
-    unitData: {fileID: 0}
-    buildingData: {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
-  - poolKey: PowerPlantEnemy
-    gridPosition: {x: 17, y: 5}
-    unitData: {fileID: 0}
-    buildingData: {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
-  - poolKey: FactoryEnemy
-    gridPosition: {x: 25, y: 5}
-    unitData: {fileID: 0}
-    buildingData: {fileID: 11400000, guid: 762590bfd30dc5447ba3cfc100714db3, type: 2}
-  - poolKey: HouseEnemy
-    gridPosition: {x: 5, y: 15}
-    unitData: {fileID: 0}
-    buildingData: {fileID: 11400000, guid: d497744bd7fc2f64d88aebc661c25bc2, type: 2}
-  - poolKey: OilFactoryEnemy
-    gridPosition: {x: 12, y: 15}
-    unitData: {fileID: 0}
-    buildingData: {fileID: 11400000, guid: 4687e705d4f180145990a82b691b2662, type: 2}
-  - poolKey: TankFactoryEnemy
-    gridPosition: {x: 17, y: 15}
-    unitData: {fileID: 0}
-    buildingData: {fileID: 11400000, guid: a22f69b1884afbf4e90d4ea91b3b3bec, type: 2}
-  - poolKey: HeavyEnemy
-    gridPosition: {x: 25, y: 15}
-    unitData: {fileID: 11400000, guid: a659f337b8931764e842b916d2f49eac, type: 2}
-    buildingData: {fileID: 0}
-  - poolKey: StrikerEnemy
-    gridPosition: {x: 40, y: 15}
-    unitData: {fileID: 11400000, guid: 968d2d72e48e9654c9f39491a92e2aa2, type: 2}
-    buildingData: {fileID: 0}
-  - poolKey: SentinelEnemy
-    gridPosition: {x: 40, y: 15}
-    unitData: {fileID: 11400000, guid: fdb75455ad4f9a340b4c355436cd8884, type: 2}
-    buildingData: {fileID: 0}
+  _spawns:
+  - _poolKey: AssaultEnemy
+    _gridPosition: {x: 5, y: 5}
+    _unitData: {fileID: 11400000, guid: 11ce291a15e1b6e49bd57a524cb4e982, type: 2}
+    _buildingData: {fileID: 0}
+  - _poolKey: BarrackEnemy
+    _gridPosition: {x: 12, y: 5}
+    _unitData: {fileID: 0}
+    _buildingData: {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
+  - _poolKey: PowerPlantEnemy
+    _gridPosition: {x: 17, y: 5}
+    _unitData: {fileID: 0}
+    _buildingData: {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
+  - _poolKey: FactoryEnemy
+    _gridPosition: {x: 25, y: 5}
+    _unitData: {fileID: 0}
+    _buildingData: {fileID: 11400000, guid: 762590bfd30dc5447ba3cfc100714db3, type: 2}
+  - _poolKey: HouseEnemy
+    _gridPosition: {x: 5, y: 15}
+    _unitData: {fileID: 0}
+    _buildingData: {fileID: 11400000, guid: d497744bd7fc2f64d88aebc661c25bc2, type: 2}
+  - _poolKey: OilFactoryEnemy
+    _gridPosition: {x: 12, y: 15}
+    _unitData: {fileID: 0}
+    _buildingData: {fileID: 11400000, guid: 4687e705d4f180145990a82b691b2662, type: 2}
+  - _poolKey: TankFactoryEnemy
+    _gridPosition: {x: 17, y: 15}
+    _unitData: {fileID: 0}
+    _buildingData: {fileID: 11400000, guid: a22f69b1884afbf4e90d4ea91b3b3bec, type: 2}
+  - _poolKey: HeavyEnemy
+    _gridPosition: {x: 25, y: 15}
+    _unitData: {fileID: 11400000, guid: a659f337b8931764e842b916d2f49eac, type: 2}
+    _buildingData: {fileID: 0}
+  - _poolKey: StrikerEnemy
+    _gridPosition: {x: 40, y: 15}
+    _unitData: {fileID: 11400000, guid: 968d2d72e48e9654c9f39491a92e2aa2, type: 2}
+    _buildingData: {fileID: 0}
+  - _poolKey: SentinelEnemy
+    _gridPosition: {x: 40, y: 15}
+    _unitData: {fileID: 11400000, guid: fdb75455ad4f9a340b4c355436cd8884, type: 2}
+    _buildingData: {fileID: 0}

@@ -8,8 +8,8 @@ namespace PanteonStrategyGame.Enemies.Data
     public class EnemyBaseLayout : ScriptableObject
     {
         [SerializeField]
-        private EnemySpawnData[] spawns;
+        private EnemySpawnData[] _spawns;
 
-        public EnemySpawnData[] Spawns => spawns;
+        public EnemySpawnData[] Spawns => _spawns;
     }
 }

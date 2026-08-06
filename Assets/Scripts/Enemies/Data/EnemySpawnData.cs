@@ -8,23 +8,23 @@ namespace PanteonStrategyGame.Enemies.Data
     public class EnemySpawnData
     {
         [SerializeField]
-        private string poolKey;
+        private string _poolKey;
 
         [SerializeField]
-        private Vector2Int gridPosition;
+        private Vector2Int _gridPosition;
 
         [SerializeField]
-        private UnitData unitData;
+        private UnitData _unitData;
 
         [SerializeField]
-        private BuildingData buildingData;
+        private BuildingData _buildingData;
 
-        public string PoolKey => poolKey;
+        public string PoolKey => _poolKey;
 
-        public Vector2Int GridPosition => gridPosition;
+        public Vector2Int GridPosition => _gridPosition;
 
-        public UnitData UnitData => unitData;
+        public UnitData UnitData => _unitData;
 
-        public BuildingData BuildingData => buildingData;
+        public BuildingData BuildingData => _buildingData;
     }
 }

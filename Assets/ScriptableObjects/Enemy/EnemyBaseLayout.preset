@@ -1,0 +1,231 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EnemyBaseLayout
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 93c853a843940644fbba560472ec8790, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.size
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[0].poolKey
+    value: AssaultEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[0].gridPosition.x
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[0].gridPosition.y
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[0].unitData
+    value: 
+    objectReference: {fileID: 11400000, guid: 11ce291a15e1b6e49bd57a524cb4e982, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[0].buildingData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[1].poolKey
+    value: BarrackEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[1].gridPosition.x
+    value: 12
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[1].gridPosition.y
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[1].unitData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[1].buildingData
+    value: 
+    objectReference: {fileID: 11400000, guid: 7b43b0fb739d7ef459b0a88c860b9710, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[2].poolKey
+    value: PowerPlantEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[2].gridPosition.x
+    value: 17
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[2].gridPosition.y
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[2].unitData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[2].buildingData
+    value: 
+    objectReference: {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[3].poolKey
+    value: FactoryEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[3].gridPosition.x
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[3].gridPosition.y
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[3].unitData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[3].buildingData
+    value: 
+    objectReference: {fileID: 11400000, guid: 762590bfd30dc5447ba3cfc100714db3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[4].poolKey
+    value: HouseEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[4].gridPosition.x
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[4].gridPosition.y
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[4].unitData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[4].buildingData
+    value: 
+    objectReference: {fileID: 11400000, guid: d497744bd7fc2f64d88aebc661c25bc2, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[5].poolKey
+    value: OilFactoryEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[5].gridPosition.x
+    value: 12
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[5].gridPosition.y
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[5].unitData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[5].buildingData
+    value: 
+    objectReference: {fileID: 11400000, guid: 4687e705d4f180145990a82b691b2662, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[6].poolKey
+    value: TankFactoryEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[6].gridPosition.x
+    value: 17
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[6].gridPosition.y
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[6].unitData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[6].buildingData
+    value: 
+    objectReference: {fileID: 11400000, guid: a22f69b1884afbf4e90d4ea91b3b3bec, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[7].poolKey
+    value: HeavyEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[7].gridPosition.x
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[7].gridPosition.y
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[7].unitData
+    value: 
+    objectReference: {fileID: 11400000, guid: a659f337b8931764e842b916d2f49eac, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[7].buildingData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[8].poolKey
+    value: StrikerEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[8].gridPosition.x
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[8].gridPosition.y
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[8].unitData
+    value: 
+    objectReference: {fileID: 11400000, guid: 968d2d72e48e9654c9f39491a92e2aa2, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[8].buildingData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[9].poolKey
+    value: SentinelEnemy
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[9].gridPosition.x
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[9].gridPosition.y
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[9].unitData
+    value: 
+    objectReference: {fileID: 11400000, guid: fdb75455ad4f9a340b4c355436cd8884, type: 2}
+  - target: {fileID: 0}
+    propertyPath: spawns.Array.data[9].buildingData
+    value: 
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
