@@ -27,10 +27,10 @@ Players can:
 ![Building Placement](Assets/ScreenShots/screenshotsgameplay-ghost-builder.png)
 
 ## Combat
-![Combat](Assets/Screenshots/screenshotsgameplay-enemy-build-attack.png)
+![Combat](Assets/ScreenShots/screenshotsgameplay-enemy-build-attack.png)
 
 ## Production UI
-![Production UI](Assets/Screenshots/screenshotsgameplay.png)
+![Production UI](Assets/ScreenShots/screenshotsgameplay.png)
 # Gameplay Features
 
 ---
