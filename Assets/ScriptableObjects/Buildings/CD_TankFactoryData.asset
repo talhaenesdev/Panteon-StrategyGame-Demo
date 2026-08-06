@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: CD_TankFactoryData
   m_EditorClassIdentifier: 
   buildingBuffer: 1
-  <DisplayName>k__BackingField: TankFactory
-  Type: 0
-  BuildingName: TankFactory
+  <DisplayName>k__BackingField: Tank Factory
   Icon: {fileID: 21300000, guid: c5e538dff5844144c85e69e7546cd841, type: 3}
   _poolKey: TankFactory
   _ghostPoolKey: TankFactoryGhost

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: CD_OitFactoryData
   m_EditorClassIdentifier: 
   buildingBuffer: 0
-  <DisplayName>k__BackingField: OilFactory
-  Type: 2
-  BuildingName: OilFactory
+  <DisplayName>k__BackingField: Oil Factory
   Icon: {fileID: 21300000, guid: 4799a15b5054e4d49b0ac1a41b9c855a, type: 3}
   _poolKey: OilFactory
   _ghostPoolKey: OilFactoryGhost
   MaxHealth: 60
   Size: {x: 3, y: 3}
   producibleUnits: []
+  spawnRadius: 1.2
+  spawnAngleStep: 45
