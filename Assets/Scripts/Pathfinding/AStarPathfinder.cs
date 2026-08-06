@@ -22,7 +22,6 @@ namespace PanteonStrategyGame.Pathfinding
             if (startNode == null || targetNode == null)
                 return new List<Vector3>();
 
-            // Hedef yürünebilir deðilse en yakýn yürünebilir node'u bul
             if (!targetNode.Walkable)
             {
                 targetNode = GetClosestWalkableNode(targetNode);
