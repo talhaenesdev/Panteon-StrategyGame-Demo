@@ -8,12 +8,19 @@ namespace PanteonStrategyGame.CameraSystem.Components
     [RequireComponent(typeof(Camera))]
     public class CameraBounds : MonoBehaviour
     {
+        #region Inject
+
         [Inject]
         private GridManager _gridManager;
 
-        private Camera _camera;
+        #endregion
 
+        #region Runtime
+
+        private Camera _camera;
         private MapBounds _mapBounds;
+
+        #endregion
 
         private void Awake()
         {
@@ -22,7 +29,8 @@ namespace PanteonStrategyGame.CameraSystem.Components
 
         private void Start()
         {
-            _mapBounds = _gridManager.GetMapBounds();
+            _mapBounds =
+                _gridManager.GetMapBounds();
         }
 
         public void Tick()
@@ -31,7 +39,8 @@ namespace PanteonStrategyGame.CameraSystem.Components
                 _camera.orthographicSize;
 
             float halfWidth =
-                halfHeight * _camera.aspect;
+                halfHeight *
+                _camera.aspect;
 
             Vector3 position =
                 transform.position;
@@ -46,7 +55,8 @@ namespace PanteonStrategyGame.CameraSystem.Components
                 _mapBounds.MinY + halfHeight,
                 _mapBounds.MaxY - halfHeight);
 
-            transform.position = position;
+            transform.position =
+                position;
         }
     }
 }

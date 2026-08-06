@@ -8,18 +8,32 @@ namespace PanteonStrategyGame.CameraSystem.Components
     [RequireComponent(typeof(Camera))]
     public class CameraZoom : MonoBehaviour
     {
+        #region Inject
+
         [Inject]
         private IMapInfoProvider _mapInfoProvider;
+
+        #endregion
+
+        #region Inspector
+
         [SerializeField]
-        private CameraSettings settings;
+        private CameraSettings _settings;
+
+        #endregion
+
+        #region Runtime
 
         private Camera _camera;
         private float _maxZoom;
+
+        #endregion
 
         private void Awake()
         {
             _camera = GetComponent<Camera>();
         }
+
         private void Start()
         {
             CalculateMaxZoom();
@@ -27,33 +41,22 @@ namespace PanteonStrategyGame.CameraSystem.Components
 
         public void Tick()
         {
-            float zoomInput =
-                ReadZoomInput();
+            float zoomInput = Input.mouseScrollDelta.y;
 
-            ApplyZoom(zoomInput);
-        }
-
-        private float ReadZoomInput()
-        {
-            return Input.mouseScrollDelta.y;
-        }
-
-        private void ApplyZoom(float zoomInput)
-        {
-            if (Mathf.Abs(zoomInput) < Mathf.Epsilon)
+            if (Mathf.Approximately(zoomInput, 0f))
                 return;
 
             _camera.orthographicSize -=
                 zoomInput *
-                settings.ZoomSpeed *
+                _settings.ZoomSpeed *
                 Time.deltaTime;
 
-            _camera.orthographicSize =
-                Mathf.Clamp(
-                    _camera.orthographicSize,
-                    settings.MinZoom,
-                    _maxZoom);
+            _camera.orthographicSize = Mathf.Clamp(
+                _camera.orthographicSize,
+                _settings.MinZoom,
+                _maxZoom);
         }
+
         private void CalculateMaxZoom()
         {
             Vector2 mapSize =
@@ -70,9 +73,6 @@ namespace PanteonStrategyGame.CameraSystem.Components
                 Mathf.Min(
                     verticalZoom,
                     horizontalZoom);
-
-            _maxZoom =
-                Mathf.Min(verticalZoom, horizontalZoom);
         }
     }
 }

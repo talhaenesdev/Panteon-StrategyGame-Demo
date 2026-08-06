@@ -6,54 +6,52 @@ namespace PanteonStrategyGame.CameraSystem.Components
     public class CameraMovement : MonoBehaviour
     {
         [SerializeField]
-        private CameraSettings settings;
+        private CameraSettings _settings;
 
         public void Tick()
         {
             Vector3 direction =
-                GetKeyboardDirection() +
-                GetEdgeDirection();
+                GetKeyboardDirection();
 
-            Move(direction);
+            direction +=
+                GetScreenEdgeDirection();
+
+            if (direction == Vector3.zero)
+                return;
+
+            transform.position +=
+                direction.normalized *
+                _settings.MoveSpeed *
+                Time.deltaTime;
         }
 
-        private Vector3 GetKeyboardDirection()
+        private static Vector3 GetKeyboardDirection()
         {
             return new Vector3(
                 Input.GetAxisRaw("Horizontal"),
-                Input.GetAxisRaw("Vertical"),
-                0f);
+                Input.GetAxisRaw("Vertical"));
         }
 
-        private Vector3 GetEdgeDirection()
+        private Vector3 GetScreenEdgeDirection()
         {
             Vector3 direction = Vector3.zero;
 
             Vector3 mouse =
                 Input.mousePosition;
 
-            if (mouse.x <= settings.EdgeSize)
+            if (mouse.x <= _settings.EdgeSize)
                 direction.x--;
 
-            if (mouse.x >= Screen.width - settings.EdgeSize)
+            if (mouse.x >= Screen.width - _settings.EdgeSize)
                 direction.x++;
 
-            if (mouse.y <= settings.EdgeSize)
+            if (mouse.y <= _settings.EdgeSize)
                 direction.y--;
 
-            if (mouse.y >= Screen.height - settings.EdgeSize)
+            if (mouse.y >= Screen.height - _settings.EdgeSize)
                 direction.y++;
 
             return direction;
-        }
-
-        private void Move(Vector3 direction)
-        {
-            if (direction == Vector3.zero)
-                return;
-
-            transform.position +=
-                settings.MoveSpeed * Time.deltaTime * direction.normalized;
         }
     }
 }
