@@ -20,17 +20,14 @@ Players can:
 
 # Screenshots
 
-## Gameplay
-![Gameplay](Assets/ScreenShots/screenshotsgameplay-soldier-house.png)
-
 ## Building Placement
-![Building Placement](Assets/ScreenShots/screenshotsgameplay-ghost-builder.png)
+![Ghost Build](Assets/ScreenShots/screenshotsgameplay-ghost-builder.png)
 
 ## Combat
-![Combat](Assets/ScreenShots/screenshotsgameplay-enemy-build-attack.png)
+![Enemy Build Attack](Assets/ScreenShots/screenshotsgameplay-enemy-build-attack.png)
 
 ## Production UI
-![Production UI](Assets/ScreenShots/screenshotsgameplay.png)
+![GamePlay](Assets/ScreenShots/screenshotsgameplay.png)
 # Gameplay Features
 
 ---
