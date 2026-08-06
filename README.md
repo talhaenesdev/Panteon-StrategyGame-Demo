@@ -18,7 +18,22 @@ Players can:
 
 ---
 
+# Screenshots
+
+## Gameplay
+![Gameplay](screenshotsgameplay-soldier-house.png)
+
+## Building Placement
+![Building Placement](screenshotsgameplay-ghost-builder.png)
+
+## Combat
+![Combat](screenshotsgameplay-enemy-build-attack.png)
+
+## Production UI
+![Production UI](screenshotsgameplay-soldier-house.png)
 # Gameplay Features
+
+---
 
 - ✅ Grid-based building placement
 - ✅ Building placement validation
