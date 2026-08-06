@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
   m_Name: CD_PowerPlantData
   m_EditorClassIdentifier: 
-  buildingBuffer: 0
+  <CanProduceUnits>k__BackingField: 0
   <DisplayName>k__BackingField: Power
-  Type: 0
-  BuildingName: Power Plant
-  Icon: {fileID: 21300000, guid: 13466b0f1825cdb47a656623b263c32b, type: 3}
-  _poolKey: PowerPlant
-  _ghostPoolKey: PowerPlantGhost
-  MaxHealth: 50
-  Size: {x: 1, y: 1}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 13466b0f1825cdb47a656623b263c32b, type: 3}
+  <PoolKey>k__BackingField: PowerPlant
+  <GhostPoolKey>k__BackingField: PowerPlantGhost
+  <MaxHealth>k__BackingField: 80
+  <Size>k__BackingField: {x: 2, y: 3}
+  <BuildingBuffer>k__BackingField: 0
+  producibleUnits: []
+  <SpawnRadius>k__BackingField: 1.2
+  <SpawnAngleStep>k__BackingField: 45

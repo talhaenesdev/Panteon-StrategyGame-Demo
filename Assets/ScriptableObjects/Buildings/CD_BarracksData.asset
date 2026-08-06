@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
   m_Name: CD_BarracksData
   m_EditorClassIdentifier: 
-  buildingBuffer: 1
+  <CanProduceUnits>k__BackingField: 1
   <DisplayName>k__BackingField: Soldier House
-  Type: 0
-  BuildingName: Barrack
-  Icon: {fileID: 21300000, guid: 09f621b2561f83049a76e763bf975398, type: 3}
-  _poolKey: Barrack
-  _ghostPoolKey: BarrackGhost
-  MaxHealth: 100
-  Size: {x: 2, y: 4}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 09f621b2561f83049a76e763bf975398, type: 3}
+  <PoolKey>k__BackingField: Barrack
+  <GhostPoolKey>k__BackingField: BarrackGhost
+  <MaxHealth>k__BackingField: 100
+  <Size>k__BackingField: {x: 4, y: 4}
+  <BuildingBuffer>k__BackingField: 1
   producibleUnits:
   - {fileID: 11400000, guid: 11ce291a15e1b6e49bd57a524cb4e982, type: 2}
   - {fileID: 11400000, guid: 968d2d72e48e9654c9f39491a92e2aa2, type: 2}
   - {fileID: 11400000, guid: a659f337b8931764e842b916d2f49eac, type: 2}
-  spawnRadius: 2
-  spawnAngleStep: 90
+  <SpawnRadius>k__BackingField: 2.5
+  <SpawnAngleStep>k__BackingField: 90

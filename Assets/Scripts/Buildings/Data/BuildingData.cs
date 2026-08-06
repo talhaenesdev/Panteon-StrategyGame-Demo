@@ -1,48 +1,92 @@
-using PanteonStrategyGame.Units.Data;
 using System.Collections.Generic;
+using PanteonStrategyGame.Units.Data;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Buildings.Data
 {
-    [CreateAssetMenu(fileName = "BuildingData",  menuName = "Panteon Strategy Game/Buildings/Building Data")]
+    [CreateAssetMenu(
+        fileName = "BuildingData",
+        menuName = "Panteon Strategy Game/Buildings/Building Data")]
     public class BuildingData : ScriptableObject
     {
-        [SerializeField, Min(0)]
-        private int buildingBuffer = 0;
+        [field: Header("Production")]
 
-        public int BuildingBuffer => buildingBuffer;
+        [field: SerializeField]
+        public bool CanProduceUnits { get; private set; }
+        #region General
+
+        [field: Header("General")]
 
         [field: SerializeField]
         public string DisplayName { get; private set; }
 
-        [Header("General")]
-        public Sprite Icon;
+        [field: SerializeField]
+        public Sprite Icon { get; private set; }
 
-        [Header("Pooling")]
-        [SerializeField] private string _poolKey;
-        public string PoolKey => _poolKey;
+        #endregion
 
-        [SerializeField] private string _ghostPoolKey;
-        public string GhostPoolKey => _ghostPoolKey;
+        #region Pooling
 
-        [Header("Stats")]
-        public int MaxHealth;
+        [field: Header("Pooling")]
 
-        [Header("Placement")]
-        public Vector2Int Size;
+        [field: SerializeField]
+        public string PoolKey { get; private set; }
+
+        [field: SerializeField]
+        public string GhostPoolKey { get; private set; }
+
+        #endregion
+
+        #region Stats
+
+        [field: Header("Stats")]
+
+        [field: SerializeField]
+        [field: Min(1)]
+        public int MaxHealth { get; private set; } = 100;
+
+        #endregion
+
+        #region Placement
+
+        [field: Header("Placement")]
+
+        [field: SerializeField]
+        public Vector2Int Size { get; private set; } = Vector2Int.one;
+
+        [field: SerializeField]
+        [field: Tooltip("Empty cells required around this building.")]
+        [field: Range(0, 5)]
+        public int BuildingBuffer { get; private set; }
+
+        #endregion
+
+        #region Production
+
+        [Header("Production")]
 
         [SerializeField]
         private UnitData[] producibleUnits;
-        public IReadOnlyList<UnitData> ProducibleUnits => producibleUnits;
 
-        [Header("Spawn Settings")]
-        [SerializeField]
-        private float spawnRadius = 1.2f;
+        public IReadOnlyList<UnitData> ProducibleUnits =>
+            producibleUnits;
 
-        [SerializeField]
-        private float spawnAngleStep = 45f;
+        #endregion
 
-        public float SpawnRadius => spawnRadius;
-        public float SpawnAngleStep => spawnAngleStep;
+        #region Spawn
+
+        [field: Header("Spawn")]
+
+        [field: SerializeField]
+        [field: Tooltip("Radius around the building where units will spawn.")]
+        [field: Range(0.5f, 5f)]
+        public float SpawnRadius { get; private set; } = 1.2f;
+
+        [field: SerializeField]
+        [field: Tooltip("Angle increment between consecutive spawned units.")]
+        [field: Range(10f, 180f)]
+        public float SpawnAngleStep { get; private set; } = 45f;
+
+        #endregion
     }
 }

@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
   m_Name: CD_TankFactoryData
   m_EditorClassIdentifier: 
-  buildingBuffer: 1
+  <CanProduceUnits>k__BackingField: 1
   <DisplayName>k__BackingField: Tank Factory
-  Icon: {fileID: 21300000, guid: c5e538dff5844144c85e69e7546cd841, type: 3}
-  _poolKey: TankFactory
-  _ghostPoolKey: TankFactoryGhost
-  MaxHealth: 150
-  Size: {x: 5, y: 4}
+  <Icon>k__BackingField: {fileID: 21300000, guid: c5e538dff5844144c85e69e7546cd841, type: 3}
+  <PoolKey>k__BackingField: TankFactory
+  <GhostPoolKey>k__BackingField: TankFactoryGhost
+  <MaxHealth>k__BackingField: 200
+  <Size>k__BackingField: {x: 5, y: 4}
+  <BuildingBuffer>k__BackingField: 2
   producibleUnits:
   - {fileID: 11400000, guid: f33a077018791d34b8b5262d2c3afd2a, type: 2}
   - {fileID: 11400000, guid: fdb75455ad4f9a340b4c355436cd8884, type: 2}
   - {fileID: 11400000, guid: 2efcb3d8a15bd134993dfc4e4a906b11, type: 2}
-  spawnRadius: 4
-  spawnAngleStep: 90
+  <SpawnRadius>k__BackingField: 3
+  <SpawnAngleStep>k__BackingField: 90

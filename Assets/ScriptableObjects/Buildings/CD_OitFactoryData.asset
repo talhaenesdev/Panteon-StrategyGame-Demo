@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c17b75e0c8d94aa3dbbb5707fe11f, type: 3}
   m_Name: CD_OitFactoryData
   m_EditorClassIdentifier: 
-  buildingBuffer: 0
+  <CanProduceUnits>k__BackingField: 0
   <DisplayName>k__BackingField: Oil Factory
-  Icon: {fileID: 21300000, guid: 4799a15b5054e4d49b0ac1a41b9c855a, type: 3}
-  _poolKey: OilFactory
-  _ghostPoolKey: OilFactoryGhost
-  MaxHealth: 60
-  Size: {x: 3, y: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 4799a15b5054e4d49b0ac1a41b9c855a, type: 3}
+  <PoolKey>k__BackingField: OilFactory
+  <GhostPoolKey>k__BackingField: OilFactoryGhost
+  <MaxHealth>k__BackingField: 100
+  <Size>k__BackingField: {x: 1, y: 1}
+  <BuildingBuffer>k__BackingField: 0
   producibleUnits: []
-  spawnRadius: 1.2
-  spawnAngleStep: 45
+  <SpawnRadius>k__BackingField: 1.2
+  <SpawnAngleStep>k__BackingField: 45
