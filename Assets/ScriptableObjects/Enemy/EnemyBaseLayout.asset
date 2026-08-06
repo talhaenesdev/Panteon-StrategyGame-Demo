@@ -45,3 +45,11 @@ MonoBehaviour:
     gridPosition: {x: 25, y: 15}
     unitData: {fileID: 11400000, guid: a659f337b8931764e842b916d2f49eac, type: 2}
     buildingData: {fileID: 0}
+  - poolKey: StrikerEnemy
+    gridPosition: {x: 40, y: 15}
+    unitData: {fileID: 11400000, guid: 968d2d72e48e9654c9f39491a92e2aa2, type: 2}
+    buildingData: {fileID: 0}
+  - poolKey: SentinelEnemy
+    gridPosition: {x: 40, y: 15}
+    unitData: {fileID: 11400000, guid: fdb75455ad4f9a340b4c355436cd8884, type: 2}
+    buildingData: {fileID: 0}
