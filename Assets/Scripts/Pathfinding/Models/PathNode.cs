@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PanteonStrategyGame.Pathfinding
+namespace PanteonStrategyGame.Pathfinding.Models
 {
     public class PathNode
     {

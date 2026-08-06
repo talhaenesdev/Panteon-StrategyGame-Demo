@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Grid.Managers;
+using PanteonStrategyGame.Pathfinding.Models;
 
-namespace PanteonStrategyGame.Pathfinding
+namespace PanteonStrategyGame.Pathfinding.Services
 {
     public class AStarPathfinder : IPathfindingService
     {

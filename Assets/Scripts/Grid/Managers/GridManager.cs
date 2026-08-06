@@ -3,9 +3,8 @@ using PanteonStrategyGame.Buildings.Models;
 using PanteonStrategyGame.Grid.Data;
 using PanteonStrategyGame.Grid.Interfaces;
 using PanteonStrategyGame.Grid.Models;
-using PanteonStrategyGame.Pathfinding;
+using PanteonStrategyGame.Pathfinding.Models;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace PanteonStrategyGame.Grid.Managers
