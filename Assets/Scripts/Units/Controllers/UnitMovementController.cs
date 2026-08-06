@@ -1,10 +1,10 @@
-﻿using PanteonStrategyGame.Common.Entities;
+﻿using PanteonStrategyGame.Combat.Interfaces;
+using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Utilities;
 using PanteonStrategyGame.Units.Models;
 using UnityEngine;
 using Zenject;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace PanteonStrategyGame.Units.Controllers
 {

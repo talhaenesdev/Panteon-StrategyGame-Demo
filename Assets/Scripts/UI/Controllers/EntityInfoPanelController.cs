@@ -1,9 +1,8 @@
 using System;
+using PanteonStrategyGame.Combat.Interfaces;
 using PanteonStrategyGame.Common.Entities;
-using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.UI.Views;
-using UnityEngine;
 using Zenject;
 
 namespace PanteonStrategyGame.UI.Controllers

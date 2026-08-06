@@ -1,22 +1,5 @@
-﻿using PanteonStrategyGame.Buildings.Controllers;
-using PanteonStrategyGame.Buildings.Factories;
-using PanteonStrategyGame.Buildings.Placement.Rules;
-using PanteonStrategyGame.Buildings.Services;
-using PanteonStrategyGame.Common.Interfaces;
-using PanteonStrategyGame.Common.Services;
-using PanteonStrategyGame.Core.Debug;
-using PanteonStrategyGame.Core.Interfaces;
-using PanteonStrategyGame.Core.Pooling;
+﻿using PanteonStrategyGame.Core.Pooling;
 using PanteonStrategyGame.Core.Services;
-using PanteonStrategyGame.Core.Signals;
-using PanteonStrategyGame.Grid;
-using PanteonStrategyGame.Pathfinding;
-using PanteonStrategyGame.UI.Controllers;
-using PanteonStrategyGame.UI.Factories;
-using PanteonStrategyGame.UI.Interfaces;
-using PanteonStrategyGame.UI.Views;
-using PanteonStrategyGame.Units.Factories;
-using PanteonStrategyGame.Units.Services;
 using UnityEngine;
 using Zenject;
 
@@ -24,58 +7,17 @@ namespace PanteonStrategyGame.Core.Installers
 {
     public class SceneInstaller : MonoInstaller
     {
+        [SerializeField] private PoolDatabase poolDatabase;
+        [SerializeField] private RuntimeHierarchyService runtimeHierarchyService;
 
-        [SerializeField]
-        private PoolDatabase poolDatabase; 
-        [SerializeField]
-        private RuntimeHierarchyService runtimeHierarchyService;
         public override void InstallBindings()
         {
-
-            SignalBusInstaller.Install(Container);
-
-            Container.DeclareSignal<EntitySelectedSignal>();
-            Container.DeclareSignal<EntityDestroyedSignal>();
-            Container.DeclareSignal<ProductionQueueChangedSignal>();
-            Container.DeclareSignal<BuildingPlacementRequestedSignal>();
-            Container.DeclareSignal<EntityHealthChangedSignal>();
-            Container.DeclareSignal<EntityDestroyedSignal>();
-
-            Container.BindInterfacesTo<SignalLogger>().AsSingle();
-
-            Container.BindInterfacesAndSelfTo<GridManager>().FromComponentInHierarchy().AsSingle();
-
-            Container.Bind<IBuildingPlacementService>().To<BuildingPlacementService>().AsSingle();
-            Container.Bind<IPathfindingService>().To<AStarPathfinder>().AsSingle();
-            Container.Bind<IBuildingService>().To<BuildingService>().AsSingle();
-            Container.Bind<IUnitService>().To<UnitService>().AsSingle(); 
-            Container.BindInterfacesAndSelfTo<SelectionService>().AsSingle();
-            Container.Bind<IProductionService>().To<ProductionService>().AsSingle();
-            Container.Bind<IEntitySpawnService>().To<EntitySpawnService>().AsSingle();
-            Container.Bind<IRuntimeHierarchyService>().FromInstance(runtimeHierarchyService).AsSingle();
-
-            Container.Bind<EntityInfoPanelView>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<ProductionPanelView>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<ProductionQueueView>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<BuildPanelView>().FromComponentInHierarchy().AsSingle();
-
-            Container.BindInterfacesTo<EntityInfoPanelController>().AsSingle();
-            Container.BindInterfacesTo<ProductionPanelController>().AsSingle();
-            Container.BindInterfacesTo<ProductionQueueController>().AsSingle();
-            Container.BindInterfacesTo<BuildingLifecycleController>().AsSingle();
-
-            Container.BindInstance(poolDatabase).AsSingle();
-
-            Container.Bind<IUIFactory>().To<UIFactory>().AsSingle();
-            Container.Bind<IBuildingFactory>().To<BuildingFactory>().AsSingle();
-            Container.Bind<IUnitFactory>().To<UnitFactory>().AsSingle();
-            Container.Bind<IAttackPositionProvider>().To<AttackPositionProvider>().AsSingle();
-
-            Container.Bind<IPlacementRule>().To<FootprintRule>().AsSingle();
-            Container.Bind<IPlacementRule>().To<BufferRule>().AsSingle();
-
-
-            Container.BindInterfacesAndSelfTo<PoolManager>().AsSingle(); 
+            SignalInstaller.Install(Container);
+            CoreInstaller.Install(Container, poolDatabase, runtimeHierarchyService);
+            ServiceInstaller.Install(Container);
+            FactoryInstaller.Install(Container);
+            UIInstaller.Install(Container);
+            GameplayInstaller.Install(Container);
         }
     }
 }

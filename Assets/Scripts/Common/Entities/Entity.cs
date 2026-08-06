@@ -1,5 +1,5 @@
 using PanteonStrategyGame.Common.Enums;
-using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Common.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using UnityEngine;
 using Zenject;

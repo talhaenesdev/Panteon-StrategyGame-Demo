@@ -3,7 +3,7 @@ using PanteonStrategyGame.Units.Models;
 using UnityEngine;
 using Zenject;
 
-namespace PanteonStrategyGame.Units.Components
+namespace PanteonStrategyGame.Combat.Components
 {
     [RequireComponent(typeof(Unit))]
     public class UnitCombatController : MonoBehaviour

@@ -1,6 +1,7 @@
+using PanteonStrategyGame.Combat.Interfaces;
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Common.Enums;
-using PanteonStrategyGame.Core.Interfaces;
+using PanteonStrategyGame.Common.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using PanteonStrategyGame.Units.Components;
 using PanteonStrategyGame.Units.Data;

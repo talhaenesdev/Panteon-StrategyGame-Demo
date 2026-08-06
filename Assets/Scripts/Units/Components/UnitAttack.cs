@@ -1,4 +1,5 @@
-﻿using PanteonStrategyGame.Core.Interfaces;
+﻿using PanteonStrategyGame.Combat.Interfaces;
+using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Units.Data;
 using PanteonStrategyGame.Units.Models;
 using UnityEngine;

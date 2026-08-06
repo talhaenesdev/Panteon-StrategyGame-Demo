@@ -1,6 +1,7 @@
+using PanteonStrategyGame.Common.Interfaces;
 using UnityEngine;
 
-namespace PanteonStrategyGame.Core.Interfaces
+namespace PanteonStrategyGame.Combat.Interfaces
 {
     public interface IDamageable
     {

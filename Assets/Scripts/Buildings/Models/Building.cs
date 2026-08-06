@@ -1,6 +1,8 @@
 using PanteonStrategyGame.Buildings.Data;
+using PanteonStrategyGame.Combat.Interfaces;
 using PanteonStrategyGame.Common.Entities;
 using PanteonStrategyGame.Common.Enums;
+using PanteonStrategyGame.Common.Interfaces;
 using PanteonStrategyGame.Core.Interfaces;
 using PanteonStrategyGame.Core.Signals;
 using UnityEngine;

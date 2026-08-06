@@ -1,4 +1,4 @@
-namespace PanteonStrategyGame.Core.Interfaces
+namespace PanteonStrategyGame.Common.Interfaces
 {
     public interface ISelectable
     {
