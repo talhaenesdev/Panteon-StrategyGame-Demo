@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: CD_Striker
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Striker
-  Type: 1
-  UnitName: Striker
-  Icon: {fileID: 21300000, guid: db4cccb43769db243ba9addb2e06d99b, type: 3}
-  poolKey: Striker
-  MaxHealth: 50
-  MoveSpeed: 2
-  productionTime: 0
-  attackRange: 0.12
-  attackRate: 2
-  damage: 20
+  <Icon>k__BackingField: {fileID: 21300000, guid: db4cccb43769db243ba9addb2e06d99b, type: 3}
+  <PoolKey>k__BackingField: Striker
+  <MaxHealth>k__BackingField: 10
+  <MoveSpeed>k__BackingField: 3
+  <ProductionTime>k__BackingField: 0.1
+  <AttackRange>k__BackingField: 1.2
+  <AttackRate>k__BackingField: 1
+  <Damage>k__BackingField: 10

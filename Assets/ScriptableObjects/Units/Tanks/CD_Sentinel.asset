@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: CD_Sentinel
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Sentinel
-  Type: 0
-  UnitName: Sentinel
-  Icon: {fileID: 21300000, guid: f1b96211e4632a847b206b5f142bdb21, type: 3}
-  poolKey: Sentinel
-  MaxHealth: 750
-  MoveSpeed: 0.75
-  productionTime: 0
-  attackRange: 4
-  attackRate: 2
-  damage: 75
+  <Icon>k__BackingField: {fileID: 21300000, guid: f1b96211e4632a847b206b5f142bdb21, type: 3}
+  <PoolKey>k__BackingField: Sentinel
+  <MaxHealth>k__BackingField: 100
+  <MoveSpeed>k__BackingField: 2
+  <ProductionTime>k__BackingField: 0.1
+  <AttackRange>k__BackingField: 2
+  <AttackRate>k__BackingField: 1
+  <Damage>k__BackingField: 50

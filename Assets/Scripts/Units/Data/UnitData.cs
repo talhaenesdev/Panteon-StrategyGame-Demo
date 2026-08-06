@@ -7,42 +7,72 @@ namespace PanteonStrategyGame.Units.Data
         menuName = "Panteon Strategy Game/Units/Unit Data")]
     public class UnitData : ScriptableObject
     {
+        #region General
+
+        [field: Header("General")]
+
         [field: SerializeField]
         public string DisplayName { get; private set; }
 
-        public UnitType Type;
+        [field: SerializeField]
+        public Sprite Icon { get; private set; }
 
-        [Header("General")]
-        public string UnitName;
+        #endregion
 
-        public Sprite Icon;
+        #region Pooling
 
-        [Header("Pooling")]
-        [SerializeField]
-        private string poolKey;
-        public string PoolKey => poolKey;
+        [field: Header("Pooling")]
 
-        [Header("Stats")]
-        public int MaxHealth;
+        [field: SerializeField]
+        public string PoolKey { get; private set; }
 
-        public float MoveSpeed;
+        #endregion
 
-        [Header("Production")]
-        [SerializeField]
-        private float productionTime = 3f;
-        public float ProductionTime => productionTime;
+        #region Stats
 
-        [Header("Combat")]
-        [SerializeField]
-        private float attackRange = 2f;
-        public float AttackRange => attackRange;
+        [field: Header("Stats")]
 
-        [SerializeField]
-        private float attackRate = 1f;
-        public float AttackRate => attackRate;
+        [field: SerializeField]
+        [field: Min(1)]
+        public int MaxHealth { get; private set; } = 100;
 
-        [SerializeField]
-        private int damage = 10;
-        public int Damage => damage;
+        [field: SerializeField]
+        [field: Tooltip("Movement speed of the unit.")]
+        [field: Range(0.5f, 20f)]
+        public float MoveSpeed { get; private set; } = 5f;
+
+        #endregion
+
+        #region Production
+
+        [field: Header("Production")]
+
+        [field: SerializeField]
+        [field: Tooltip("Time required to produce this unit.")]
+        [field: Range(0.1f, 60f)]
+        public float ProductionTime { get; private set; } = 3f;
+
+        #endregion
+
+        #region Combat
+
+        [field: Header("Combat")]
+
+        [field: SerializeField]
+        [field: Tooltip("Attack range of the unit.")]
+        [field: Range(0.5f, 20f)]
+        public float AttackRange { get; private set; } = 2f;
+
+        [field: SerializeField]
+        [field: Tooltip("Attacks per second.")]
+        [field: Range(0.1f, 10f)]
+        public float AttackRate { get; private set; } = 1f;
+
+        [field: SerializeField]
+        [field: Tooltip("Damage dealt per attack.")]
+        [field: Range(1, 1000)]
+        public int Damage { get; private set; } = 10;
+
+        #endregion
     }
 }

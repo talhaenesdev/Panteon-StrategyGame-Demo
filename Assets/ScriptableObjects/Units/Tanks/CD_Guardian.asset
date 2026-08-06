@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: CD_Guardian
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Guardian
-  Type: 0
-  UnitName: Guardian
-  Icon: {fileID: 21300000, guid: 99a868d387293a544bc39732d8b8d5b1, type: 3}
-  poolKey: Guardian
-  MaxHealth: 500
-  MoveSpeed: 1
-  productionTime: 0
-  attackRange: 3
-  attackRate: 2
-  damage: 50
+  <Icon>k__BackingField: {fileID: 21300000, guid: 99a868d387293a544bc39732d8b8d5b1, type: 3}
+  <PoolKey>k__BackingField: Guardian
+  <MaxHealth>k__BackingField: 100
+  <MoveSpeed>k__BackingField: 1
+  <ProductionTime>k__BackingField: 0.1
+  <AttackRange>k__BackingField: 4
+  <AttackRate>k__BackingField: 5
+  <Damage>k__BackingField: 90
