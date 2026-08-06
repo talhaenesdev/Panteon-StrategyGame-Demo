@@ -158,8 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4e5c3ddd54dcb409236d30ecc1672f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
-  _team: 0
   buildingData: {fileID: 11400000, guid: ceac344a1b20297458ebb83328585a56, type: 2}
   _selectionCircle: {fileID: 5122609588605303206}
   _playerFlag: {fileID: 1945425442699659546}
@@ -238,7 +236,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6559453, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.1764706, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -61,7 +61,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 4}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &2839945181905733969
 MonoBehaviour:
@@ -75,8 +75,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966d386e174ce624b8ba748d7cb4d618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
-  _team: 0
   buildingData: {fileID: 11400000, guid: 4687e705d4f180145990a82b691b2662, type: 2}
   _selectionCircle: {fileID: 8475269858354546828}
   _playerFlag: {fileID: 5149841351767422972}

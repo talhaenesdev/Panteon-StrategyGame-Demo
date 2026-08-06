@@ -263,8 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a1faacceea14e4b972fd5ff6a390ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
-  _team: 0
   buildingData: {fileID: 11400000, guid: a22f69b1884afbf4e90d4ea91b3b3bec, type: 2}
   _selectionCircle: {fileID: 1957150311016473724}
   _playerFlag: {fileID: 3008665900973038348}
@@ -320,7 +318,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 4}
+  m_Size: {x: 5, y: 4}
   m_EdgeRadius: 0
 --- !u!1001 &6288458140373985081
 PrefabInstance:
