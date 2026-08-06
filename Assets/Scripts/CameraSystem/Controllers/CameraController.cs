@@ -6,13 +6,13 @@ namespace PanteonStrategyGame.CameraSystem.Controllers
     public class CameraController : MonoBehaviour
     {
         [SerializeField]
-        private CameraMovement movement;
+        private CameraMovement _movement;
 
         [SerializeField]
-        private CameraZoom zoom;
+        private CameraZoom _zoom;
 
         [SerializeField]
-        private CameraBounds bounds;
+        private CameraBounds _bounds;
 
         private void Update()
         {
@@ -20,9 +20,9 @@ namespace PanteonStrategyGame.CameraSystem.Controllers
         }
         private void UpdateCamera()
         {
-            movement.Tick();
-            zoom.Tick();
-            bounds.Tick();
+            _movement.Tick();
+            _zoom.Tick();
+            _bounds.Tick();
         }
     }
 }
